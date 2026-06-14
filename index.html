@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramin Bakhshaliyev | iOS & AI-First Developer</title>
+    <meta name="description" content="Personal portfolio of Ramin Bakhshaliyev, an iOS & AI-First Developer based in Baku, Azerbaijan. Specialized in SwiftUI, React Native, Supabase, n8n, and Vibecoding.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Modern Reset & Base Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: rgba(22, 30, 49, 0.7);
+            --bg-card-hover: rgba(30, 41, 67, 0.8);
+            
+            --color-text-primary: #f3f4f6;
+            --color-text-secondary: #9ca3af;
+            --color-text-muted: #6b7280;
+            
+            --color-primary: #3b82f6; /* Blue */
+            --color-primary-glow: rgba(59, 130, 246, 0.15);
+            --color-accent: #06b6d4; /* Cyan */
+            --color-accent-glow: rgba(6, 182, 212, 0.15);
+            
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(6, 182, 212, 0.3);
+            
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-heading: 'Outfit', sans-serif;
+            
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-primary);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Abstract glowing blobs in background */
+        .bg-glow-1 {
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, var(--color-primary-glow) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+
+        .bg-glow-2 {
+            position: absolute;
+            top: 45%;
+            right: -10%;
+            width: 45vw;
+            height: 45vw;
+            background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+
+        /* Container & Layout */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-text-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 5rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 70vh;
+        }
+
+        .hero-badge {
+            align-self: flex-start;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.2);
+            }
+            50% {
+                transform: scale(1.02);
+                box-shadow: 0 0 10px 2px rgba(59, 130, 246, 0.15);
+            }
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-meta {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-meta svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem 1.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(6, 182, 212, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(6, 182, 212, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--color-text-primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Sections General */
+        section {
+            padding: 6rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            margin-bottom: 3.5rem;
+        }
+
+        .section-tag {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, #ffffff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--color-text-secondary);
+            font-size: 1.05rem;
+        }
+
+        .about-text p strong {
+            color: var(--color-text-primary);
+            font-weight: 600;
+        }
+
+        .vibecoding-highlight {
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(120deg, rgba(6, 182, 212, 0.15) 0%, rgba(59, 130, 246, 0.15) 100%);
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            color: #22d3ee;
+            font-weight: 600;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        /* Tech Stack */
+        .skills-container {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .skills-title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-badge {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-badge:hover {
+            background-color: rgba(6, 182, 212, 0.05);
+            border-color: var(--border-hover);
+            color: #22d3ee;
+            transform: translateY(-2px);
+        }
+
+        .skill-badge svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-hover);
+            background-color: var(--bg-card-hover);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-content {
+            padding: 2.25rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .project-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .project-icon-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--color-text-primary);
+            transition: var(--transition-smooth);
+        }
+
+        .project-card:hover .project-icon-wrapper {
+            background: rgba(6, 182, 212, 0.1);
+            border-color: rgba(6, 182, 212, 0.2);
+            color: #22d3ee;
+        }
+
+        .project-icon-wrapper svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            fill: none;
+        }
+
+        .project-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--color-text-primary);
+        }
+
+        .project-description {
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.75rem;
+            flex-grow: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tag {
+            font-size: 0.8rem;
+            background-color: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--color-text-secondary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        /* Footer / Links Section */
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 4rem 0 3rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.75rem;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .footer-tagline {
+            color: var(--color-text-secondary);
+            max-width: 400px;
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.25rem;
+        }
+
+        .social-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--color-text-secondary);
+            transition: var(--transition-smooth);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            color: var(--color-text-primary);
+            background-color: rgba(6, 182, 212, 0.1);
+            border-color: var(--border-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(6, 182, 212, 0.2);
+        }
+
+        .social-link svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding-top: 2rem;
+            width: 100%;
+        }
+
+        /* Responsiveness adjustments */
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            .nav-links {
+                display: none; /* simple single-page portfolio mobile nav handling */
+            }
+            .hero {
+                padding: 6rem 0 4rem 0;
+            }
+            .hero-actions {
+                flex-direction: column;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Glowing backgrounds -->
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">RB</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-badge">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                Available for remote opportunities
+            </div>
+            <h1>Ramin Bakhshaliyev</h1>
+            <h2>iOS & AI-First Developer</h2>
+            
+            <div class="hero-meta">
+                <span>
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    Baku, Azerbaijan
+                </span>
+                <span>•</span>
+                <span>
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    GMT+4
+                </span>
+            </div>
+
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">
+                    View My Work
+                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="section-header">
+                <span class="section-tag">About Me</span>
+                <h3 class="section-title">Core Philosophies & Tech Stack</h3>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>I am an innovative developer focusing on the intersection of native mobile experiences and Artificial Intelligence. I am highly passionate about <span class="vibecoding-highlight">"Vibecoding"</span>—the practice of leveraging cutting-edge Generative AI tools like Cursor and Claude to rapidly prototype, build, and deploy premium products.</p>
+                    <p>By blending traditional software engineering principles with modern AI-guided workflows, I reduce development cycles and deliver production-ready applications with exceptional speed and polish.</p>
+                </div>
+                <div class="skills-container">
+                    <h4 class="skills-title">
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="#06b6d4" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:8px;"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        Tech Stack
+                    </h4>
+                    <div class="skills-grid">
+                        <span class="skill-badge">SwiftUI</span>
+                        <span class="skill-badge">React Native (Expo)</span>
+                        <span class="skill-badge">Supabase</span>
+                        <span class="skill-badge">n8n Automation</span>
+                        <span class="skill-badge">Generative AI APIs</span>
+                        <span class="skill-badge">iOS SDK</span>
+                        <span class="skill-badge">Git & CI/CD</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="section-header">
+                <span class="section-tag">Featured Work</span>
+                <h3 class="section-title">Selected Projects</h3>
+            </div>
+            <div class="projects-grid">
+                <!-- Mirrorly Project -->
+                <article class="project-card">
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-category">iOS & AI App</span>
+                            <div class="project-icon-wrapper">
+                                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M12 6v12"></path><path d="M8 10h8"></path></svg>
+                            </div>
+                        </div>
+                        <h4 class="project-title">Mirrorly</h4>
+                        <p class="project-description">An AI-powered virtual try-on mobile application that leverages diffusion models to let users preview outfits on custom avatars with high fidelity.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">SwiftUI</span>
+                            <span class="project-tag">Stable Diffusion</span>
+                            <span class="project-tag">Supabase</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Portmanat Project -->
+                <article class="project-card">
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-category">iOS Native</span>
+                            <div class="project-icon-wrapper">
+                                <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12" y2="6"></line></svg>
+                            </div>
+                        </div>
+                        <h4 class="project-title">Portmanat</h4>
+                        <p class="project-description">Rebuilt completely from scratch using modern SwiftUI. Focused on high-performance animations, localized accessibility (a11y), and state management.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">SwiftUI</span>
+                            <span class="project-tag">iOS SDK</span>
+                            <span class="project-tag">Core Animation</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer / Links Section -->
+    <footer id="contact">
+        <div class="container footer-grid">
+            <a href="#" class="footer-logo">RB</a>
+            <p class="footer-tagline">Building the future of mobile experiences with SwiftUI and Artificial Intelligence.</p>
+            
+            <div class="social-links">
+                <!-- GitHub -->
+                <a href="https://github.com/Ramin7DEV" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <p class="copyright">&copy; 2026 Ramin Bakhshaliyev. All rights reserved. Baku, Azerbaijan.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

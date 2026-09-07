@@ -71,13 +71,33 @@ Yeni rəng əlavə edilirsə, kontrast yenidən ölçülməli və bu cədvələ 
 ## 3. Tipografiya
 
 ### Ailələr
+
+Şrift ailəsi token-ları `next/font` dəyişənləri üzərində **kompozisiya edilir** — belə ki, next/font-un metrik-uyğunlaşdırılmış fallback-ı (`size-adjust`) itməsin:
+
 ```css
---font-display: 'Fraunces', Georgia, serif;      /* başlıqlar */
---font-body:    'Manrope', system-ui, sans-serif;/* mətn */
---font-mono:    'IBM Plex Mono', monospace;      /* meta, label, rəqəm */
+/* next/font bunları təyin edir (layout.tsx-də `variable` adı): */
+/* --font-display-face, --font-body-face, --font-mono-face          */
+
+--font-display: var(--font-display-face), Georgia, 'Times New Roman', serif;
+--font-body:    var(--font-body-face), system-ui, -apple-system, sans-serif;
+--font-mono:    var(--font-mono-face), ui-monospace, SFMono-Regular, monospace;
 ```
 
-`next/font/google` ilə self-hosted. Fraunces variable — `font-variation-settings: 'SOFT' 0, 'WONK' 0, 'opsz' 96;` (təmiz, "wonky" deyil). Yüklənən weight-lər: Fraunces 300/400, Manrope 400/500/600, IBM Plex Mono 400/500. Artıq weight yüklənmir.
+**Qayda:** next/font-un `variable` adı ilə token adı eyni OLMAMALIDIR. Eyni olduqda token faylı next/font-un dəyərini üstələyir və `"... Fallback"` metrik ailəsi kaskaddan düşür (CLS qorunması itir).
+
+| Rol | Şrift | Yüklənmə |
+|---|---|---|
+| display | **Source Serif 4** | variable (`opsz` 8-60, `wght` 200-900), `style: ['normal','italic']` |
+| body | **Manrope** | variable (`wght`) |
+| mono | **IBM Plex Mono** | static `400`, `500` |
+
+Subsets: hər üçündə `['latin', 'latin-ext', 'cyrillic']`. `latin-ext` Azərbaycan `ə ğ ı ö ü ç ş` hərfləri üçün, `cyrillic` rus dili üçün məcburidir. next/font hər subset üçün ayrıca `@font-face` + `unicode-range` yaradır — istifadəçi yalnız öz dilinin faylını yükləyir.
+
+> **Niyə Source Serif 4:** Fraunces-də kiril əlifbası yoxdur (brauzerdə təsdiqlənib — RU başlıqlar Georgia-ya düşürdü). Üç dildə eyni display siması brend bütövlüyü üçün vacibdir.
+
+**Optik ölçü:** `font-optical-sizing: auto` (brauzer defolt davranışı) istifadə olunur — `opsz` oxu font-size-a uyğun avtomatik tənzimlənir. Əl ilə `font-variation-settings` yazılmır; yazılarsa `font-optical-sizing`-i söndürür.
+
+**Variable font qaydası:** variable şrift üçün `next/font`-a `weight` massivi **verilmir** — verildikdə static instance-lar yüklənir və `opsz`/`wght` oxları işləmir. Lazım olan çəki CSS-də `font-weight` ilə seçilir.
 
 ### Şkala (fluid, `clamp`)
 ```css

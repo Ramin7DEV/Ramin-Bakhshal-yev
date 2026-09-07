@@ -1,0 +1,80 @@
+:root {
+  /* Surfaces */
+  --surface-void: #08090A;
+  --surface-obsidian: #0D0E10;
+  --surface-graphite: #121316;
+  --surface-slate: #1A1C20;
+
+  /* Lines */
+  --line-hairline: rgba(237, 233, 223, 0.10);
+  --line-medium: rgba(237, 233, 223, 0.18);
+  --line-strong: rgba(237, 233, 223, 0.32);
+
+  /* Text */
+  --text-primary: #EDE9DF;
+  --text-secondary: #A8A399;
+  --text-tertiary: #837E76;
+  --text-inverse: #08090A;
+
+  /* Accents */
+  --accent-gold: #D3AA69;
+  --accent-signal: #88DDD7;
+  --accent-gold-dim: rgba(211, 170, 105, 0.14);
+  --accent-signal-dim: rgba(136, 221, 215, 0.14);
+
+  /* Typography Families */
+  --font-display: var(--font-display-face), Georgia, 'Times New Roman', serif;
+  --font-body:    var(--font-body-face), system-ui, -apple-system, sans-serif;
+  --font-mono:    var(--font-mono-face), ui-monospace, SFMono-Regular, monospace;
+
+  /* Type scale */
+  --type-display-xl: clamp(3.25rem, 8.5vw, 8rem);
+  --type-display-l: clamp(2.5rem, 5.5vw, 5rem);
+  --type-display-m: clamp(2rem, 3.6vw, 3.25rem);
+  --type-heading: clamp(1.375rem, 2vw, 1.75rem);
+  --type-body-l: clamp(1.0625rem, 1.15vw, 1.25rem);
+  --type-body-m: 1rem;
+  --type-body-s: 0.875rem;
+  --type-label: 0.75rem;
+
+  /* Spacing and Grid */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+  --space-11: 12rem;
+
+  --space-section: clamp(5rem, 11vw, 11rem);
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --container-max: 1440px;
+  --content-max: 1180px;
+  --measure: 68ch;
+
+  /* Shapes and Surfaces */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-pill: 999px;
+
+  --border-hairline: 1px solid var(--line-hairline);
+
+  --shadow-lift: 0 24px 60px -30px rgba(0, 0, 0, 0.9);
+  --shadow-media: 0 40px 90px -50px rgba(0, 0, 0, 1);
+
+  /* Motion Tokens */
+  --dur-instant: 120ms;
+  --dur-fast: 240ms;
+  --dur-base: 420ms;
+  --dur-slow: 720ms;
+  --dur-scene: 1200ms;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.30, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-entrance: cubic-bezier(0.22, 1, 0.36, 1);
+}

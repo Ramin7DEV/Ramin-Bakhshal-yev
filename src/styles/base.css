@@ -1,0 +1,145 @@
+/* Modern reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--surface-void);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  min-width: 320px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography base classes */
+.t-display-xl {
+  font-family: var(--font-display);
+  font-size: var(--type-display-xl);
+  font-weight: 300;
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+}
+
+.t-display-l {
+  font-family: var(--font-display);
+  font-size: var(--type-display-l);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.t-display-m {
+  font-family: var(--font-display);
+  font-size: var(--type-display-m);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.t-heading {
+  font-family: var(--font-display);
+  font-size: var(--type-heading);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.t-body-l {
+  font-family: var(--font-body);
+  font-size: var(--type-body-l);
+  line-height: 1.6;
+}
+
+.t-body-m {
+  font-family: var(--font-body);
+  font-size: var(--type-body-m);
+  line-height: 1.65;
+}
+
+.t-body-s {
+  font-family: var(--font-body);
+  font-size: var(--type-body-s);
+  line-height: 1.55;
+}
+
+.t-label {
+  font-family: var(--font-mono);
+  font-size: var(--type-label);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+/* Editorial emphasis */
+em {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--accent-gold);
+}
+
+/* Focus visibility */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent-signal);
+  outline-offset: 3px;
+  border-radius: var(--radius-xs);
+}
+
+/* Accessibility: visually hidden utility */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--accent-signal);
+  color: var(--text-inverse);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

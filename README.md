@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# raminbakhshaliyev.com
 
-## Getting Started
+Ramin Bakhshalıyev üçün premium, çoxdilli personal brand saytı.
+Positioning: **AI-first engineer** · iOS / mobile product builder.
 
-First, run the development server:
+Status: **V1 yenidən qurulur** (Phase 0-dan başlayaraq).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Stack
+
+Next.js 16 (App Router) · React 19 · TypeScript (strict) · Tailwind v4 · next-intl · GSAP ScrollTrigger · Vercel
+
+## Sənədlər
+
+| Fayl | Nə üçün |
+|---|---|
+| `AGENTS.md` | Layihə qaydaları — hər agent və insan üçün məcburi |
+| `AI_FIRST_PORTFOLIO_MASTER_PLAN.md` | Strategiya və brend (source of truth) |
+| `docs/BUILD_PLAN.md` | V1 texniki icra planı, faza cədvəli, Definition of Done |
+| `docs/DESIGN_SYSTEM.md` | Token-lar, tipografiya, komponent standartları |
+| `docs/CONTENT_INVENTORY.md` | Doldurulmalı content (Ramin doldurur) |
+| `docs/REVIEW_PROTOCOL.md` | Faza review protokolu (lead icra edir) |
+| `docs/gemini/PHASE-*.md` | Implementer üçün faza prompt-ları |
+| `claudedocs/research_*.md` | Scroll motion arxitekturası araşdırması |
+
+## İş axını
+
+```
+Plan (Claude) → Prompt (docs/gemini/PHASE-N.md) → İcra (Gemini) → Review (Claude) → Commit
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Faza qəbul edilmədən növbətiyə keçilmir.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Script-lər
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev        # development server
+npm run build      # production build
+npm run lint       # eslint
+npm run typecheck  # tsc --noEmit
+npm run check      # lint + typecheck + build
+```
 
-## Learn More
+## Qovluq strukturu
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`docs/BUILD_PLAN.md` §3-ə bax.

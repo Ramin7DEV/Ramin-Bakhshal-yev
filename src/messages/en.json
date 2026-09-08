@@ -1,0 +1,136 @@
+{
+  "common": {
+    "actions": {
+      "viewWork": "View selected work",
+      "contact": "Get in touch",
+      "viewCase": "Read case study",
+      "allProjects": "All projects",
+      "backToWork": "Back to selected work"
+    },
+    "states": {
+      "loading": "Loading...",
+      "empty": "No items found."
+    }
+  },
+  "nav": {
+    "work": "Work",
+    "about": "About",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close",
+    "skipToContent": "Skip to main content"
+  },
+  "locale": {
+    "switcherLabel": "Switch language",
+    "az": "Azərbaycan",
+    "en": "English",
+    "ru": "Русский"
+  },
+  "hero": {
+    "eyebrow": "AI-first Engineer",
+    "titleLines": [
+      "From zero signal",
+      "to production software."
+    ],
+    "description": "TODO(content): Hero description",
+    "ctaPrimary": "Explore selected work",
+    "ctaSecondary": "Get in touch"
+  },
+  "proof": {
+    "eyebrow": "Proof",
+    "title": "Shipped software, measured outcomes, and technical rigor",
+    "statusLive": "Live",
+    "statusDev": "In development",
+    "statusConcept": "Concept"
+  },
+  "work": {
+    "eyebrow": "Work",
+    "title": "Selected projects",
+    "intro": "TODO(content): Work intro",
+    "filterAll": "All",
+    "filterAi": "AI Systems",
+    "filterMobile": "Mobile",
+    "filterDesign": "Product Design",
+    "empty": "No projects found for this selection."
+  },
+  "caseStudy": {
+    "chapterProblem": "Problem",
+    "chapterRole": "Role & Scope",
+    "chapterAiWorkflow": "AI Workflow",
+    "chapterSystem": "System Architecture",
+    "factYear": "Year",
+    "factRole": "Role",
+    "factStack": "Stack",
+    "factStatus": "Status",
+    "outcomeTitle": "Outcome",
+    "linksTitle": "Links",
+    "nextProject": "Next project"
+  },
+  "process": {
+    "eyebrow": "Process",
+    "title": "Disciplined execution from signal to shipment",
+    "steps": [
+      {
+        "title": "Signal",
+        "body": "TODO(content): Process Signal body"
+      },
+      {
+        "title": "System",
+        "body": "TODO(content): Process System body"
+      },
+      {
+        "title": "Ship",
+        "body": "TODO(content): Process Ship body"
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "First-principles engineering in the AI era",
+    "principlesTitle": "Engineering Principles",
+    "toolsTitle": "Stack & Capabilities",
+    "aiWorkflowTitle": "AI Integration Methodology"
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let's build something enduring",
+    "intro": "TODO(content): Contact intro",
+    "emailLabel": "Email",
+    "responseTime": "Typically replies within 24 hours",
+    "location": "Baku, Azerbaijan (UTC+4)",
+    "socialTitle": "Networks"
+  },
+  "footer": {
+    "copyright": "Ramin Bakhshalıyev. All rights reserved.",
+    "builtIn": "Engineered in Baku.",
+    "backToTop": "Back to top"
+  },
+  "meta": {
+    "siteName": "Ramin Bakhshalıyev",
+    "defaultTitle": "Ramin Bakhshalıyev — AI-first Engineer",
+    "defaultDescription": "Personal portfolio of Ramin Bakhshalıyev.",
+    "titleTemplate": "%s — Ramin Bakhshalıyev",
+    "home": {
+      "title": "Ramin Bakhshalıyev — AI-first Engineer",
+      "description": "Personal portfolio of Ramin Bakhshalıyev."
+    },
+    "work": {
+      "title": "Selected Work",
+      "description": "Selected case studies across AI systems and mobile engineering."
+    },
+    "about": {
+      "title": "About",
+      "description": "Background, principles, and engineering methodology of Ramin Bakhshalıyev."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Get in touch for technical leadership, product engineering, or inquiries."
+    }
+  },
+  "a11y": {
+    "mainLandmark": "Main content",
+    "projectSelected": "Project selected",
+    "externalLink": "Opens in external tab",
+    "currentLanguage": "Current language"
+  }
+}

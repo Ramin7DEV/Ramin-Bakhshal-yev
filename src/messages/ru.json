@@ -1,0 +1,136 @@
+{
+  "common": {
+    "actions": {
+      "viewWork": "Смотреть проекты",
+      "contact": "Связаться",
+      "viewCase": "Читать кейс",
+      "allProjects": "Все проекты",
+      "backToWork": "Назад к проектам"
+    },
+    "states": {
+      "loading": "Загрузка...",
+      "empty": "Ничего не найдено."
+    }
+  },
+  "nav": {
+    "work": "Проекты",
+    "about": "О себе",
+    "contact": "Контакты",
+    "menu": "Меню",
+    "close": "Закрыть",
+    "skipToContent": "Перейти к основному контенту"
+  },
+  "locale": {
+    "switcherLabel": "Выбрать язык",
+    "az": "Azərbaycan",
+    "en": "English",
+    "ru": "Русский"
+  },
+  "hero": {
+    "eyebrow": "AI-first Инженер",
+    "titleLines": [
+      "От гипотезы до",
+      "готового продукта."
+    ],
+    "description": "TODO(content): Hero description",
+    "ctaPrimary": "Смотреть избранные проекты",
+    "ctaSecondary": "Связаться со мной"
+  },
+  "proof": {
+    "eyebrow": "Факты",
+    "title": "Запущенные системы, измеримый результат и инженерная дисциплина",
+    "statusLive": "В продакшене",
+    "statusDev": "В разработке",
+    "statusConcept": "Концепт"
+  },
+  "work": {
+    "eyebrow": "Проекты",
+    "title": "Избранные работы",
+    "intro": "TODO(content): Work intro",
+    "filterAll": "Все",
+    "filterAi": "AI Системы",
+    "filterMobile": "Мобильные",
+    "filterDesign": "Продуктовый дизайн",
+    "empty": "В этой категории пока нет проектов."
+  },
+  "caseStudy": {
+    "chapterProblem": "Проблема",
+    "chapterRole": "Роль и охват",
+    "chapterAiWorkflow": "AI-процесс",
+    "chapterSystem": "Архитектура системы",
+    "factYear": "Год",
+    "factRole": "Роль",
+    "factStack": "Стек",
+    "factStatus": "Статус",
+    "outcomeTitle": "Результат",
+    "linksTitle": "Ссылки",
+    "nextProject": "Следующий проект"
+  },
+  "process": {
+    "eyebrow": "Процесс",
+    "title": "Последовательная разработка от идеи до запуска",
+    "steps": [
+      {
+        "title": "Signal",
+        "body": "TODO(content): Process Signal body"
+      },
+      {
+        "title": "System",
+        "body": "TODO(content): Process System body"
+      },
+      {
+        "title": "Ship",
+        "body": "TODO(content): Process Ship body"
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "О себе",
+    "title": "Инженерия первых принципов в эпоху AI",
+    "principlesTitle": "Принципы работы",
+    "toolsTitle": "Стек и технологии",
+    "aiWorkflowTitle": "Методология внедрения AI"
+  },
+  "contact": {
+    "eyebrow": "Контакты",
+    "title": "Давайте создавать качественные продукты",
+    "intro": "TODO(content): Contact intro",
+    "emailLabel": "Эл. почта",
+    "responseTime": "Обычно отвечаю в течение 24 часов",
+    "location": "Баку, Азербайджан (UTC+4)",
+    "socialTitle": "Социальные сети"
+  },
+  "footer": {
+    "copyright": "Рамин Бахшалиев. Все права защищены.",
+    "builtIn": "Разработано в Баку.",
+    "backToTop": "Наверх"
+  },
+  "meta": {
+    "siteName": "Рамин Бахшалиев",
+    "defaultTitle": "Рамин Бахшалиев — AI-first Инженер",
+    "defaultDescription": "Персональное портфолио Рамина Бахшалиева.",
+    "titleTemplate": "%s — Рамин Бахшалиев",
+    "home": {
+      "title": "Рамин Бахшалиев — AI-first Инженер",
+      "description": "Персональное портфолио Рамина Бахшалиева."
+    },
+    "work": {
+      "title": "Избранные проекты",
+      "description": "Кейсы по разработке AI-систем и мобильных продуктов."
+    },
+    "about": {
+      "title": "О себе",
+      "description": "Опыт, инженерные принципы и рабочий процесс Рамина Бахшалиева."
+    },
+    "contact": {
+      "title": "Контакты",
+      "description": "Свяжитесь для обсуждения инженерных проектов и сотрудничества."
+    }
+  },
+  "a11y": {
+    "mainLandmark": "Основное содержимое",
+    "projectSelected": "Проект выбран",
+    "externalLink": "Открывается в новой вкладке",
+    "currentLanguage": "Текущий язык"
+  }
+}

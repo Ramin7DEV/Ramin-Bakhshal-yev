@@ -71,21 +71,21 @@ AZ tam yazılır. EN və RU **təbii lokal copy** ilə yazılır (sözbəsöz t�
 Hər səhifə: `<main>` + `h1` (messages-dən) + o səhifənin hansı content-i alacağını göstərən sadə siyahı. Stil yoxdur. `work/[slug]` üçün `generateStaticParams` 3 slug × 3 locale = 9 səhifə qaytarır; mövcud olmayan slug → `notFound()`.
 
 
-### 5. Şrift yükləmə strategiyası (Phase 0 review-da aşkarlanan problem)
+### 5. Şrift yükləmə strategiyası
 
-**Problem:** hazırda `layout.tsx` hər üç şrifti `['latin','latin-ext','cyrillic']` subset-ləri ilə yükləyir. `next/font` **elan edilmiş hər subset üçün `<link rel="preload">` yaradır** — səhifənin dilindən asılı olmayaraq. Brauzerdə ölçüldü: yalnız latın mətni olan səhifədə **15 şrift faylı, 355 KB** endi. AZ və EN istifadəçiləri heç vaxt görməyəcəkləri kiril fayllarını yükləyir.
+**Problem:** `next/font` elan edilmiş **hər subset üçün** `<link rel="preload">` yaradır — səhifənin dilindən asılı olmayaraq.
 
-**Tələb:** şriftlər locale layout-una köçürülür və subset seçimi locale-ə bağlanır.
+**Həll (ölçmə ilə təsdiqlənib):** bir tək şrift konfiqurasiyası, üç subset, `preload: false`. `unicode-range` sayəsində brauzer yalnız səhifədə faktiki işlənən subset-i endirir.
 
-Yanaşma:
-- `latin` + `latin-ext` — bütün locale-lər üçün, `preload: true` (AZ hərfləri `latin-ext`-dədir).
-- `cyrillic` — **yalnız `ru`** locale-ində yüklənən ayrıca şrift instance-ı, `preload: false` deyil, `ru` səhifələrində `preload: true`.
-- `IBM_Plex_Mono` — `preload: false` (yalnız kiçik mono label-larda işlənir, LCP-yə təsir etmir; `display: swap` və metrik fallback kifayətdir).
+```ts
+Source_Serif_4({ variable: '--font-display-face',
+  subsets: ['latin', 'latin-ext', 'cyrillic'],
+  style: ['normal', 'italic'], display: 'swap', preload: false })
+```
 
-Praktik həll: `src/app/[locale]/fonts.ts` faylında iki konfiqurasiya (`latinFonts`, `cyrillicFonts`) elan edilir və `[locale]/layout.tsx` locale-ə görə uyğun `className`-i `<html>`-ə verir. `next/font` çağırışları modul səviyyəsində statik qalmalıdır — funksiya daxilində çağırma.
+Locale-ə görə iki ayrı konfiqurasiya **işləmir**: hər ikisi eyni modul qrafındadır, ona görə hər səhifəyə hər ikisinin `@font-face` və preload-ları düşür.
 
-**Qəbul meyarı:** `/az` və `/en` səhifələrində preload edilən şrift faylı sayı **≤ 6**, ümumi şrift həcmi **≤ 150 KB**; `/ru`-da kiril faylları yüklənir, latin-ext preload edilmir. Ölçmə: `performance.getEntriesByType('resource')` filtri ilə.
-
+**Qəbul meyarı:** production build, təmiz cache — bir locale səhifəsində ≤ 6 şrift faylı və ≤ 150 KB.
 
 ## Qadağalar
 - Dizayn, komponent, animasiya yoxdur.

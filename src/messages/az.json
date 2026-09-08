@@ -1,0 +1,136 @@
+{
+  "common": {
+    "actions": {
+      "viewWork": "Layihələrə bax",
+      "contact": "Əlaqə saxla",
+      "viewCase": "Keysi oxu",
+      "allProjects": "Bütün layihələr",
+      "backToWork": "Layihələrə qayıt"
+    },
+    "states": {
+      "loading": "Yüklənir...",
+      "empty": "Məlumat tapılmadı."
+    }
+  },
+  "nav": {
+    "work": "Layihələr",
+    "about": "Haqqımda",
+    "contact": "Əlaqə",
+    "menu": "Menyu",
+    "close": "Bağla",
+    "skipToContent": "Əsas məzmuna keç"
+  },
+  "locale": {
+    "switcherLabel": "Dili dəyiş",
+    "az": "Azərbaycan",
+    "en": "English",
+    "ru": "Русский"
+  },
+  "hero": {
+    "eyebrow": "AI-first Mühəndis",
+    "titleLines": [
+      "Fikirdən real",
+      "məhsula qədər."
+    ],
+    "description": "TODO(content): Hero description",
+    "ctaPrimary": "İşlərimlə tanış olun",
+    "ctaSecondary": "Əlaqə qurun"
+  },
+  "proof": {
+    "eyebrow": "Sübut",
+    "title": "İstehsalata buraxılmış sistemlər və real təcrübə",
+    "statusLive": "İstifadədədir",
+    "statusDev": "Hazırlanır",
+    "statusConcept": "Konsept"
+  },
+  "work": {
+    "eyebrow": "İşlər",
+    "title": "Seçilmiş layihələr",
+    "intro": "TODO(content): Work intro",
+    "filterAll": "Hamısı",
+    "filterAi": "AI Sistemləri",
+    "filterMobile": "Mobil",
+    "filterDesign": "Məhsul Dizaynı",
+    "empty": "Bu kateqoriyada heç bir layihə tapılmadı."
+  },
+  "caseStudy": {
+    "chapterProblem": "Problem",
+    "chapterRole": "Rol və Məsuliyyət",
+    "chapterAiWorkflow": "AI İş Prosesi",
+    "chapterSystem": "Sistem və Memarlıq",
+    "factYear": "İl",
+    "factRole": "Rol",
+    "factStack": "Texnologiya",
+    "factStatus": "Status",
+    "outcomeTitle": "Nəticə",
+    "linksTitle": "Keçidlər",
+    "nextProject": "Növbəti layihə"
+  },
+  "process": {
+    "eyebrow": "Proses",
+    "title": "Düşüncədən istehsala qədər mühəndislik",
+    "steps": [
+      {
+        "title": "Signal",
+        "body": "TODO(content): Process Signal body"
+      },
+      {
+        "title": "System",
+        "body": "TODO(content): Process System body"
+      },
+      {
+        "title": "Ship",
+        "body": "TODO(content): Process Ship body"
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "Haqqımda",
+    "title": "Sistemli düşüncə və AI-first mühəndislik",
+    "principlesTitle": "İş Prinsipləri",
+    "toolsTitle": "Alətlər və Texnologiyalar",
+    "aiWorkflowTitle": "AI İş Prosesi"
+  },
+  "contact": {
+    "eyebrow": "Əlaqə",
+    "title": "Gəlin birlikdə quraq",
+    "intro": "TODO(content): Contact intro",
+    "emailLabel": "Email",
+    "responseTime": "Adətən 24 saat ərzində cavab verilir",
+    "location": "Bakı, Azərbaycan (UTC+4)",
+    "socialTitle": "Şəbəkələr"
+  },
+  "footer": {
+    "copyright": "Ramin Bakhshalıyev. Bütün hüquqlar qorunur.",
+    "builtIn": "Bakıda hazırlanıb.",
+    "backToTop": "Yuxarı qayıt"
+  },
+  "meta": {
+    "siteName": "Ramin Bakhshalıyev",
+    "defaultTitle": "Ramin Bakhshalıyev — AI-first Engineer",
+    "defaultDescription": "Personal portfolio of Ramin Bakhshalıyev.",
+    "titleTemplate": "%s — Ramin Bakhshalıyev",
+    "home": {
+      "title": "Ramin Bakhshalıyev — AI-first Engineer",
+      "description": "Personal portfolio of Ramin Bakhshalıyev."
+    },
+    "work": {
+      "title": "Seçilmiş Layihələr",
+      "description": "AI və mobil məhsul mühəndisliyi layihələri."
+    },
+    "about": {
+      "title": "Haqqımda",
+      "description": "Ramin Bakhshalıyev haqqında məlumat, prinsiplər və iş tərzi."
+    },
+    "contact": {
+      "title": "Əlaqə",
+      "description": "Yeni layihələr və əməkdaşlıq üçün əlaqə saxlayın."
+    }
+  },
+  "a11y": {
+    "mainLandmark": "Əsas məzmun",
+    "projectSelected": "Layihə seçildi",
+    "externalLink": "Xarici keçid",
+    "currentLanguage": "Hazırkı dil"
+  }
+}

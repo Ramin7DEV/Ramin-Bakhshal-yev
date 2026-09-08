@@ -107,7 +107,8 @@ src/
     tokens.css                # bütün design token-lar
     base.css                  # reset, typography base, focus, reduced-motion
     globals.css               # @import tailwindcss + tokens + base
-middleware.ts                 # next-intl locale middleware (repo root)
+src/proxy.ts                  # locale proxy (Next 16-da Middleware -> Proxy adlanır;
+                              # fayl `app` ilə eyni səviyyədə olmalıdır)
 public/
   images/                     # project və hero şəkilləri
   og/                         # generated/static OG assets

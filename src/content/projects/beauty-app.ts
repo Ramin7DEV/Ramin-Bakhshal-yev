@@ -3,9 +3,7 @@ import type { Project } from '../types';
 export const beautyApp = {
   slug: 'beauty-app',
   index: '03',
-  status: 'concept',
   categories: ['ai', 'product-design'],
-  year: '2025',
   title: 'Beauty App',
   summary: {
     az: 'TODO(content): Beauty App kart üçün 1 cümləlik xülasə (AZ)',
@@ -22,7 +20,7 @@ export const beautyApp = {
     en: ['TODO(content): Beauty App role bullet points (EN)'],
     ru: ['TODO(content): Beauty App role bullet points (RU)'],
   },
-  stack: ['SwiftUI', 'CoreML', 'Computer Vision', 'Metal'],
+  stack: [],
   outcome: {
     az: ['TODO(content): Beauty App real nəticələr (AZ)'],
     en: ['TODO(content): Beauty App real outcomes (EN)'],
@@ -31,9 +29,9 @@ export const beautyApp = {
   cover: {
     src: '/images/project-beauty-app.png',
     alt: {
-      az: 'Beauty App dizayn konsepti və interfeysi',
-      en: 'Beauty App design concept and interface',
-      ru: 'Дизайн-концепт и интерфейс Beauty App',
+      az: 'Beauty App layihəsinin qaranlıq studiya vizualı',
+      en: 'Beauty App project dark studio visual',
+      ru: 'Темная студийная визуализация проекта Beauty App',
     },
     width: 1448,
     height: 1086,

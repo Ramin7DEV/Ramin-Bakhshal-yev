@@ -29,9 +29,9 @@ export interface CaseChapter {
 export interface Project {
   slug: 'mirrorly' | 'azerbaijan-otur' | 'beauty-app';
   index: '01' | '02' | '03';
-  status: ProjectStatus;
+  status?: ProjectStatus;
   categories: ProjectCategory[];
-  year: string;
+  year?: string;
   title: string;
   summary: Localized<string>;
   statement: Localized<string>;

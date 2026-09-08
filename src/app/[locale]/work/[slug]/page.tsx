@@ -36,12 +36,24 @@ export default async function CaseStudyPage({ params }: Props) {
       </h1>
       <p>{project.statement[loc]}</p>
       <dl>
-        <dt>{t('caseStudy.factYear')}</dt>
-        <dd>{project.year}</dd>
-        <dt>{t('caseStudy.factStatus')}</dt>
-        <dd>{project.status}</dd>
-        <dt>{t('caseStudy.factStack')}</dt>
-        <dd>{project.stack.join(', ')}</dd>
+        {project.year ? (
+          <>
+            <dt>{t('caseStudy.factYear')}</dt>
+            <dd>{project.year}</dd>
+          </>
+        ) : null}
+        {project.status ? (
+          <>
+            <dt>{t('caseStudy.factStatus')}</dt>
+            <dd>{project.status}</dd>
+          </>
+        ) : null}
+        {project.stack.length > 0 ? (
+          <>
+            <dt>{t('caseStudy.factStack')}</dt>
+            <dd>{project.stack.join(', ')}</dd>
+          </>
+        ) : null}
       </dl>
       <section>
         <h2>{t('caseStudy.chapterProblem')}</h2>

@@ -1,9 +1,10 @@
 import type { ReactNode } from 'react';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, setRequestLocale } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
-import { getFontClassName } from './fonts';
+import { fontClassName } from './fonts';
+import { THEME_COLOR } from '@/lib/theme';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -18,15 +19,15 @@ export async function generateMetadata({
   if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
     return {};
   }
-  const messages = (await import(`@/messages/${locale}.json`)).default;
+  const t = await getTranslations({ locale, namespace: 'meta' });
   return {
-    title: messages.meta.defaultTitle,
-    description: messages.meta.defaultDescription,
+    title: t('defaultTitle'),
+    description: t('defaultDescription'),
   };
 }
 
 export const viewport = {
-  themeColor: '#08090A',
+  themeColor: THEME_COLOR,
 };
 
 type Props = {
@@ -45,7 +46,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={getFontClassName(locale)}>
+    <html lang={locale} className={fontClassName}>
       <body>
         <NextIntlClientProvider messages={messages}>
           {children}

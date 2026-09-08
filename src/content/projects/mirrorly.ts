@@ -3,9 +3,7 @@ import type { Project } from '../types';
 export const mirrorly = {
   slug: 'mirrorly',
   index: '01',
-  status: 'in-development',
   categories: ['ai', 'mobile'],
-  year: '2025',
   title: 'Mirrorly',
   summary: {
     az: 'TODO(content): Mirrorly kart üçün 1 cümləlik xülasə (AZ)',
@@ -22,7 +20,7 @@ export const mirrorly = {
     en: ['TODO(content): Mirrorly role bullet points (EN)'],
     ru: ['TODO(content): Mirrorly role bullet points (RU)'],
   },
-  stack: ['iOS', 'SwiftUI', 'Vision AI', 'CoreML'],
+  stack: [],
   outcome: {
     az: ['TODO(content): Mirrorly real nəticələr (AZ)'],
     en: ['TODO(content): Mirrorly real outcomes (EN)'],
@@ -31,9 +29,9 @@ export const mirrorly = {
   cover: {
     src: '/images/project-mirrorly.png',
     alt: {
-      az: 'Mirrorly mobil tətbiqi interfeysi',
-      en: 'Mirrorly mobile application interface',
-      ru: 'Интерфейс мобильного приложения Mirrorly',
+      az: 'Mirrorly layihəsinin qaranlıq studiya vizualı',
+      en: 'Mirrorly project dark studio visual',
+      ru: 'Темная студийная визуализация проекта Mirrorly',
     },
     width: 1448,
     height: 1086,

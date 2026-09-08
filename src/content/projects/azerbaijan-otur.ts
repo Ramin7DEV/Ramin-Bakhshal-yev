@@ -3,9 +3,7 @@ import type { Project } from '../types';
 export const azerbaijanOtur = {
   slug: 'azerbaijan-otur',
   index: '02',
-  status: 'live',
   categories: ['mobile', 'product-design'],
-  year: '2024',
   title: 'Azerbaijan Otur',
   summary: {
     az: 'TODO(content): Azerbaijan Otur kart üçün 1 cümləlik xülasə (AZ)',
@@ -22,7 +20,7 @@ export const azerbaijanOtur = {
     en: ['TODO(content): Azerbaijan Otur role bullet points (EN)'],
     ru: ['TODO(content): Azerbaijan Otur role bullet points (RU)'],
   },
-  stack: ['React Native', 'TypeScript', 'Node.js', 'PostgreSQL'],
+  stack: [],
   outcome: {
     az: ['TODO(content): Azerbaijan Otur real nəticələr (AZ)'],
     en: ['TODO(content): Azerbaijan Otur real outcomes (EN)'],
@@ -31,9 +29,9 @@ export const azerbaijanOtur = {
   cover: {
     src: '/images/project-azerbaijan-otur.png',
     alt: {
-      az: 'Azerbaijan Otur tətbiqi interfeysi',
-      en: 'Azerbaijan Otur app interface',
-      ru: 'Интерфейс приложения Azerbaijan Otur',
+      az: 'Azerbaijan Otur layihəsinin qaranlıq studiya vizualı',
+      en: 'Azerbaijan Otur project dark studio visual',
+      ru: 'Темная студийная визуализация проекта Azerbaijan Otur',
     },
     width: 1448,
     height: 1086,

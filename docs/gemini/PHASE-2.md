@@ -69,6 +69,18 @@ Stil yanaşması: hər komponentin öz CSS module faylı (`Component.module.css`
 Göstərir: rəng swatch-ları (kontrast dəyəri ilə), tipografiya şkalası, spacing şkalası, bütün Button/Tag/Card variantları, focus state nümunəsi, MediaFrame nümunəsi.
 Bu səhifə review üçün əsas alətdir — səliqəli və tam olsun.
 
+
+### 5. Phase 1-dən köçürülən düzəlişlər
+
+**`src/app/[locale]/not-found.tsx`** iki problemlə gəlib:
+1. Daxilində `<html>` və `<body>` var — halbuki bu komponent `[locale]/layout.tsx`-in içində render olunur, yəni teqlər iç-içə düşür. Yalnız daxili məzmun qalmalıdır (`<main>...`).
+2. Mətn və link locale-dən asılı deyil: `az.json` birbaşa import olunub və link `/az`-a gedir. Rus istifadəçi səhv ünvana girəndə azərbaycanca 404 görür. `useTranslations()` və `@/i18n/navigation`-dakı `Link` işlədilməlidir.
+
+> Qeyd: locale daxilində `notFound()` çağırılanda Next 16 serverdən `__next_error__` qabığı qaytarır, məzmunu isə RSC payload ilə client-də render edir. Bu, Next-in öz davranışıdır, kod səhvi deyil — status kodu 404-dür və brauzerdə səhifə düzgün görünür. Düzəltməyə çalışma.
+
+**`viewport.themeColor`** artıq `src/lib/theme.ts`-dəki `THEME_COLOR` sabitindən gəlir — yeni yerlərdə rəngi təkrar yazma.
+
+
 ## Qadağalar
 - Səhifə məzmunu (hero, kartlar, case) yazma.
 - GSAP və ya animasiya kitabxanası işlətmə (hover CSS keçidləri olar).

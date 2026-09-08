@@ -133,6 +133,9 @@ Subsets: hər üçündə `['latin', 'latin-ext', 'cyrillic']`. `latin-ext` Azər
 --container-max: 1440px;
 --content-max:   1180px;
 --measure:       68ch;
+
+--header-height: 4.5rem;   /* sticky header hündürlüyü */
+--target-min:    44px;     /* WCAG minimum toxunma sahəsi */
 ```
 
 **Grid:** 12 sütun, `gap: var(--gutter)`. Editorial asimmetriya məcburidir — heç bir əsas blok 12 sütunun hamısını mərkəzləşdirilmiş şəkildə tutmur.

@@ -5,6 +5,7 @@ import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server
 import { routing } from '@/i18n/routing';
 import { fontClassName } from './fonts';
 import { THEME_COLOR } from '@/lib/theme';
+import { getSiteUrl } from '@/lib/seo';
 import { SkipLink } from '@/components/layout/SkipLink';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { SiteFooter } from '@/components/layout/SiteFooter';
@@ -23,8 +24,14 @@ export async function generateMetadata({
     return {};
   }
   const t = await getTranslations({ locale, namespace: 'meta' });
+  const siteUrl = getSiteUrl();
+
   return {
-    title: t('defaultTitle'),
+    metadataBase: new URL(siteUrl),
+    title: {
+      default: t('defaultTitle'),
+      template: t('titleTemplate'),
+    },
     description: t('defaultDescription'),
   };
 }

@@ -1,8 +1,10 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { getProject, getAllSlugs } from '@/content/projects';
 import { Link } from '@/i18n/navigation';
+import { buildMetadata, creativeWorkJsonLd } from '@/lib/seo';
 import type { Locale } from '@/content/types';
 
 export function generateStaticParams() {
@@ -16,6 +18,27 @@ type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };
 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const project = getProject(slug);
+  if (!project) return {};
+
+  const t = await getTranslations({ locale, namespace: 'meta' });
+  const summary = project.summary[locale as Locale];
+  const description =
+    !summary || summary.includes('TODO')
+      ? t('defaultDescription')
+      : summary;
+
+  return buildMetadata({
+    locale: locale as Locale,
+    path: `/work/${slug}`,
+    title: project.title,
+    description,
+    isArticle: true,
+  });
+}
+
 export default async function CaseStudyPage({ params }: Props) {
   const { locale, slug } = await params;
   const project = getProject(slug);
@@ -27,9 +50,16 @@ export default async function CaseStudyPage({ params }: Props) {
   setRequestLocale(locale);
   const t = await getTranslations({ locale });
   const loc = locale as Locale;
+  const jsonLd = creativeWorkJsonLd(project, loc);
 
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
+        }}
+      />
       <Link href="/work">{t('common.actions.backToWork')}</Link>
       <h1>
         {project.index} {project.title}

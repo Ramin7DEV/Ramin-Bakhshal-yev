@@ -48,6 +48,19 @@ Düzülüş: 3 sütun desktop, 1 sütun mobil, aralarında hairline.
 ### 6. Final CTA
 Mərkəzləşdirilmiş, geniş boşluqlu blok. `display-l` sual + email primary CTA + GitHub ghost. Burada dekorasiya minimumdur.
 
+
+### 7. Phase 7A-dan köçürülən düzəlişlər
+
+**AZ locale-in meta mətnləri ingiliscədir.** `az.json`-da:
+```
+meta.defaultTitle:       "Ramin Bakhshalıyev — AI-first Engineer"
+meta.defaultDescription: "Personal portfolio of Ramin Bakhshalıyev."
+```
+AZ default locale-dir və `x-default` ona işarə edir — yəni Google nəticələrində və sosial önizləmədə sayt özünü ingiliscə təqdim edir. RU versiyası düzgün lokallaşıb, AZ geridə qalıb. Hər iki sahəni təbii Azərbaycan dilində yaz (`meta.home`, `meta.work`, `meta.about`, `meta.contact` açarlarını da yoxla).
+
+**OG şəklinin alt sətri başlığı təkrarlayır.** `/ru/opengraph-image`-də başlıq "Рамин Бахшалиев", altındakı sətir isə "Рамин Бахшалиев — AI-first Инженер" — eyni ad iki dəfə. Positioning copy hazır olan kimi alt sətir `meta.defaultDescription` və ya positioning cümləsindən gəlməlidir, addan yox.
+
+
 ## Copy qaydaları
 - Bütün mətnlər `src/messages/*.json`-a yazılır (§Phase 1-dəki namespace-lərə uyğun).
 - AZ, EN, RU üçün ayrı təbii copy. Sözbəsöz tərcümə etmə.

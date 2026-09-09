@@ -18,7 +18,10 @@
     "contact": "Əlaqə",
     "menu": "Menyu",
     "close": "Bağla",
-    "skipToContent": "Əsas məzmuna keç"
+    "skipToContent": "Əsas məzmuna keç",
+    "status": "Seçilmiş layihələr üçün açıqdır / 2026",
+    "primaryLabel": "Əsas naviqasiya",
+    "mobileLabel": "Mobil naviqasiya"
   },
   "locale": {
     "switcherLabel": "Dili dəyiş",

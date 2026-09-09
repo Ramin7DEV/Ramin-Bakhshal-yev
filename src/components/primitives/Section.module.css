@@ -1,0 +1,13 @@
+.section {
+  width: 100%;
+  padding-block: var(--space-section);
+  position: relative;
+}
+
+.void {
+  background-color: var(--surface-void);
+}
+
+.obsidian {
+  background-color: var(--surface-obsidian);
+}

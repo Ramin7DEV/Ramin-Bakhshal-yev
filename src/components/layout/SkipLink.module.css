@@ -1,0 +1,23 @@
+.skipLink {
+  position: fixed;
+  top: -200%;
+  left: var(--space-4);
+  z-index: 100;
+  padding: var(--space-3) var(--space-5);
+  font-family: var(--font-body);
+  font-size: var(--type-body-s);
+  font-weight: 500;
+  text-decoration: none;
+  background-color: var(--surface-graphite);
+  color: var(--text-primary);
+  border: var(--border-hairline);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lift);
+  transition: top var(--dur-fast) var(--ease-out);
+}
+
+.skipLink:focus-visible {
+  top: var(--space-4);
+  outline: 2px solid var(--accent-signal);
+  outline-offset: 3px;
+}

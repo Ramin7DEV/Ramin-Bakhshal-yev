@@ -55,6 +55,8 @@
   --container-max: 1440px;
   --content-max: 1180px;
   --measure: 68ch;
+  --header-height: 4.5rem;
+  --target-min: 44px;
 
   /* Shapes and Surfaces */
   --radius-xs: 2px;

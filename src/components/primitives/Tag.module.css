@@ -1,0 +1,23 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: var(--type-label);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  line-height: 1.2;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-xs);
+  border: var(--border-hairline);
+  color: var(--text-tertiary);
+  background-color: transparent;
+  transition: color var(--dur-fast) var(--ease-out),
+              background-color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+
+.active {
+  color: var(--accent-signal);
+  background-color: var(--accent-signal-dim);
+  border-color: var(--accent-signal);
+}

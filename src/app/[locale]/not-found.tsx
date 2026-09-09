@@ -1,17 +1,14 @@
-import Link from 'next/link';
-import az from '@/messages/az.json';
-import { fontClassName } from '@/app/[locale]/fonts';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 
 export default function NotFound() {
+  const t = useTranslations();
+
   return (
-    <html lang="az" className={fontClassName}>
-      <body>
-        <main>
-          <h1>404</h1>
-          <p>{az.common.states.empty}</p>
-          <Link href="/az">{az.common.actions.backToWork}</Link>
-        </main>
-      </body>
-    </html>
+    <main>
+      <h1>404</h1>
+      <p>{t('common.states.empty')}</p>
+      <Link href="/">{t('common.actions.backToWork')}</Link>
+    </main>
   );
 }

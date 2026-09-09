@@ -1,0 +1,32 @@
+.bodyBase {
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.l {
+  font-size: var(--type-body-l);
+  line-height: 1.6;
+}
+
+.m {
+  font-size: var(--type-body-m);
+  line-height: 1.65;
+}
+
+.s {
+  font-size: var(--type-body-s);
+  line-height: 1.55;
+}
+
+.measured {
+  max-width: var(--measure);
+}
+
+.primary {
+  color: var(--text-primary);
+}
+
+.tertiary {
+  color: var(--text-tertiary);
+}

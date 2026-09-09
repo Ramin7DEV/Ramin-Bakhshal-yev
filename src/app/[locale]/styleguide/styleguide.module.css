@@ -1,0 +1,131 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-9);
+  padding-block: var(--space-8);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.swatchGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-4);
+}
+
+.swatchCard {
+  background-color: var(--surface-graphite);
+  border: var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.swatchPreview {
+  width: 100%;
+  height: var(--space-8);
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--line-hairline);
+}
+
+.swatchMeta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.tokenName {
+  font-family: var(--font-mono);
+  font-size: var(--type-label);
+  color: var(--text-primary);
+  letter-spacing: 0.08em;
+}
+
+.tokenValue {
+  font-family: var(--font-mono);
+  font-size: var(--type-label);
+  color: var(--text-tertiary);
+}
+
+.contrastBadge {
+  font-family: var(--font-mono);
+  font-size: var(--type-label);
+  color: var(--accent-signal);
+  letter-spacing: 0.08em;
+}
+
+.scaleList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.scaleItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  border-bottom: var(--border-hairline);
+  padding-bottom: var(--space-4);
+}
+
+.spacingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-4);
+}
+
+.spacingItem {
+  background-color: var(--surface-graphite);
+  border: var(--border-hairline);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.spacingBar {
+  background-color: var(--accent-gold);
+  height: var(--space-2);
+  border-radius: var(--radius-xs);
+}
+
+.buttonRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.cardDemo {
+  background-color: var(--surface-graphite);
+  border: var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mediaFrameDemo {
+  max-width: 640px;
+}

@@ -1,0 +1,16 @@
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--type-label);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  display: inline-block;
+  line-height: 1.4;
+}
+
+.tertiary {
+  color: var(--text-tertiary);
+}
+
+.signal {
+  color: var(--accent-signal);
+}

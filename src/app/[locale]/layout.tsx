@@ -5,6 +5,9 @@ import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server
 import { routing } from '@/i18n/routing';
 import { fontClassName } from './fonts';
 import { THEME_COLOR } from '@/lib/theme';
+import { SkipLink } from '@/components/layout/SkipLink';
+import { SiteHeader } from '@/components/layout/SiteHeader';
+import { SiteFooter } from '@/components/layout/SiteFooter';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -43,13 +46,25 @@ export default async function LocaleLayout({ children, params }: Props) {
   }
 
   setRequestLocale(locale);
-  const messages = await getMessages();
+  const messages = (await getMessages()) as Record<string, unknown>;
+
+  // Pass only namespaces required by client components to keep client bundle minimal
+  const clientMessages = {
+    nav: messages.nav,
+    locale: messages.locale,
+    common: messages.common,
+  };
 
   return (
     <html lang={locale} className={fontClassName}>
       <body>
-        <NextIntlClientProvider messages={messages}>
-          {children}
+        <NextIntlClientProvider messages={clientMessages}>
+          <SkipLink locale={locale} />
+          <SiteHeader locale={locale} />
+          <main id="main-content">
+            {children}
+          </main>
+          <SiteFooter locale={locale} />
         </NextIntlClientProvider>
       </body>
     </html>

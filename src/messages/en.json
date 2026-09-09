@@ -18,7 +18,10 @@
     "contact": "Contact",
     "menu": "Menu",
     "close": "Close",
-    "skipToContent": "Skip to main content"
+    "skipToContent": "Skip to main content",
+    "status": "Available for select work / 2026",
+    "primaryLabel": "Primary navigation",
+    "mobileLabel": "Mobile navigation"
   },
   "locale": {
     "switcherLabel": "Switch language",

@@ -1,0 +1,16 @@
+.frame {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-media);
+  background-color: var(--surface-graphite);
+  border: var(--border-hairline);
+}
+
+.image {
+  object-fit: cover;
+  display: block;
+  width: 100%;
+  height: 100%;
+}

@@ -143,3 +143,10 @@ em {
     scroll-behavior: auto !important;
   }
 }
+
+/* Layout root */
+#main-content {
+  min-height: 100vh;
+  padding-top: var(--header-height);
+}
+

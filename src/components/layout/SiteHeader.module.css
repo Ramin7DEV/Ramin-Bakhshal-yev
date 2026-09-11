@@ -41,11 +41,18 @@
 }
 
 .fullName {
+  display: none;
   font-family: var(--font-body);
   font-size: var(--type-body-s);
   font-weight: 500;
   color: var(--text-primary);
   line-height: 1;
+}
+
+@media (min-width: 768px) {
+  .fullName {
+    display: inline-block;
+  }
 }
 
 .navWrapper {

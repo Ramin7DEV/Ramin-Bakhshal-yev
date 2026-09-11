@@ -34,7 +34,7 @@ export default async function Image({ params }: Props) {
   const fontData = await getFont();
 
   const name = locale === 'ru' ? 'Рамин Бахшалиев' : profile.name;
-  const defaultTitle = t('defaultTitle');
+  const subtitle = t('defaultDescription');
 
   return new ImageResponse(
     (
@@ -108,7 +108,7 @@ export default async function Image({ params }: Props) {
               lineHeight: 1.4,
             }}
           >
-            {defaultTitle}
+            {subtitle}
           </p>
         </div>
 

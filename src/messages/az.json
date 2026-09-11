@@ -30,14 +30,14 @@
     "ru": "Русский"
   },
   "hero": {
-    "eyebrow": "AI-first Mühəndis",
-    "titleLines": [
-      "Fikirdən real",
-      "məhsula qədər."
-    ],
-    "description": "TODO(content): Hero description",
-    "ctaPrimary": "İşlərimlə tanış olun",
-    "ctaSecondary": "Əlaqə qurun"
+    "eyebrow": "AI-first mühəndis",
+    "title": "Fikri işləyən<br></br><em>məhsula</em> çevirirəm.",
+    "description": "iOS və veb üçün məhsullar qururam — ideyadan buraxılışa qədər. AI iş prosesimin real hissəsidir: sürəti dəyişir, keyfiyyət standartı yox.",
+    "ctaPrimary": "İşlərimə bax",
+    "ctaSecondary": "Əlaqə saxla",
+    "mediaAlt": "Ramin Bakhshalıyev mühəndis studiyası və iş masası",
+    "scroll": "Aşağı",
+    "metaLocation": "Bakı, Azərbaycan"
   },
   "proof": {
     "eyebrow": "Sübut",
@@ -54,7 +54,8 @@
     "filterAi": "AI Sistemləri",
     "filterMobile": "Mobil",
     "filterDesign": "Məhsul Dizaynı",
-    "empty": "Bu kateqoriyada heç bir layihə tapılmadı."
+    "empty": "Bu kateqoriyada heç bir layihə tapılmadı.",
+    "allProjects": "Bütün layihələr"
   },
   "caseStudy": {
     "chapterProblem": "Problem",
@@ -71,19 +72,19 @@
   },
   "process": {
     "eyebrow": "Proses",
-    "title": "Düşüncədən istehsala qədər mühəndislik",
+    "title": "Necə işləyirəm",
     "steps": [
       {
-        "title": "Signal",
-        "body": "TODO(content): Process Signal body"
+        "number": "01",
+        "tag": "Signal",
+        "title": "Əvvəlcə problem",
+        "body": "Hər iş sualla başlayır: istifadəçi burada hansı qərarı verməlidir? Cavab aydın olmayana qədər heç nə qurulmur."
       },
       {
-        "title": "System",
-        "body": "TODO(content): Process System body"
-      },
-      {
-        "title": "Ship",
-        "body": "TODO(content): Process Ship body"
+        "number": "02",
+        "tag": "System",
+        "title": "Sonra sistem",
+        "body": "Ekranları tək-tək deyil, sistem kimi qururam — tipografiya, aralıq və hərəkət eyni qaydalara tabe olur. Bu, sonradan əlavə edilən hər funksiyanı ucuzlaşdırır."
       }
     ]
   },
@@ -103,6 +104,13 @@
     "location": "Bakı, Azərbaycan (UTC+4)",
     "socialTitle": "Şəbəkələr"
   },
+  "finalCta": {
+    "eyebrow": "Əlaqə",
+    "title": "Qurmağa dəyər bir <em>məhsulun</em> var?",
+    "description": "Yeni layihələr, əməkdaşlıq və texniki məsləhət üçün yaz.",
+    "emailLabel": "Email ilə yaz",
+    "githubLabel": "GitHub"
+  },
   "footer": {
     "copyright": "Ramin Bakhshalıyev. Bütün hüquqlar qorunur.",
     "builtIn": "Bakıda hazırlanıb.",
@@ -110,12 +118,12 @@
   },
   "meta": {
     "siteName": "Ramin Bakhshalıyev",
-    "defaultTitle": "Ramin Bakhshalıyev — AI-first Engineer",
-    "defaultDescription": "Personal portfolio of Ramin Bakhshalıyev.",
+    "defaultTitle": "Ramin Bakhshalıyev — AI-first Mühəndis",
+    "defaultDescription": "Ramin Bakhshalıyevin fərdi portfoliosu — iOS və veb üçün AI-first məhsul mühəndisliyi.",
     "titleTemplate": "%s — Ramin Bakhshalıyev",
     "home": {
-      "title": "Ramin Bakhshalıyev — AI-first Engineer",
-      "description": "Personal portfolio of Ramin Bakhshalıyev."
+      "title": "Ramin Bakhshalıyev — AI-first Mühəndis",
+      "description": "Ramin Bakhshalıyevin fərdi portfoliosu — iOS və veb üçün AI-first məhsul mühəndisliyi."
     },
     "work": {
       "title": "Seçilmiş Layihələr",

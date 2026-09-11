@@ -30,14 +30,14 @@
     "ru": "Русский"
   },
   "hero": {
-    "eyebrow": "AI-first Engineer",
-    "titleLines": [
-      "From zero signal",
-      "to production software."
-    ],
-    "description": "TODO(content): Hero description",
-    "ctaPrimary": "Explore selected work",
-    "ctaSecondary": "Get in touch"
+    "eyebrow": "AI-first engineer",
+    "title": "I turn ideas into<br></br>products that <em>ship</em>.",
+    "description": "I build products for iOS and the web, from the first sketch to release. AI is a working part of my process — it changes how fast I get there, not what I ship.",
+    "ctaPrimary": "View work",
+    "ctaSecondary": "Get in touch",
+    "mediaAlt": "Ramin Bakhshalıyev engineering workbench and studio",
+    "scroll": "Scroll",
+    "metaLocation": "Baku, Azerbaijan"
   },
   "proof": {
     "eyebrow": "Proof",
@@ -54,7 +54,8 @@
     "filterAi": "AI Systems",
     "filterMobile": "Mobile",
     "filterDesign": "Product Design",
-    "empty": "No projects found for this selection."
+    "empty": "No projects found for this selection.",
+    "allProjects": "All projects"
   },
   "caseStudy": {
     "chapterProblem": "Problem",
@@ -71,19 +72,19 @@
   },
   "process": {
     "eyebrow": "Process",
-    "title": "Disciplined execution from signal to shipment",
+    "title": "How I work",
     "steps": [
       {
-        "title": "Signal",
-        "body": "TODO(content): Process Signal body"
+        "number": "01",
+        "tag": "Signal",
+        "title": "Problem first",
+        "body": "Every project starts with a question: what decision is the user making here? Nothing gets built until that answer is clear."
       },
       {
-        "title": "System",
-        "body": "TODO(content): Process System body"
-      },
-      {
-        "title": "Ship",
-        "body": "TODO(content): Process Ship body"
+        "number": "02",
+        "tag": "System",
+        "title": "Then the system",
+        "body": "Screens are built as a system, not one at a time — type, spacing and motion follow the same rules. Every feature added later costs less because of it."
       }
     ]
   },
@@ -103,6 +104,13 @@
     "location": "Baku, Azerbaijan (UTC+4)",
     "socialTitle": "Networks"
   },
+  "finalCta": {
+    "eyebrow": "Contact",
+    "title": "Have a product worth <em>building</em>?",
+    "description": "Write for new projects, collaboration or a technical second opinion.",
+    "emailLabel": "Write via email",
+    "githubLabel": "GitHub"
+  },
   "footer": {
     "copyright": "Ramin Bakhshalıyev. All rights reserved.",
     "builtIn": "Engineered in Baku.",
@@ -111,11 +119,11 @@
   "meta": {
     "siteName": "Ramin Bakhshalıyev",
     "defaultTitle": "Ramin Bakhshalıyev — AI-first Engineer",
-    "defaultDescription": "Personal portfolio of Ramin Bakhshalıyev.",
+    "defaultDescription": "Personal portfolio of Ramin Bakhshalıyev — AI-first product engineering for iOS and web.",
     "titleTemplate": "%s — Ramin Bakhshalıyev",
     "home": {
       "title": "Ramin Bakhshalıyev — AI-first Engineer",
-      "description": "Personal portfolio of Ramin Bakhshalıyev."
+      "description": "Personal portfolio of Ramin Bakhshalıyev — AI-first product engineering for iOS and web."
     },
     "work": {
       "title": "Selected Work",

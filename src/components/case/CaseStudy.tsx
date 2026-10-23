@@ -8,6 +8,7 @@ import { KineticText } from '@/components/live/KineticText';
 import { TransitionLink } from '@/components/live/TransitionLink';
 import { ChapterRail } from './ChapterRail';
 import { CaseMotion } from './CaseMotion';
+import { PreviewVideo } from './PreviewVideo';
 import styles from './CaseStudy.module.css';
 
 type Props = {
@@ -28,6 +29,13 @@ export async function CaseStudy({ project, locale }: Props) {
     .map((c) => (c === 'ai' ? t('work.filterAi') : c === 'mobile' ? t('work.filterMobile') : t('work.filterDesign')))
     .join(' · ');
   const role = project.role[loc][0];
+  const statusLabel = project.status
+    ? project.status === 'live'
+      ? t('proof.statusLive')
+      : project.status === 'in-development'
+        ? t('proof.statusDev')
+        : t('proof.statusConcept')
+    : undefined;
   const contentPending = project.chapters.every((c) => isPending(c.body[loc][0]));
 
   const chapters = [
@@ -37,7 +45,7 @@ export async function CaseStudy({ project, locale }: Props) {
   const facts = [
     { label: t('caseStudy.factStack'), value: project.stack.join(', ') || 'TODO', pending: project.stack.length === 0 },
     { label: t('caseStudy.factYear'), value: project.year ?? 'TODO', pending: !project.year },
-    { label: t('caseStudy.factStatus'), value: project.status ?? 'TODO', pending: !project.status },
+    { label: t('caseStudy.factStatus'), value: statusLabel ?? 'TODO', pending: !statusLabel },
   ];
 
   return (
@@ -71,14 +79,28 @@ export async function CaseStudy({ project, locale }: Props) {
           </div>
           <div data-reveal="4">
             <dt>{t('caseStudy.factStatus')}</dt>
-            <dd className={project.status ? undefined : styles.todo}>{project.status ?? 'TODO(content)'}</dd>
+            <dd className={project.status ? undefined : styles.todo}>{statusLabel ?? 'TODO(content)'}</dd>
           </div>
         </dl>
+        {project.links.length > 0 && (
+          <nav className={styles.links} aria-label={t('caseStudy.linksTitle')} data-reveal="5">
+            <span>{t('caseStudy.linksTitle')}</span>
+            {project.links.map((link) => (
+              <a key={link.href} href={link.href} target="_blank" rel="noreferrer" aria-label={`${link.label[loc]} (${t('a11y.externalLink')})`}>
+                {link.label[loc]} ↗
+              </a>
+            ))}
+          </nav>
+        )}
       </section>
 
       <section className={styles.cover} data-build="<Cover />" data-log={t('live.log.cover')}>
-        <figure>
-          <Image src={project.cover.src} alt={project.cover.alt[loc]} fill priority sizes="100vw" data-cover-img="" />
+        <figure className={project.preview ? styles.coverVideo : undefined}>
+          {project.preview ? (
+            <PreviewVideo preview={project.preview} alt={project.preview.alt[loc]} />
+          ) : (
+            <Image src={project.cover.src} alt={project.cover.alt[loc]} fill priority sizes="100vw" data-cover-img="" />
+          )}
         </figure>
         <figcaption data-reveal="">
           <span>

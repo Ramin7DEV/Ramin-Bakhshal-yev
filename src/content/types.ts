@@ -18,6 +18,15 @@ export interface MediaAsset {
   poster?: string;
 }
 
+export interface PreviewVideo {
+  webm: string;
+  mp4: string;
+  poster: string;
+  width: number;
+  height: number;
+  alt: Localized<string>;
+}
+
 export interface CaseChapter {
   id: string;
   eyebrow: Localized<string>;
@@ -39,6 +48,7 @@ export interface Project {
   stack: string[];
   outcome: Localized<string[]>;
   cover: MediaAsset;
+  preview?: PreviewVideo;
   chapters: CaseChapter[];
   links: ProjectLink[];
   accent: 'gold' | 'signal' | 'ivory';

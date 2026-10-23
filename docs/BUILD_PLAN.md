@@ -236,7 +236,7 @@ Intro (1 cümlə) → filter (`All / AI / Mobile / Product design`, client-side,
 3. `role` — Raminin konkret rolu
 4. `ai-workflow` — **ən vacib bölmə**: AI-nin hansı addımda, necə istifadə olunduğu. Konkret alət və konkret nəticə. Bu bölmə saytın əsas fərqləndiricisidir.
 5. `system` — texniki/dizayn sistem qərarları
-6. Media qalereyası
+6. Media qalereyası (qısa preview video üçün §9-dakı istisna keçərlidir)
 7. `outcome` — nəticə (real, ölçülə bilən; yoxdursa keyfiyyət təsviri)
 8. Links
 9. Next project
@@ -316,6 +316,7 @@ Qaydalar:
 - Fontlar `next/font` ilə self-hosted, `display: swap`, yalnız lazım olan subset və weight.
 - GSAP yalnız client komponentlərdə import olunur; `ScrollTrigger` dinamik yüklənir və mobil reduced-motion halında ümumiyyətlə yüklənmir.
 - Video autoplay yoxdur; poster + istifadəçi klikindən sonra yüklənmə.
+- İstisna (sahibin qərarı): qısa (təxminən 5-10 san), səssiz, dövrəli məhsul preview-ları 2 MB-dan kiçik olduqda muted autoplay ilə göstərilə bilər. Video yalnız viewport-a girəndə yüklənib oynamağa başlayır, ekrandan çıxanda və tab gizli olanda dayanır; `prefers-reduced-motion: reduce` halında yalnız poster göstərilir. Uzun və ya səsli videolar üçün yuxarıdakı poster + klik qaydası qüvvədə qalır. Komponent: `src/components/case/PreviewVideo.tsx`.
 
 ---
 

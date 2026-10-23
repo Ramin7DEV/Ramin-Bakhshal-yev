@@ -46,10 +46,23 @@
   clip-path: inset(0);
 }
 
-.cover img {
+.cover img,
+.cover video {
   object-fit: cover;
   transform: scale(1.15);
   will-change: transform;
+}
+
+.cover video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* The preview clip is 16:9 and carries the whole app UI, so the box matches it instead of cropping */
+.cover figure.coverVideo {
+  aspect-ratio: 16 / 9;
 }
 
 .cover figcaption {
@@ -292,10 +305,41 @@
   .cover figure {
     aspect-ratio: 4 / 3;
   }
+
+  .cover figure.coverVideo {
+    aspect-ratio: 16 / 9;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cover img {
+  .cover img,
+  .cover video {
     transform: none;
   }
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-4);
+  padding-top: var(--space-3);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+  text-transform: uppercase;
+}
+
+.links span {
+  color: var(--live-muted);
+}
+
+.links a {
+  color: var(--live-hot);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.links a:focus-visible {
+  outline: 2px solid var(--live-hot);
+  outline-offset: 3px;
 }

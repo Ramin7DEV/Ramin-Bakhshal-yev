@@ -1,0 +1,295 @@
+/* ---------- Trigger in the header (phones only) ---------- */
+.trigger {
+  display: none;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--live-touch);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* Two short lines: the classic menu mark, drawn with one element */
+.bars {
+  position: relative;
+  width: 18px;
+  height: 7px;
+  border-block: 1px solid currentColor;
+}
+
+/* ---------- Panel ---------- */
+.panel {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--space-5) var(--live-gutter) calc(var(--space-6) + env(safe-area-inset-bottom));
+  background: var(--live-ink);
+  color: var(--live-bone);
+  animation: drop 600ms var(--live-ease) both;
+}
+
+.closing {
+  animation: lift var(--live-dur-base) var(--live-ease) both;
+}
+
+@keyframes drop {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+@keyframes lift {
+  from {
+    clip-path: inset(0);
+  }
+  to {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.close {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--live-touch);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* The two lines of the trigger, crossed */
+.x {
+  position: relative;
+  width: 18px;
+  height: 18px;
+}
+
+.x::before,
+.x::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+}
+
+.x::before {
+  transform: rotate(45deg);
+}
+
+.x::after {
+  transform: rotate(-45deg);
+}
+
+/* ---------- Section list: big type, each row rises out of its own mask ---------- */
+.sections {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--live-dark-rule);
+}
+
+.sections li {
+  overflow: hidden;
+  border-bottom: 1px solid var(--live-dark-rule);
+}
+
+.sections a {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  color: var(--live-bone);
+  text-decoration: none;
+  animation: rise 700ms var(--live-ease-expo) both;
+  animation-delay: calc(180ms + var(--i, 0) * 60ms);
+}
+
+.sections a:active,
+.sections a:focus-visible {
+  color: var(--live-hot);
+  outline: none;
+}
+
+.no {
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+  color: var(--live-hot);
+}
+
+.label {
+  font-size: var(--live-type-menu);
+  font-variation-settings: var(--live-vf-row);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+/* ---------- Projects and contact ---------- */
+.block,
+.foot {
+  animation: fade 600ms ease both;
+  animation-delay: calc(180ms + var(--i, 0) * 60ms);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+}
+
+.heading {
+  display: block;
+  margin-bottom: var(--space-3);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+  text-transform: uppercase;
+  color: var(--live-dark-muted);
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.projects a {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  min-height: var(--live-touch);
+  font-family: var(--live-font-serif);
+  font-size: var(--live-type-serif-l);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--live-bone);
+  text-decoration: none;
+}
+
+.projects a span {
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+  font-style: normal;
+  color: var(--live-dark-muted);
+}
+
+.foot {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: auto;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--live-dark-rule);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+  text-transform: uppercase;
+  color: var(--live-dark-muted);
+}
+
+.mail {
+  font-size: var(--live-type-mono-m);
+  color: var(--live-bone);
+  text-transform: none;
+  word-break: break-all;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.locales {
+  display: flex;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.locales button {
+  min-height: var(--live-touch);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--live-dark-muted);
+  font: inherit;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.locales button[aria-current="true"] {
+  color: var(--live-bone);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.github {
+  color: var(--live-bone);
+  text-decoration: none;
+}
+
+.mark,
+.close,
+.mail,
+.github,
+.projects a,
+.locales button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 760px) {
+  .trigger {
+    display: inline-flex;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .closing,
+  .sections a,
+  .block,
+  .foot {
+    animation: none;
+  }
+}

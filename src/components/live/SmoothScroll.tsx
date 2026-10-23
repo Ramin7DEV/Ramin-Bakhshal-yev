@@ -39,6 +39,7 @@ export function SmoothScroll() {
     let lastSet = target;
     const onWheel = (e: WheelEvent) => {
       if (e.ctrlKey) return; // pinch-zoom on trackpads
+      if (smoother.paused()) return; // an overlay (the mobile menu) has frozen the page
       const inner = (e.target as Element | null)?.closest?.('[data-scroll-inside]');
       if (inner && inner.scrollHeight > inner.clientHeight) return; // let small scroll boxes (the dock log) scroll
       e.preventDefault();

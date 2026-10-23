@@ -45,8 +45,10 @@
     grid-template-columns: 1fr auto;
   }
 
+  /* Phones: navigation and languages move into the menu panel */
   .clock,
-  .nav {
+  .nav,
+  .locales {
     display: none;
   }
 }

@@ -130,6 +130,7 @@
   --live-type-mono: 0.75rem;
   --live-type-mono-s: 0.6875rem;
   --live-type-mono-m: 0.8125rem;
+  --live-type-menu: clamp(2rem, 9vw, 3.25rem);
 
   /* Variable-font settings */
   --live-vf-light: "wght" 300, "wdth" 100, "opsz" 96;
@@ -153,6 +154,7 @@
   --live-peek-width: 21.25rem;
   --live-radius: 0.875rem;
   --live-radius-s: 0.625rem;
+  --live-touch: 44px; /* minimum touch target (WCAG 2.5.8) */
 
   /* Motion */
   --live-ease: cubic-bezier(0.7, 0, 0.2, 1);

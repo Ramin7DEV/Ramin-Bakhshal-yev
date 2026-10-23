@@ -1,77 +1,95 @@
+import { Fragment, type CSSProperties } from 'react';
 import { getTranslations } from 'next-intl/server';
-import { Container } from '@/components/primitives/Container';
-import { Eyebrow } from '@/components/primitives/Eyebrow';
-import { Heading } from '@/components/primitives/Heading';
-import { Body } from '@/components/primitives/Body';
-import { Button } from '@/components/primitives/Button';
-import { MediaFrame } from '@/components/primitives/MediaFrame';
 import { profile } from '@/content/profile';
-import type { Locale } from '@/content/types';
+import { BuildIntro } from '@/components/live/BuildIntro';
+import { KineticText } from '@/components/live/KineticText';
+import { BakuClock } from '@/components/live/BakuClock';
+import { GlyphField } from './GlyphField';
 import styles from './Hero.module.css';
 
 type HeroProps = {
-  locale: Locale;
+  locale: string;
 };
+
+const SECTIONS = ['statement', 'work', 'method', 'stats', 'contact'] as const;
+
+/** "Words with *emphasis*" -> words, each flagged when wrapped in asterisks */
+function splitWords(text: string) {
+  return text.split(' ').map((word) => ({ word: word.replace(/\*/g, ''), em: word.includes('*') }));
+}
 
 export async function Hero({ locale }: HeroProps) {
   const t = await getTranslations({ locale });
+  const words = splitWords(t('live.headline'));
 
   return (
-    <section className={styles.heroSection} aria-label={t('hero.eyebrow')}>
-      <Container className={styles.heroContent}>
-        <div className={styles.grid}>
-          <div className={styles.copyColumn}>
-            <Eyebrow tone="signal" className={styles.eyebrow}>
-              {t('hero.eyebrow')}
-            </Eyebrow>
+    <section id="hero" className={styles.hero} data-build="<Hero />" data-build-manual="" data-no-trail="">
+      <GlyphField code={t('live.fieldCode')} />
 
-            <Heading level={1} size="display-xl" className={styles.title}>
-              {t.rich('hero.title', {
-                br: () => <br />,
-                em: (chunks) => <em>{chunks}</em>,
-              })}
-            </Heading>
-
-            <Body size="l" tone="secondary" className={styles.description}>
-              {t('hero.description')}
-            </Body>
-
-            <div className={styles.ctaGroup}>
-              <Button as="link" href="/work" variant="primary">
-                {t('hero.ctaPrimary')}
-              </Button>
-              <Button as="link" href={`mailto:${profile.email}`} variant="ghost" arrow>
-                {t('hero.ctaSecondary')}
-              </Button>
-            </div>
-          </div>
-
-          <div className={styles.mediaColumn}>
-            <MediaFrame
-              src="/images/hero-studio.png"
-              alt={t('hero.mediaAlt')}
-              aspectRatio="16/9"
-              priority={true}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 560px"
-              className={styles.heroFrame}
-            />
-          </div>
+      <div className={styles.top}>
+        <div data-quiet="">
+          <BuildIntro
+            sectionId="hero"
+            prompt={t('live.prompt')}
+            compileId="hero-name"
+            logs={[t('live.log.reading'), t('live.log.field'), t('live.log.hero')]}
+            finalLog={t('live.log.scroll')}
+            showLog
+          />
         </div>
+        <nav className={styles.toc} aria-label={t('live.a11y.sections')} data-quiet="" data-reveal="">
+          {SECTIONS.map((id) => (
+            <a key={id} href={`#${id}`}>
+              <span>{t(`live.sections.${id}`)}</span>
+              <i aria-hidden="true">↓</i>
+            </a>
+          ))}
+        </nav>
+      </div>
 
-        <div className={styles.metaRow}>
-          <div className={styles.metaLeft}>
-            <span>{t('hero.metaLocation')}</span>
-            <span className={styles.metaDot} aria-hidden="true">·</span>
-            <span>{t('nav.status')}</span>
-            <span className={styles.metaDot} aria-hidden="true">·</span>
-            <span className={styles.metaIndex}>01 / 05</span>
-          </div>
-          <div className={styles.scrollIndicator} aria-hidden="true">
-            <span>{t('hero.scroll')}</span>
-            <span>↓</span>
-          </div>
+      <div className={styles.mid}>
+        <p className={styles.headline} data-quiet="">
+          {words.map(({ word, em }, i) => (
+            // The space sits outside the masked word, or the inline-block would swallow it
+            <Fragment key={i}>
+              <span className={styles.word}>
+                <span style={{ '--i': i } as CSSProperties}>{em ? <em>{word}</em> : word}</span>
+              </span>{' '}
+            </Fragment>
+          ))}
+        </p>
+        <p className={styles.legend} data-reveal="">
+          {t.rich('live.legend', { b: (chunks) => <b>{chunks}</b>, br: () => <br /> })}
+        </p>
+      </div>
+
+      <div className={styles.sign}>
+        <KineticText lines={[profile.name]} id="name" className={styles.name} label={profile.name} compileId="hero-name" />
+        <span className={styles.avail} data-reveal="">
+          {t('nav.status')}
+        </span>
+      </div>
+
+      <dl className="live-meta-grid">
+        <div data-reveal="">
+          <dt>{t('live.meta.practice')}</dt>
+          <dd>{t('live.meta.practiceValue')}</dd>
         </div>
-      </Container>
+        <div data-reveal="2">
+          <dt>{t('live.meta.builds')}</dt>
+          <dd>{t('live.meta.buildsValue')}</dd>
+        </div>
+        <div data-reveal="3">
+          <dt>{t('live.meta.based')}</dt>
+          <dd>{t('live.meta.basedValue')}</dd>
+        </div>
+        <div data-reveal="4">
+          <dt>{t('live.meta.bakuTime')}</dt>
+          <dd>
+            <BakuClock />
+          </dd>
+        </div>
+      </dl>
     </section>
   );
 }

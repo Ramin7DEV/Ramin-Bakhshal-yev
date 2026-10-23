@@ -4,6 +4,7 @@ import { routing } from '@/i18n/routing';
 import { profile } from '@/content/profile';
 import { buildMetadata } from '@/lib/seo';
 import type { Locale } from '@/content/types';
+import { PageShell } from '@/components/live/PageShell';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -31,7 +32,7 @@ export default async function AboutPage({ params }: Props) {
   const loc = locale as Locale;
 
   return (
-    <main>
+    <PageShell>
       <h1>{t('about.title')}</h1>
       <p>{profile.positioning[loc]}</p>
       <section>
@@ -50,6 +51,6 @@ export default async function AboutPage({ params }: Props) {
         <h2>{t('about.aiWorkflowTitle')}</h2>
         <p>{t('process.title')}</p>
       </section>
-    </main>
+    </PageShell>
   );
 }

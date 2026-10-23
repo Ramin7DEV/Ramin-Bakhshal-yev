@@ -1,0 +1,71 @@
+.contact {
+  padding: 18vh var(--live-gutter) 120px;
+  background: var(--live-ink);
+  color: var(--live-bone);
+}
+
+.contact::after {
+  border-color: var(--live-dark-edge);
+}
+
+.contact :global(.live-label) {
+  color: var(--live-dark-muted);
+}
+
+.desc {
+  max-width: 560px;
+  margin-top: var(--space-4);
+  font-family: var(--live-font-serif);
+  font-size: var(--live-type-serif-l);
+  font-weight: 300;
+  color: var(--live-dark-desc);
+}
+
+.title {
+  color: var(--live-bone);
+}
+
+.mail {
+  display: block;
+  margin: var(--space-7) 0 15vh;
+  background: linear-gradient(90deg, var(--live-hot) 50%, var(--live-bone) 50%);
+  background-position: 100% 0;
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: var(--live-type-mail);
+  font-variation-settings: var(--live-vf-mail);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  text-decoration: none;
+  word-break: break-all;
+  transition: background-position var(--live-dur-slow) var(--live-ease);
+}
+
+.mail:hover,
+.mail:focus-visible {
+  background-position: 0 0;
+  outline: none;
+}
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--live-dark-rule);
+  color: var(--live-dark-muted);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+  text-transform: uppercase;
+}
+
+.foot a {
+  text-decoration: none;
+}
+
+.foot a:hover {
+  color: var(--live-bone);
+}

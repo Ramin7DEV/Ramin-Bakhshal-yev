@@ -1,0 +1,46 @@
+.trail {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
+
+.dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 81;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: var(--live-hot);
+  pointer-events: none;
+  transition:
+    width var(--live-dur-fast) var(--live-ease-out),
+    height var(--live-dur-fast) var(--live-ease-out),
+    margin var(--live-dur-fast) var(--live-ease-out),
+    background var(--live-dur-fast),
+    opacity var(--live-dur-fast);
+}
+
+.grow {
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border: 1px solid var(--live-hot);
+  background: transparent;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .trail,
+  .dot {
+    display: none;
+  }
+}

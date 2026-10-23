@@ -4,6 +4,7 @@ import { routing } from '@/i18n/routing';
 import { profile } from '@/content/profile';
 import { buildMetadata } from '@/lib/seo';
 import type { Locale } from '@/content/types';
+import { PageShell } from '@/components/live/PageShell';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -31,7 +32,7 @@ export default async function ContactPage({ params }: Props) {
   const loc = locale as Locale;
 
   return (
-    <main>
+    <PageShell>
       <h1>{t('contact.title')}</h1>
       <p>{t('contact.intro')}</p>
       <dl>
@@ -56,6 +57,6 @@ export default async function ContactPage({ params }: Props) {
           ))}
         </ul>
       </section>
-    </main>
+    </PageShell>
   );
 }

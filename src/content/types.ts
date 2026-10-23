@@ -53,4 +53,5 @@ export interface Profile {
   availability: Localized<string>;
   email: string;
   social: ProjectLink[];
+  portrait?: { src: string; alt: Localized<string> };
 }

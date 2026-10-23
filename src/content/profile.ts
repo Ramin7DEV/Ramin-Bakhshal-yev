@@ -1,6 +1,6 @@
 import type { Profile } from './types';
 
-export const profile = {
+export const profile: Profile = {
   name: 'Ramin Bakhshalıyev',
   role: {
     az: 'TODO(content): Ramin rol (AZ)',
@@ -27,6 +27,7 @@ export const profile = {
     en: 'TODO(content): Availability status (EN)',
     ru: 'TODO(content): Availability status (RU)',
   },
+  // TODO(content): portrait photo (warm natural light, plain background) -> add `portrait: { src, alt }`.
   email: 'raminbakhshaliyev@gmail.com',
   social: [
     {
@@ -39,4 +40,4 @@ export const profile = {
       },
     },
   ],
-} satisfies Profile;
+};

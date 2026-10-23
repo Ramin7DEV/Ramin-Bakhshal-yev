@@ -2,22 +2,18 @@
   position: fixed;
   top: -200%;
   left: var(--space-4);
-  z-index: 100;
+  z-index: 200;
   padding: var(--space-3) var(--space-5);
-  font-family: var(--font-body);
-  font-size: var(--type-body-s);
-  font-weight: 500;
+  background-color: var(--live-ink);
+  color: var(--live-bone);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
   text-decoration: none;
-  background-color: var(--surface-graphite);
-  color: var(--text-primary);
-  border: var(--border-hairline);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-lift);
-  transition: top var(--dur-fast) var(--ease-out);
+  text-transform: uppercase;
 }
 
 .skipLink:focus-visible {
   top: var(--space-4);
-  outline: 2px solid var(--accent-signal);
+  outline: 2px solid var(--live-hot);
   outline-offset: 3px;
 }

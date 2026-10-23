@@ -1,0 +1,301 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 92svh;
+  padding: var(--live-header-pad) var(--live-gutter) var(--space-6);
+}
+
+.hero > [data-case-intro]:first-child {
+  margin-bottom: auto;
+  padding-top: 6vh;
+}
+
+.hero :global(.kinetic) {
+  margin-bottom: var(--space-6);
+}
+
+.idx {
+  margin-bottom: var(--space-4);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+  color: var(--live-hot);
+}
+
+.todo {
+  color: var(--live-pending);
+}
+
+/* Cover: opens top to bottom once built, then slowly zooms out with the scroll */
+.cover {
+  padding: 0 var(--live-gutter);
+}
+
+.cover figure {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 8;
+}
+
+:global(.live-js) .cover figure {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1.1s var(--live-ease);
+}
+
+:global(.live-js) .cover:global(.is-built) figure {
+  clip-path: inset(0);
+}
+
+.cover img {
+  object-fit: cover;
+  transform: scale(1.15);
+  will-change: transform;
+}
+
+.cover figcaption {
+  display: flex;
+  justify-content: space-between;
+  padding-top: var(--space-3);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono-s);
+  text-transform: uppercase;
+  color: var(--live-muted);
+}
+
+.session {
+  display: grid;
+  grid-template-columns: var(--live-rail) 1fr;
+  gap: 0 var(--space-8);
+  padding: var(--live-section-pad) var(--live-gutter) 10vh;
+}
+
+.chapters {
+  display: flex;
+  flex-direction: column;
+  gap: 14vh;
+  min-width: 0;
+}
+
+.chapter {
+  padding: var(--space-7) 0 var(--space-3);
+}
+
+.chapter::before {
+  left: 0;
+}
+
+.chapter::after {
+  inset: 0 calc(-1 * var(--space-4));
+}
+
+.chNo {
+  font-weight: 400;
+  color: var(--live-hot);
+}
+
+.chapter h2 {
+  margin: var(--space-5) 0 var(--space-6);
+  font-size: var(--live-type-chapter);
+  font-variation-settings: var(--live-vf-row);
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 720px;
+  margin-bottom: var(--space-5);
+  font-size: var(--live-type-serif-l);
+}
+
+.body {
+  max-width: 68ch;
+  font-family: var(--live-font-serif);
+  font-size: var(--live-type-serif-l);
+  line-height: 1.5;
+  color: var(--live-ink-soft);
+}
+
+.body p + p {
+  margin-top: var(--space-4);
+}
+
+/* Prompt / decision pair: the format every AI workflow chapter is told in */
+.pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  max-width: 900px;
+  margin-top: var(--space-7);
+}
+
+.pair > div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-height: 200px;
+  padding: var(--space-5);
+  border-radius: var(--live-radius-s);
+}
+
+.prompt {
+  background: var(--live-ink);
+  color: var(--live-console-text);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono-m);
+}
+
+.prompt span {
+  color: var(--live-hot);
+}
+
+.prompt :global(.live-pending-bar) {
+  height: 11px;
+  background: repeating-linear-gradient(90deg, var(--live-console-edge) 0 14px, transparent 14px 20px);
+}
+
+.decision {
+  border: 1px solid var(--live-ink);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono-m);
+}
+
+.decision :global(.live-pending-bar) {
+  height: 12px;
+}
+
+.outcome {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--live-ink);
+}
+
+.outcome li {
+  padding: var(--space-5) var(--space-5) 0 0;
+}
+
+.outcome strong {
+  display: block;
+  font-size: var(--live-type-outcome);
+  font-variation-settings: var(--live-vf-outcome);
+  font-weight: normal;
+  line-height: 0.85;
+  color: var(--live-pending);
+}
+
+.outcome span {
+  display: block;
+  margin-top: var(--space-3);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+  text-transform: uppercase;
+  color: var(--live-hot);
+}
+
+.outcome .outcomeText {
+  font-family: var(--live-font-serif);
+  font-size: var(--live-type-serif-l);
+  text-transform: none;
+  color: var(--live-ink);
+}
+
+/* Next project: full-width dark block, the next cover breathes in on hover */
+.next {
+  position: relative;
+  isolation: isolate;
+  display: block;
+  overflow: hidden;
+  padding: 14vh var(--live-gutter) 10vh;
+  background: var(--live-ink);
+  color: var(--live-bone);
+  text-decoration: none;
+}
+
+.next img {
+  z-index: -1;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.08);
+  transition: opacity 600ms, transform 1.2s var(--live-ease);
+}
+
+.next:hover img,
+.next:focus-visible img {
+  opacity: 0.35;
+  transform: scale(1);
+}
+
+.next :global(.live-label) {
+  color: var(--live-dark-muted);
+}
+
+.nextTitle {
+  display: block;
+  margin-top: var(--space-5);
+  font-size: var(--live-type-next);
+  font-variation-settings: var(--live-vf-row);
+  line-height: 0.85;
+  text-transform: uppercase;
+  transition: font-variation-settings 600ms var(--live-ease);
+}
+
+.next:hover .nextTitle {
+  font-variation-settings: var(--live-vf-row-hover);
+}
+
+.nextGo {
+  display: inline-block;
+  margin-top: var(--space-6);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+  text-transform: uppercase;
+  color: var(--live-hot);
+}
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--live-gutter) 110px;
+  border-top: 1px solid var(--live-dark-rule);
+  background: var(--live-ink);
+  color: var(--live-dark-muted);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+  text-transform: uppercase;
+}
+
+.foot a {
+  text-decoration: none;
+}
+
+.foot a:hover {
+  color: var(--live-bone);
+}
+
+@media (max-width: 900px) {
+  .session {
+    grid-template-columns: 1fr;
+  }
+
+  .pair,
+  .outcome {
+    grid-template-columns: 1fr;
+  }
+
+  .cover figure {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cover img {
+    transform: none;
+  }
+}

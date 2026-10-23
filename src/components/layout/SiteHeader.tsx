@@ -1,48 +1,39 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { Container } from '@/components/primitives/Container';
 import { profile } from '@/content/profile';
-import { PrimaryNav } from './PrimaryNav';
+import { BakuClock } from '@/components/live/BakuClock';
 import { LocaleSwitcher } from './LocaleSwitcher';
-import { MobileMenu } from './MobileMenu';
-import { HeaderShell } from './HeaderShell';
 import styles from './SiteHeader.module.css';
 
 type SiteHeaderProps = {
   locale: string;
 };
 
-export async function SiteHeader({ locale }: SiteHeaderProps) {
-  const t = await getTranslations({ locale, namespace: 'nav' });
+const initials = profile.name
+  .split(' ')
+  .map((part) => `${part[0]}.`)
+  .join('');
 
-  const navItems = [
-    { href: '/work', label: t('work') },
-    { href: '/about', label: t('about') },
-    { href: '/contact', label: t('contact') },
-  ];
+// Fixed, transparent, inverts over whatever is underneath (mix-blend-mode: difference)
+export async function SiteHeader({ locale }: SiteHeaderProps) {
+  const t = await getTranslations({ locale });
 
   return (
-    <HeaderShell>
-      <Container>
-        <div className={styles.inner}>
-          <Link href="/" className={styles.left} aria-label={profile.name}>
-            <span className={styles.monogram}>RB</span>
-            <span className={styles.fullName}>{profile.name}</span>
-          </Link>
-
-          <div className={styles.navWrapper}>
-            <PrimaryNav items={navItems} ariaLabel={t('primaryLabel')} />
-          </div>
-
-          <div className={styles.right}>
-            <span className={styles.statusText}>{t('status')}</span>
-            <div className={styles.desktopSwitcher}>
-              <LocaleSwitcher variant="desktop" />
-            </div>
-            <MobileMenu email={profile.email} />
-          </div>
-        </div>
-      </Container>
-    </HeaderShell>
+    <header className={styles.header}>
+      <Link href="/" className={styles.mark} aria-label={profile.name}>
+        {initials}
+      </Link>
+      <span className={styles.clock}>
+        <BakuClock seconds prefix={`${t('live.clockCity')} `} />
+      </span>
+      <div className={styles.right}>
+        <nav aria-label={t('nav.primaryLabel')} className={styles.nav}>
+          <Link href="/#work">{t('nav.work')}</Link>
+          <Link href="/#method">{t('live.navMethod')}</Link>
+          <Link href="/#contact">{t('nav.contact')}</Link>
+        </nav>
+        <LocaleSwitcher />
+      </div>
+    </header>
   );
 }

@@ -21,7 +21,8 @@
     "skipToContent": "Перейти к основному контенту",
     "status": "Открыт для избранных проектов / 2026",
     "primaryLabel": "Основная навигация",
-    "mobileLabel": "Мобильная навигация"
+    "mobileLabel": "Мобильная навигация",
+    "themeDark": "Тёмная тема"
   },
   "locale": {
     "switcherLabel": "Выбрать язык",
@@ -68,7 +69,8 @@
     "factStatus": "Статус",
     "outcomeTitle": "Результат",
     "linksTitle": "Ссылки",
-    "nextProject": "Следующий проект"
+    "nextProject": "Следующий проект",
+    "pending": "Подробное описание этого проекта готовится."
   },
   "process": {
     "eyebrow": "Процесс",
@@ -143,5 +145,121 @@
     "projectSelected": "Проект выбран",
     "externalLink": "Открывается в новой вкладке",
     "currentLanguage": "Текущий язык"
+  },
+  "live": {
+    "prompt": "build a portfolio for Ramin — AI-first engineer, Baku",
+    "casePrompt": "open case {slug}",
+    "fieldCode": "const idea=listen(user);const system=design(idea);const product=build(system,agents);review(product);ship(product);measure();iterate();",
+    "log": {
+      "reading": "reading profile.ts, projects/*",
+      "field": "Field.tsx — ideas → code",
+      "hero": "Hero.tsx — name, role, location",
+      "scroll": "scroll to keep building ↓",
+      "index": "Index.tsx — 3 projects from content/",
+      "method": "Method.tsx — human ↔ agent review gates",
+      "stats": "Stats.tsx — measured in your browser, not invented",
+      "contact": "Contact.tsx — email, GitHub",
+      "caseHero": "CaseHero.tsx — {slug}",
+      "cover": "Cover.tsx — editorial image",
+      "chapter": "chapter {n} — {id}",
+      "casePending": "content for this case is still TODO — shown as placeholders, not invented",
+      "filter": "filter → {filter} ({count})",
+      "next": "Next.tsx — {slug}"
+    },
+    "headline": "Превращаю идею в *работающий* продукт.",
+    "legend": "<b>■</b> шум = идеи<br></br>ведите курсором — он компилируется в код",
+    "marquee": [
+      "Идея",
+      "→",
+      "Прототип",
+      "→",
+      "Релиз",
+      "—",
+      "Человеческое решение",
+      "и",
+      "скорость машины",
+      "—"
+    ],
+    "meta": {
+      "practice": "Практика",
+      "practiceValue": "AI-first инженер",
+      "builds": "Создаёт",
+      "buildsValue": "iOS · Веб · AI системы",
+      "based": "Город",
+      "basedValue": "Баку, UTC+4",
+      "bakuTime": "Время в Баку"
+    },
+    "sections": {
+      "statement": "(01) Позиция",
+      "work": "(02) Избранные работы",
+      "method": "(03) Метод — кто что делает",
+      "stats": "(04) Эта страница, честно",
+      "contact": "(05) Контакты"
+    },
+    "work": {
+      "no": "№",
+      "project": "Проект",
+      "field": "Область",
+      "open": "Открыть",
+      "case": "Кейс →"
+    },
+    "method": {
+      "human": "человек",
+      "both": "человек + агент",
+      "steps": [
+        {
+          "tag": "Signal",
+          "title": "Сначала задача",
+          "body": "Каждый проект начинается с вопроса: какое решение здесь принимает пользователь? Пока нет ответа, ничего не строится.",
+          "agent": false
+        },
+        {
+          "tag": "System",
+          "title": "Затем система",
+          "body": "Экраны собираются как система, а не поодиночке — типографика, отступы и движение подчиняются одним правилам. Каждая следующая функция обходится дешевле.",
+          "agent": false
+        },
+        {
+          "tag": "Build",
+          "title": "Агенты под контролем",
+          "body": "Агенты пишут вместе со мной. Я задаю направление, проверяю каждую строку и отвечаю за результат.",
+          "agent": true
+        },
+        {
+          "tag": "Ship",
+          "title": "Затем измерить",
+          "body": "Готово — значит у пользователей. Затем измерить и улучшить.",
+          "agent": false
+        }
+      ]
+    },
+    "stats": {
+      "components": "собрано компонентов",
+      "time": "время сборки",
+      "you": "ваше время",
+      "baku": "время в Баку"
+    },
+    "case": {
+      "prompt": "Промпт",
+      "decision": "Решение человека",
+      "metric": "реальная метрика",
+      "log": "Лог сессии",
+      "back": "← Проекты",
+      "repo": "Репозиторий",
+      "fig": "Рис. 01"
+    },
+    "dock": {
+      "placeholder": "спроси: проекты · метод · контакты",
+      "hint": "попробуй: проекты · метод · контакты · mirrorly",
+      "toggle": "лог",
+      "label": "Команда"
+    },
+    "a11y": {
+      "sections": "Разделы",
+      "filter": "Фильтр проектов",
+      "chapters": "Главы"
+    },
+    "clockCity": "Баку",
+    "navMethod": "Метод"
   }
 }

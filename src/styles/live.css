@@ -1,0 +1,185 @@
+/* Live Index — global primitives shared across components.
+   Hidden states only apply under .live-js (set by an inline script before paint),
+   so without JavaScript every piece of content is simply visible. */
+
+/* ---------- Build mechanic: outline first, then content ---------- */
+[data-build] {
+  position: relative;
+}
+
+[data-build]::before {
+  content: attr(data-build);
+  position: absolute;
+  top: var(--space-3);
+  left: var(--live-gutter);
+  z-index: 2;
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono-s);
+  color: var(--live-muted);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--live-dur-fast);
+}
+
+[data-build]::after {
+  content: "";
+  position: absolute;
+  inset: var(--space-2) calc(var(--live-gutter) - var(--space-2));
+  border: 1px dashed var(--live-muted);
+  border-radius: var(--live-radius-s);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--live-dur-base);
+}
+
+[data-build].is-building::before,
+[data-build].is-building::after {
+  opacity: 1;
+}
+
+.live-js [data-build] [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity var(--live-dur-base) ease,
+    transform var(--live-dur-slow) var(--live-ease-expo);
+}
+
+.live-js [data-build].is-built [data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+.live-js [data-build].is-built [data-reveal="2"] { transition-delay: 50ms; }
+.live-js [data-build].is-built [data-reveal="3"] { transition-delay: 100ms; }
+.live-js [data-build].is-built [data-reveal="4"] { transition-delay: 150ms; }
+
+/* Headings that lean into fast scrolling get their own layer, so the skew is a cheap transform */
+[data-skew] {
+  will-change: transform;
+}
+
+/* ---------- Kinetic display text ---------- */
+.kinetic {
+  font-family: var(--live-font-sans);
+  line-height: 0.78;
+  text-transform: uppercase;
+  user-select: none;
+  contain: layout style;
+}
+
+.kinetic-line {
+  display: block;
+  width: max-content;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.kinetic-ch {
+  display: inline-block;
+  font-variation-settings: var(--live-vf-light);
+  transition:
+    font-variation-settings var(--live-dur-fast) var(--live-ease-out),
+    color var(--live-dur-fast),
+    opacity var(--live-dur-fast),
+    transform var(--live-dur-base) var(--live-ease);
+}
+
+.live-js .kinetic-ch[data-pending] {
+  opacity: 0;
+  transform: translateY(30%);
+}
+
+.kinetic-ch.is-hot {
+  color: var(--live-hot);
+}
+
+/* ---------- Shared editorial bits ---------- */
+.live-label {
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--live-muted);
+}
+
+.live-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--live-ink);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+  text-transform: uppercase;
+}
+
+.live-meta-grid dt {
+  color: var(--live-muted);
+  margin-bottom: var(--space-1);
+}
+
+.live-meta-grid dd {
+  margin: 0;
+}
+
+.live-prompt {
+  min-height: 2em;
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono-m);
+  color: var(--live-muted);
+}
+
+.live-prompt b {
+  font-weight: 400;
+  color: var(--live-hot);
+}
+
+.live-caret {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  vertical-align: -2px;
+  background: var(--live-hot);
+  animation: live-blink 1s steps(1) infinite;
+}
+
+@keyframes live-blink {
+  50% { opacity: 0; }
+}
+
+/* Honest placeholders for content that does not exist yet */
+.live-pending-text {
+  padding: var(--space-1) 0 var(--space-1) var(--space-4);
+  border-left: 2px solid var(--live-hot);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono-m);
+  line-height: 1.6;
+  color: var(--live-pending);
+}
+
+.live-pending-text::before {
+  content: "TODO(content) — ";
+  color: var(--live-hot);
+}
+
+.live-pending-bar {
+  height: 0.62em;
+  border-radius: 4px;
+  background: repeating-linear-gradient(90deg, var(--live-rule) 0 14px, transparent 14px 20px);
+  opacity: 0.7;
+}
+
+@media (max-width: 760px) {
+  .live-meta-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-js [data-build] [data-reveal],
+  .live-js .kinetic-ch[data-pending] {
+    opacity: 1;
+    transform: none;
+  }
+}

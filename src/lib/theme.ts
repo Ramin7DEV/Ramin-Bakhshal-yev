@@ -1,1 +1,2 @@
-export const THEME_COLOR = '#08090A';
+// Browser UI colour (mobile address bar), matches --live-bone
+export const THEME_COLOR = '#EBE7DD';

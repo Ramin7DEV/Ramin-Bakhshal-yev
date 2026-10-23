@@ -1,121 +1,204 @@
-.heroSection {
-  min-height: max(560px, 88svh);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-top: var(--space-7);
-  padding-bottom: var(--space-6);
+.hero {
   position: relative;
-}
-
-.heroContent {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-  margin-top: auto;
-  margin-bottom: auto;
-  padding-top: var(--space-4);
-  padding-bottom: var(--space-6);
-}
-
-.grid {
+  isolation: isolate;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-6);
-  align-items: center;
+  grid-template-rows: auto 1fr auto auto;
+  min-height: 100svh;
+  padding: var(--live-header-pad) var(--live-gutter) var(--space-6);
 }
 
-@media (min-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(12, 1fr);
-    gap: var(--gutter);
-  }
-
-  .copyColumn {
-    grid-column: 1 / 8;
-  }
-
-  .mediaColumn {
-    grid-column: 8 / 13;
-  }
+.hero > *:not([data-field]) {
+  position: relative;
+  z-index: 1;
 }
 
-.copyColumn {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
-  min-width: 0;
+/* Moved and faded by the scroll choreography: own GPU layers, so leaving the hero never repaints them */
+.hero [data-quiet],
+.hero [data-field] {
+  will-change: transform, opacity;
 }
 
-.eyebrow {
-  margin: 0;
+.top {
+  display: grid;
+  grid-template-columns: 1fr var(--live-toc);
+  gap: var(--space-7);
+  align-items: start;
 }
 
-.title {
-  margin: 0;
-  overflow-wrap: break-word;
-}
-
-.title em {
-  font-style: italic;
-  color: var(--accent-gold);
-}
-
-.description {
-  margin: 0;
-  max-width: var(--measure);
-}
-
-.ctaGroup {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-4);
-  padding-top: var(--space-2);
-}
-
-.mediaColumn {
-  width: 100%;
-  min-width: 0;
-}
-
-.heroFrame {
-  width: 100%;
-}
-
-.metaRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--line-hairline);
-  font-family: var(--font-mono);
-  font-size: var(--type-label);
-  letter-spacing: 0.12em;
+/* Section menu: solid paper behind it, a row fills with ink on hover */
+.toc {
+  border-top: 1px solid var(--live-ink);
+  background: var(--live-bone);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
   text-transform: uppercase;
-  color: var(--text-tertiary);
 }
 
-.metaLeft {
+.toc a {
+  position: relative;
+  isolation: isolate;
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  justify-content: space-between;
   gap: var(--space-3);
+  padding: var(--space-3) var(--space-2);
+  border-bottom: 1px solid var(--live-rule);
+  text-decoration: none;
+  transition: color var(--live-dur-fast);
 }
 
-.metaDot {
-  color: var(--line-strong);
+.toc a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--live-ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--live-dur-base) var(--live-ease);
 }
 
-.metaIndex {
-  color: var(--accent-gold);
+.toc a:hover,
+.toc a:focus-visible {
+  color: var(--live-bone);
+  outline: none;
 }
 
-.scrollIndicator {
+.toc a:hover::before,
+.toc a:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.toc i {
+  font-style: normal;
+  transition: transform var(--live-dur-base) var(--live-ease), color var(--live-dur-fast);
+}
+
+.toc a:hover i,
+.toc a:focus-visible i {
+  color: var(--live-hot);
+  transform: translateY(3px);
+}
+
+.mid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: var(--space-7);
+  padding: 6vh 0 5vh;
+}
+
+.headline {
+  max-width: 12ch;
+  font-family: var(--live-font-serif);
+  font-size: var(--live-type-headline);
+  font-weight: 300;
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+}
+
+/* Each word rises out of its own mask. The mask leaves room for accents (ə, İ) and
+   descenders (ç, ş); the word also fades in, so no glyph fragment shows before it moves. */
+.word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  margin: -0.14em -0.04em -0.16em;
+  padding: 0.14em 0.04em 0.16em;
+}
+
+.word > span {
+  display: inline-block;
+  animation: rise var(--live-dur-reveal) var(--live-ease-expo) both;
+  animation-delay: calc(80ms + var(--i, 0) * 70ms);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 115%, 0);
+  }
+}
+
+.legend {
+  max-width: 260px;
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono-s);
+  line-height: 1.8;
+  text-align: right;
+  text-transform: uppercase;
+  color: var(--live-muted);
+}
+
+.legend b {
+  font-weight: 400;
+  color: var(--live-hot);
+}
+
+.sign {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-bottom: var(--space-4);
+}
+
+.name {
+  font-size: var(--live-type-name);
+  line-height: 1;
+}
+
+.avail {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: var(--space-1);
-  color: var(--text-tertiary);
+  gap: var(--space-3);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+  text-transform: uppercase;
+}
+
+.avail::before,
+.avail::after {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--live-hot);
+}
+
+/* The pulse is a ring that scales and fades: transform + opacity only, so it never repaints */
+.avail::after {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -4px;
+  animation: pulse 2s ease-out infinite;
+}
+
+@keyframes pulse {
+  from {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(2.6);
+  }
+}
+
+@media (max-width: 760px) {
+  .top,
+  .mid {
+    grid-template-columns: 1fr;
+  }
+
+  .toc {
+    display: none;
+  }
+
+  .legend {
+    text-align: left;
+  }
 }

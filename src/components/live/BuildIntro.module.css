@@ -1,0 +1,45 @@
+.intro {
+  min-width: 0;
+}
+
+.log {
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+  line-height: 1.9;
+  color: var(--live-muted);
+}
+
+.log li {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  animation: log-in var(--live-dur-base) var(--live-ease-out) both;
+}
+
+.add {
+  color: var(--live-ink);
+}
+
+.add::before {
+  content: "+ ";
+  color: var(--live-hot);
+}
+
+.ok {
+  color: var(--live-hot);
+}
+
+.you::before {
+  content: "› ";
+  color: var(--live-hot);
+}
+
+@keyframes log-in {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+}

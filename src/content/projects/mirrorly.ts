@@ -27,11 +27,11 @@ export const mirrorly = {
     ru: ['TODO(content): Mirrorly real outcomes (RU)'],
   },
   cover: {
-    src: '/images/project-mirrorly.png',
+    src: '/images/project-mirrorly-editorial.jpg',
     alt: {
-      az: 'Mirrorly layihəsinin qaranlıq studiya vizualı',
-      en: 'Mirrorly project dark studio visual',
-      ru: 'Темная студийная визуализация проекта Mirrorly',
+      az: 'AI əlaqələrini təmsil edən abstrakt canlı diaqram',
+      en: 'Abstract animated diagram representing AI connections',
+      ru: 'Абстрактная анимированная схема связей ИИ',
     },
     width: 1448,
     height: 1086,

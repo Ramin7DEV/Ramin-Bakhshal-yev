@@ -1,0 +1,134 @@
+.dock {
+  position: fixed;
+  left: 50%;
+  bottom: var(--space-4);
+  z-index: 60;
+  width: min(var(--live-dock-width), calc(100vw - 2 * var(--space-4)));
+  overflow: hidden;
+  border: 1px solid var(--live-console-edge);
+  border-radius: var(--live-radius);
+  background: var(--live-ink);
+  box-shadow: var(--live-shadow-dock);
+  color: var(--live-console-text);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+  transform: translateX(-50%);
+  transition: transform var(--live-dur-slow) var(--live-ease);
+}
+
+.hidden {
+  transform: translate(-50%, calc(100% + var(--space-5)));
+}
+
+.log {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--live-dur-base) var(--live-ease);
+}
+
+.open .log {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.log div {
+  padding: 3px var(--space-4);
+  color: var(--live-console-dim);
+}
+
+.log div:first-child {
+  padding-top: var(--space-3);
+}
+
+.plain {
+  color: var(--live-console-dim);
+}
+
+.log .add {
+  color: var(--live-console-text);
+}
+
+.add::before {
+  content: "+ ";
+  color: var(--live-hot);
+}
+
+.log .ok {
+  color: var(--live-hot);
+}
+
+.log .you {
+  color: var(--live-console-text);
+}
+
+.you::before {
+  content: "› ";
+  color: var(--live-hot);
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+}
+
+.status {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--live-console-dim);
+  transition: background var(--live-dur-fast), box-shadow var(--live-dur-fast);
+}
+
+.busy .status {
+  background: var(--live-hot);
+  box-shadow: 0 0 10px var(--live-hot);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--live-console-text);
+  font: inherit;
+}
+
+.input::placeholder {
+  color: var(--live-console-dim);
+}
+
+.last {
+  max-width: 40%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--live-console-dim);
+}
+
+.toggle {
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--live-console-edge);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--live-console-dim);
+  font: inherit;
+  font-size: var(--live-type-mono-s);
+  cursor: pointer;
+}
+
+.toggle:hover,
+.toggle:focus-visible {
+  border-color: var(--live-console-dim);
+  color: var(--live-console-text);
+  outline: none;
+}
+
+@media (max-width: 760px) {
+  .last {
+    display: none;
+  }
+}

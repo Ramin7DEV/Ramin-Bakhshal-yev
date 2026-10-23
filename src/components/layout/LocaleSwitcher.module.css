@@ -1,86 +1,28 @@
-.desktopList {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
+.list {
+  display: flex;
+  gap: 2px;
   margin: 0;
   padding: 0;
   list-style: none;
-  font-family: var(--font-mono);
-  font-size: var(--type-label);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
 }
 
-.desktopItem {
-  display: inline-flex;
-  align-items: center;
-}
-
-.divider {
-  color: var(--line-medium);
-  user-select: none;
-}
-
-.desktopButton {
-  background: transparent;
+.button {
+  padding: 2px 5px;
   border: 0;
-  padding: var(--space-1) var(--space-2);
-  font-family: inherit;
-  font-size: inherit;
-  letter-spacing: inherit;
-  text-transform: inherit;
-  color: var(--text-tertiary);
-  cursor: pointer;
-  border-radius: var(--radius-xs);
-  transition: color var(--dur-fast) var(--ease-out);
-  min-height: var(--target-min);
-  display: inline-flex;
-  align-items: center;
-}
-
-.desktopButton:hover {
-  color: var(--text-primary);
-}
-
-.desktopButton[aria-current="true"] {
-  color: var(--accent-gold);
-  font-weight: 500;
-}
-
-/* Mobile variant */
-.mobileList {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.mobileButton {
   background: transparent;
-  border: var(--border-hairline);
-  padding: var(--space-3) var(--space-4);
-  font-family: var(--font-body);
-  font-size: var(--type-body-m);
-  color: var(--text-secondary);
-  text-align: left;
+  color: inherit;
+  font: inherit;
+  text-transform: uppercase;
+  opacity: 0.45;
   cursor: pointer;
-  border-radius: var(--radius-sm);
-  transition: color var(--dur-fast) var(--ease-out),
-              border-color var(--dur-fast) var(--ease-out);
-  min-height: var(--target-min);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
-.mobileButton:hover {
-  color: var(--text-primary);
-  border-color: var(--line-medium);
+.button:hover {
+  opacity: 0.8;
 }
 
-.mobileButton[aria-current="true"] {
-  color: var(--accent-gold);
-  border-color: var(--accent-gold);
+.button[aria-current="true"] {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }

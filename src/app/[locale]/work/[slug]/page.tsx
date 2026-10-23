@@ -3,8 +3,8 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { getProject, getAllSlugs } from '@/content/projects';
-import { Link } from '@/i18n/navigation';
 import { buildMetadata, creativeWorkJsonLd } from '@/lib/seo';
+import { CaseStudy } from '@/components/case/CaseStudy';
 import type { Locale } from '@/content/types';
 
 export function generateStaticParams() {
@@ -48,56 +48,17 @@ export default async function CaseStudyPage({ params }: Props) {
   }
 
   setRequestLocale(locale);
-  const t = await getTranslations({ locale });
-  const loc = locale as Locale;
-  const jsonLd = creativeWorkJsonLd(project, loc);
+  const jsonLd = creativeWorkJsonLd(project, locale as Locale);
 
   return (
-    <main>
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
         }}
       />
-      <Link href="/work">{t('common.actions.backToWork')}</Link>
-      <h1>
-        {project.index} {project.title}
-      </h1>
-      <p>{project.statement[loc]}</p>
-      <dl>
-        {project.year ? (
-          <>
-            <dt>{t('caseStudy.factYear')}</dt>
-            <dd>{project.year}</dd>
-          </>
-        ) : null}
-        {project.status ? (
-          <>
-            <dt>{t('caseStudy.factStatus')}</dt>
-            <dd>{project.status}</dd>
-          </>
-        ) : null}
-        {project.stack.length > 0 ? (
-          <>
-            <dt>{t('caseStudy.factStack')}</dt>
-            <dd>{project.stack.join(', ')}</dd>
-          </>
-        ) : null}
-      </dl>
-      <section>
-        <h2>{t('caseStudy.chapterProblem')}</h2>
-        <ul>
-          {project.chapters.map((chapter) => (
-            <li key={chapter.id}>
-              <h3>{chapter.title[loc]}</h3>
-              {chapter.body[loc].map((paragraph, i) => (
-                <p key={i}>{paragraph}</p>
-              ))}
-            </li>
-          ))}
-        </ul>
-      </section>
-    </main>
+      <CaseStudy project={project} locale={locale} />
+    </>
   );
 }

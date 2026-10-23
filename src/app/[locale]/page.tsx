@@ -3,11 +3,13 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { buildMetadata, personJsonLd } from '@/lib/seo';
 import { Hero } from '@/components/home/Hero';
-import { ProofStrip } from '@/components/home/ProofStrip';
-import { SelectedWork } from '@/components/home/SelectedWork';
-import { ProcessSnapshot } from '@/components/home/ProcessSnapshot';
-import { AboutTeaser } from '@/components/home/AboutTeaser';
-import { FinalCta } from '@/components/home/FinalCta';
+import { Marquee } from '@/components/home/Marquee';
+import { Statement } from '@/components/home/Statement';
+import { WorkSection } from '@/components/home/WorkSection';
+import { Method } from '@/components/home/Method';
+import { LiveStats } from '@/components/home/LiveStats';
+import { ContactBlock } from '@/components/home/ContactBlock';
+import { HomeMotion } from '@/components/home/HomeMotion';
 import type { Locale } from '@/content/types';
 
 export function generateStaticParams() {
@@ -32,8 +34,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const loc = locale as Locale;
-  const jsonLd = personJsonLd(loc);
+  const t = await getTranslations({ locale });
+  const jsonLd = personJsonLd(locale as Locale);
 
   return (
     <>
@@ -43,13 +45,23 @@ export default async function HomePage({ params }: Props) {
           __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
         }}
       />
-      <Hero locale={loc} />
-      <ProofStrip />
-      <SelectedWork locale={loc} />
-      <ProcessSnapshot />
-      <AboutTeaser />
-      <FinalCta />
+      <Hero locale={locale} />
+      <Marquee words={t.raw('live.marquee') as string[]} />
+      <Statement label={t('live.sections.statement')} text={t('hero.description')} />
+      <WorkSection locale={locale} />
+      <Method locale={locale} />
+      <LiveStats
+        label={t('live.sections.stats')}
+        log={t('live.log.stats')}
+        labels={{
+          components: t('live.stats.components'),
+          time: t('live.stats.time'),
+          you: t('live.stats.you'),
+          baku: t('live.stats.baku'),
+        }}
+      />
+      <ContactBlock locale={locale} />
+      <HomeMotion />
     </>
   );
 }
-

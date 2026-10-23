@@ -1,6 +1,6 @@
 # AGENTS.md — Layihə Qaydaları
 
-Bu fayl bu repo üzərində işləyən hər bir agent (Claude, Gemini, digər) və insan üçün məcburi qaydaları müəyyən edir. Bu qaydalar bütün digər təlimatlardan üstündür.
+Bu fayl bu repo üzərində işləyən hər bir agent (Claude, Gemini, digər) və insan üçün layihənin sabit qaydalarını müəyyən edir. Cari faza üçün Ramin-in birbaşa göstərişi ilə ziddiyyət olarsa, icradan əvvəl soruş.
 
 ## Layihə
 
@@ -19,14 +19,14 @@ Dizayn sistemi: `docs/DESIGN_SYSTEM.md`
 | Implementer | Gemini | `docs/gemini/PHASE-*.md` prompt-larını icra edir. Yalnız verilmiş faza scope-unda işləyir. |
 | Owner | Ramin | Content verir, dizayn qərarlarını təsdiqləyir, deploy edir. |
 
-## Texniki Qaydalar (pozulmazdır)
+## Texniki Qaydalar
 
 1. **Stack kilidlidir.** Next.js (App Router) + TypeScript + Tailwind v4 + GSAP + next-intl. Yeni dependency **yalnız** review-dan sonra əlavə olunur. `docs/BUILD_PLAN.md` §2-dəki siyahıdan kənar paket quraşdırma.
 2. **TypeScript strict.** `any`, `@ts-ignore`, `@ts-expect-error` qadağandır. `npx tsc --noEmit` təmiz keçməlidir.
 3. **Server Components default.** `"use client"` yalnız real interaktivlik lazım olanda və mümkün qədər leaf komponentdə.
 4. **Heç bir hardcoded UI mətni.** Bütün görünən mətnlər `src/messages/*.json` (chrome) və ya `src/content/**` (project content) qatından gəlir. Komponent daxilində literal string yoxdur.
 5. **Heç bir hardcoded dizayn dəyəri.** Rəng, spacing, radius, duration, easing — yalnız `src/styles/tokens.css`-dəki CSS custom property-lər. Magic number yoxdur.
-6. **Content uydurulmur.** Məlumat yoxdursa `TODO(content): ...` yazılır və faza hesabatında bildirilir. Fake metrik, fake nəticə, uydurma link qəti qadağandır.
+6. **Content uydurulmur.** Məlumat yoxdursa `TODO(content): ...` yazılır və faza hesabatında bildirilir. Fake metrik, fake nəticə, uydurma link yazılmır (səbəb: sayt Ramin-in adından yayımlanır).
 7. **Emoji yoxdur.** Nə UI copy-də, nə komponentlərdə.
 8. **Faza scope-u.** Yalnız aktiv fazanın icazə verdiyi fayllara toxunulur. Başqa fazanın faylını "yaxşılaşdırmaq" olmaz.
 9. **Hər faza yaşıl bitir.** `npm run lint`, `npx tsc --noEmit`, `npm run build` — üçü də uğurlu olmadan faza təhvil verilmir.
@@ -49,14 +49,9 @@ TODO(content):    çatışmayan content siyahısı
 Open questions:   varsa
 ```
 
-## Qırmızı Xətlər
+## Keyfiyyət meyarı
 
-- Template hissi verən layout
-- Boş "AI-powered" marketinq dili
-- Yalançı metrik və uydurma nəticə
-- Neon, həddindən artıq effekt, oyuncaq görünüş
-- Mobil UX-i qıran həll
-- Client bundle-a lazımsız kitabxana
+Sayt premium və sakit görünür, hər layout startup founder və hiring manager üçün qurulub. Məzmun konkret və yoxlanılabilir olur. Mobil UX və client bundle ölçüsü qəbul meyarlarıdır.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

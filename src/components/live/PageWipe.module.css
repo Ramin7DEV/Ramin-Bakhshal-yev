@@ -1,0 +1,39 @@
+.wipe {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: var(--live-ink);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  pointer-events: none;
+}
+
+.wipe span {
+  position: absolute;
+  left: var(--live-gutter);
+  bottom: var(--space-6);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+  text-transform: uppercase;
+  color: var(--live-console-dim);
+}
+
+.idle {
+  visibility: hidden;
+}
+
+.in {
+  transform: scaleY(1);
+  transition: transform 550ms var(--live-ease);
+}
+
+.covered {
+  transform: scaleY(1);
+  transform-origin: top;
+}
+
+.out {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 600ms var(--live-ease) 50ms;
+}

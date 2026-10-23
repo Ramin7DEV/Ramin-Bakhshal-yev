@@ -27,11 +27,11 @@ export const azerbaijanOtur = {
     ru: ['TODO(content): Azerbaijan Otur real outcomes (RU)'],
   },
   cover: {
-    src: '/images/project-azerbaijan-otur.png',
+    src: '/images/project-azerbaijan-otur-editorial.jpg',
     alt: {
-      az: 'Azerbaijan Otur layihəsinin qaranlıq studiya vizualı',
-      en: 'Azerbaijan Otur project dark studio visual',
-      ru: 'Темная студийная визуализация проекта Azerbaijan Otur',
+      az: 'Kəşf və əlaqələri təmsil edən abstrakt canlı diaqram',
+      en: 'Abstract animated diagram representing discovery and connections',
+      ru: 'Абстрактная анимированная схема поиска и связей',
     },
     width: 1448,
     height: 1086,

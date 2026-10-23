@@ -21,7 +21,8 @@
     "skipToContent": "Skip to main content",
     "status": "Available for select work / 2026",
     "primaryLabel": "Primary navigation",
-    "mobileLabel": "Mobile navigation"
+    "mobileLabel": "Mobile navigation",
+    "themeDark": "Dark theme"
   },
   "locale": {
     "switcherLabel": "Switch language",
@@ -68,7 +69,8 @@
     "factStatus": "Status",
     "outcomeTitle": "Outcome",
     "linksTitle": "Links",
-    "nextProject": "Next project"
+    "nextProject": "Next project",
+    "pending": "The detailed story of this project is in progress."
   },
   "process": {
     "eyebrow": "Process",
@@ -143,5 +145,121 @@
     "projectSelected": "Project selected",
     "externalLink": "Opens in external tab",
     "currentLanguage": "Current language"
+  },
+  "live": {
+    "prompt": "build a portfolio for Ramin — AI-first engineer, Baku",
+    "casePrompt": "open case {slug}",
+    "fieldCode": "const idea=listen(user);const system=design(idea);const product=build(system,agents);review(product);ship(product);measure();iterate();",
+    "log": {
+      "reading": "reading profile.ts, projects/*",
+      "field": "Field.tsx — ideas → code",
+      "hero": "Hero.tsx — name, role, location",
+      "scroll": "scroll to keep building ↓",
+      "index": "Index.tsx — 3 projects from content/",
+      "method": "Method.tsx — human ↔ agent review gates",
+      "stats": "Stats.tsx — measured in your browser, not invented",
+      "contact": "Contact.tsx — email, GitHub",
+      "caseHero": "CaseHero.tsx — {slug}",
+      "cover": "Cover.tsx — editorial image",
+      "chapter": "chapter {n} — {id}",
+      "casePending": "content for this case is still TODO — shown as placeholders, not invented",
+      "filter": "filter → {filter} ({count})",
+      "next": "Next.tsx — {slug}"
+    },
+    "headline": "I turn ideas into products that *ship.*",
+    "legend": "<b>■</b> noise = ideas<br></br>move the cursor — it compiles into code",
+    "marquee": [
+      "Idea",
+      "to",
+      "Prototype",
+      "to",
+      "Shipped",
+      "—",
+      "Human judgement",
+      "with",
+      "machine speed",
+      "—"
+    ],
+    "meta": {
+      "practice": "Practice",
+      "practiceValue": "AI-first engineer",
+      "builds": "Builds",
+      "buildsValue": "iOS · Web · AI systems",
+      "based": "Based",
+      "basedValue": "Baku, UTC+4",
+      "bakuTime": "Time in Baku"
+    },
+    "sections": {
+      "statement": "(01) Statement",
+      "work": "(02) Selected work",
+      "method": "(03) Method — who does what",
+      "stats": "(04) This page, honestly",
+      "contact": "(05) Contact"
+    },
+    "work": {
+      "no": "No.",
+      "project": "Project",
+      "field": "Field",
+      "open": "Open",
+      "case": "Case →"
+    },
+    "method": {
+      "human": "human",
+      "both": "human + agent",
+      "steps": [
+        {
+          "tag": "Signal",
+          "title": "Problem first",
+          "body": "Every project starts with a question: what decision is the user making here? Nothing gets built until that answer is clear.",
+          "agent": false
+        },
+        {
+          "tag": "System",
+          "title": "Then the system",
+          "body": "Screens are built as a system, not one at a time — type, spacing and motion follow the same rules. Every feature added later costs less because of it.",
+          "agent": false
+        },
+        {
+          "tag": "Build",
+          "title": "Agents, directed",
+          "body": "Agents write alongside me. I set the direction, review every line and own what ships.",
+          "agent": true
+        },
+        {
+          "tag": "Ship",
+          "title": "Then measure",
+          "body": "Done means in users' hands. Then measure, then iterate.",
+          "agent": false
+        }
+      ]
+    },
+    "stats": {
+      "components": "components built",
+      "time": "assembled in",
+      "you": "your time",
+      "baku": "time in Baku"
+    },
+    "case": {
+      "prompt": "Prompt",
+      "decision": "Human decision",
+      "metric": "real metric",
+      "log": "Session log",
+      "back": "← Index",
+      "repo": "Repo",
+      "fig": "Fig. 01"
+    },
+    "dock": {
+      "placeholder": "ask: work · method · contact",
+      "hint": "try: work · method · contact · mirrorly",
+      "toggle": "log",
+      "label": "Command"
+    },
+    "a11y": {
+      "sections": "Sections",
+      "filter": "Filter projects",
+      "chapters": "Chapters"
+    },
+    "clockCity": "Baku",
+    "navMethod": "Method"
   }
 }

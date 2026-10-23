@@ -1,0 +1,46 @@
+.marquee {
+  overflow: hidden;
+  contain: layout paint;
+  padding: var(--space-4) 0;
+  border-block: 1px solid var(--live-ink);
+  white-space: nowrap;
+}
+
+.track {
+  display: inline-flex;
+  gap: var(--space-7);
+  font-size: var(--live-type-marquee);
+  font-variation-settings: var(--live-vf-marquee);
+  text-transform: uppercase;
+  will-change: transform; /* moved every frame: keep it on its own GPU layer */
+  animation: slide 34s linear infinite;
+}
+
+/* Once JavaScript drives the track with scroll velocity, the CSS loop steps aside */
+.track[data-driven] {
+  animation: none;
+}
+
+.track i {
+  font-family: var(--live-font-serif);
+  font-style: italic;
+  font-weight: 300;
+  text-transform: none;
+  color: var(--live-hot);
+}
+
+.copy {
+  display: contents;
+}
+
+@keyframes slide {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}

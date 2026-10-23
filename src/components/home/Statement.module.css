@@ -1,0 +1,30 @@
+.statement {
+  contain: layout paint; /* word-by-word reveal repaints stay inside this block */
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: var(--space-5);
+  padding: 18vh var(--live-gutter) 14vh;
+}
+
+.text {
+  font-family: var(--live-font-serif);
+  font-size: var(--live-type-statement);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+:global(.live-js) .text span {
+  opacity: 0.14;
+  transition: opacity var(--live-dur-fast);
+}
+
+:global(.live-js) .text span.on {
+  opacity: 1;
+}
+
+@media (max-width: 760px) {
+  .statement {
+    grid-template-columns: 1fr;
+  }
+}

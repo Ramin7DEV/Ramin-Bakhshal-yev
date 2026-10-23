@@ -24,7 +24,7 @@
 
   /* Typography Families */
   --font-display: var(--font-display-face), Georgia, 'Times New Roman', serif;
-  --font-body:    var(--font-body-face), system-ui, -apple-system, sans-serif;
+  --font-body:    var(--font-display-sans), var(--font-display-cyrillic), system-ui, -apple-system, sans-serif;
   --font-mono:    var(--font-mono-face), ui-monospace, SFMono-Regular, monospace;
 
   /* Type scale */
@@ -79,4 +79,87 @@
   --ease-out: cubic-bezier(0.16, 1, 0.30, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --ease-entrance: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ==========================================================================
+   Live Index — design language (home + case study)
+   Bone paper, ink, one hot signal colour. Everything below is the source of
+   truth for the new design; the tokens above remain for legacy primitives.
+   ========================================================================== */
+:root {
+  /* Colour */
+  --live-bone: #EBE7DD;
+  --live-bone-2: #E2DDD1;
+  --live-ink: #11100E;
+  --live-ink-soft: #3C3A35;
+  --live-muted: #7B766B;
+  --live-rule: #CFC9BB;
+  --live-hot: #FF4A1C;
+  --live-hot-glow: rgba(255, 74, 28, 0.18);
+  --live-pending: #A49D8F;
+  --live-todo: #8A5A00;
+  --live-console-text: #D9D5CA;
+  --live-console-dim: #6F6A60;
+  --live-console-edge: #2E2B26;
+  --live-dark-muted: #8A857A;
+  --live-dark-rule: #33302B;
+  --live-dark-desc: #B9B3A6;
+  --live-dark-edge: #55524B;
+  --live-shadow-dock: 0 20px 50px -20px rgba(0, 0, 0, 0.5);
+
+  /* Type families */
+  --live-font-sans: var(--font-display-sans), var(--font-display-cyrillic), system-ui, sans-serif;
+  --live-font-serif: var(--font-display-face), Georgia, serif;
+  --live-font-mono: var(--font-mono-face), ui-monospace, monospace;
+
+  /* Type scale */
+  --live-type-headline: clamp(3.25rem, 7.2vw, 8.25rem);
+  --live-type-name: clamp(2.25rem, 4.6vw, 5rem);
+  --live-type-statement: clamp(2rem, 4.4vw, 4.75rem);
+  --live-type-row: clamp(2.25rem, 6.5vw, 6.5rem);
+  --live-type-marquee: clamp(1.75rem, 4vw, 3.5rem);
+  --live-type-method: clamp(1.875rem, 3vw, 2.75rem);
+  --live-type-stat: clamp(2.75rem, 6vw, 6rem);
+  --live-type-mail: clamp(1.875rem, 7.4vw, 8rem);
+  --live-type-chapter: clamp(2.5rem, 5.4vw, 5.5rem);
+  --live-type-outcome: clamp(4rem, 8vw, 8.75rem);
+  --live-type-next: clamp(3.5rem, 11vw, 12.5rem);
+  --live-type-serif-l: clamp(1.25rem, 2vw, 1.625rem);
+  --live-type-serif-m: 1.125rem;
+  --live-type-serif-italic: 1.375rem;
+  --live-type-mono: 0.75rem;
+  --live-type-mono-s: 0.6875rem;
+  --live-type-mono-m: 0.8125rem;
+
+  /* Variable-font settings */
+  --live-vf-light: "wght" 300, "wdth" 100, "opsz" 96;
+  --live-vf-row: "wght" 700, "wdth" 75;
+  --live-vf-row-hover: "wght" 300, "wdth" 100;
+  --live-vf-marquee: "wght" 650, "wdth" 78;
+  --live-vf-method: "wght" 700, "wdth" 78;
+  --live-vf-stat: "wght" 300, "wdth" 80;
+  --live-vf-mail: "wght" 500, "wdth" 80;
+  --live-vf-outcome: "wght" 250, "wdth" 80;
+
+  /* Layout */
+  --live-gutter: clamp(1rem, 3vw, 2.5rem);
+  --live-header-pad: 5.25rem;
+  --live-section-pad: 16vh;
+  --live-row-number: 5rem;
+  --live-row-open: 7.5rem;
+  --live-rail: 16.25rem;
+  --live-toc: minmax(16.25rem, 21.25rem);
+  --live-dock-width: 38.75rem;
+  --live-peek-width: 21.25rem;
+  --live-radius: 0.875rem;
+  --live-radius-s: 0.625rem;
+
+  /* Motion */
+  --live-ease: cubic-bezier(0.7, 0, 0.2, 1);
+  --live-ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --live-ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --live-dur-fast: 300ms;
+  --live-dur-base: 450ms;
+  --live-dur-slow: 700ms;
+  --live-dur-reveal: 1200ms;
 }

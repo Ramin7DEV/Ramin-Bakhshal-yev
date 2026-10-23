@@ -1,0 +1,29 @@
+.shell {
+  min-height: 70vh;
+  padding: calc(var(--live-header-pad) + var(--space-7)) var(--live-gutter) var(--live-section-pad);
+}
+
+.shell h1 {
+  margin-bottom: var(--space-6);
+  font-family: var(--live-font-serif);
+  font-size: var(--live-type-statement);
+  font-weight: 300;
+  line-height: 1.05;
+}
+
+.shell h2 {
+  margin: var(--space-7) 0 var(--space-3);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--live-muted);
+}
+
+.shell p,
+.shell li {
+  max-width: 68ch;
+  font-family: var(--live-font-serif);
+  font-size: var(--live-type-serif-m);
+  line-height: 1.6;
+}

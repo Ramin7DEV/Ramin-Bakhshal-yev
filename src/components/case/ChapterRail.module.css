@@ -1,0 +1,110 @@
+.rail {
+  z-index: 2;
+  align-self: start;
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+}
+
+.rail :global(.live-label) {
+  display: block;
+  margin-bottom: var(--space-4);
+}
+
+.list {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-left: 1px solid var(--live-rule);
+}
+
+.progress {
+  position: absolute;
+  top: 0;
+  left: -1px;
+  width: 1px;
+  height: 100%;
+  background: var(--live-hot);
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.list a {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding: 9px 0 9px var(--space-4);
+  color: var(--live-muted);
+  text-decoration: none;
+  transition: color var(--live-dur-fast);
+}
+
+.list a::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -4px;
+  width: 7px;
+  height: 7px;
+  margin-top: -3.5px;
+  border: 1px solid var(--live-rule);
+  border-radius: 50%;
+  background: var(--live-bone);
+  transition: background var(--live-dur-fast), border-color var(--live-dur-fast);
+}
+
+.list a:hover {
+  color: var(--live-ink);
+}
+
+.list a.done {
+  color: var(--live-ink);
+}
+
+.list a.done::before {
+  border-color: var(--live-ink);
+  background: var(--live-ink);
+}
+
+.list a.active {
+  color: var(--live-hot);
+}
+
+.list a.active::before {
+  border-color: var(--live-hot);
+  background: var(--live-hot);
+  box-shadow: 0 0 0 4px var(--live-hot-glow);
+}
+
+.facts {
+  margin-top: var(--space-7);
+  border-top: 1px solid var(--live-ink);
+  text-transform: uppercase;
+}
+
+.facts div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 9px 0;
+  border-bottom: 1px solid var(--live-rule);
+}
+
+.facts dt {
+  color: var(--live-muted);
+}
+
+.facts dd {
+  margin: 0;
+}
+
+.pending {
+  color: var(--live-pending);
+}
+
+@media (max-width: 900px) {
+  .rail {
+    margin-bottom: 8vh;
+  }
+}

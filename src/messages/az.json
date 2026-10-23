@@ -21,7 +21,8 @@
     "skipToContent": "Əsas məzmuna keç",
     "status": "Seçilmiş layihələr üçün açıqdır / 2026",
     "primaryLabel": "Əsas naviqasiya",
-    "mobileLabel": "Mobil naviqasiya"
+    "mobileLabel": "Mobil naviqasiya",
+    "themeDark": "Qaranlıq tema"
   },
   "locale": {
     "switcherLabel": "Dili dəyiş",
@@ -68,7 +69,8 @@
     "factStatus": "Status",
     "outcomeTitle": "Nəticə",
     "linksTitle": "Keçidlər",
-    "nextProject": "Növbəti layihə"
+    "nextProject": "Növbəti layihə",
+    "pending": "Bu layihənin ətraflı təqdimatı hazırlanır."
   },
   "process": {
     "eyebrow": "Proses",
@@ -143,5 +145,121 @@
     "projectSelected": "Layihə seçildi",
     "externalLink": "Xarici keçid",
     "currentLanguage": "Hazırkı dil"
+  },
+  "live": {
+    "prompt": "build a portfolio for Ramin — AI-first engineer, Baku",
+    "casePrompt": "open case {slug}",
+    "fieldCode": "const idea=listen(user);const system=design(idea);const product=build(system,agents);review(product);ship(product);measure();iterate();",
+    "log": {
+      "reading": "reading profile.ts, projects/*",
+      "field": "Field.tsx — ideas → code",
+      "hero": "Hero.tsx — name, role, location",
+      "scroll": "scroll to keep building ↓",
+      "index": "Index.tsx — 3 projects from content/",
+      "method": "Method.tsx — human ↔ agent review gates",
+      "stats": "Stats.tsx — measured in your browser, not invented",
+      "contact": "Contact.tsx — email, GitHub",
+      "caseHero": "CaseHero.tsx — {slug}",
+      "cover": "Cover.tsx — editorial image",
+      "chapter": "chapter {n} — {id}",
+      "casePending": "content for this case is still TODO — shown as placeholders, not invented",
+      "filter": "filter → {filter} ({count})",
+      "next": "Next.tsx — {slug}"
+    },
+    "headline": "Fikri işləyən *məhsula* çevirirəm.",
+    "legend": "<b>■</b> səs-küy = ideyalar<br></br>kursoru gəzdir — koda çevrilir",
+    "marquee": [
+      "İdeya",
+      "dan",
+      "Prototip",
+      "ə",
+      "Buraxılış",
+      "—",
+      "İnsan qərarı",
+      "və",
+      "maşın sürəti",
+      "—"
+    ],
+    "meta": {
+      "practice": "Peşə",
+      "practiceValue": "AI-first mühəndis",
+      "builds": "Qurur",
+      "buildsValue": "iOS · Veb · AI sistemləri",
+      "based": "Məkan",
+      "basedValue": "Bakı, UTC+4",
+      "bakuTime": "Bakı vaxtı"
+    },
+    "sections": {
+      "statement": "(01) Bəyanat",
+      "work": "(02) Seçilmiş layihələr",
+      "method": "(03) Metod — kim nə edir",
+      "stats": "(04) Bu səhifə, dürüst",
+      "contact": "(05) Əlaqə"
+    },
+    "work": {
+      "no": "№",
+      "project": "Layihə",
+      "field": "Sahə",
+      "open": "Aç",
+      "case": "Bax →"
+    },
+    "method": {
+      "human": "insan",
+      "both": "insan + agent",
+      "steps": [
+        {
+          "tag": "Signal",
+          "title": "Əvvəlcə problem",
+          "body": "Hər iş sualla başlayır: istifadəçi burada hansı qərarı verməlidir? Cavab aydın olmayana qədər heç nə qurulmur.",
+          "agent": false
+        },
+        {
+          "tag": "System",
+          "title": "Sonra sistem",
+          "body": "Ekranları tək-tək deyil, sistem kimi qururam — tipografiya, aralıq və hərəkət eyni qaydalara tabe olur. Bu, sonradan əlavə edilən hər funksiyanı ucuzlaşdırır.",
+          "agent": false
+        },
+        {
+          "tag": "Build",
+          "title": "Agentlər, istiqamətlə",
+          "body": "Agentlər mənimlə birlikdə yazır. İstiqaməti mən verirəm, hər sətri yoxlayıram və buraxılana cavabdehəm.",
+          "agent": true
+        },
+        {
+          "tag": "Ship",
+          "title": "Sonra ölç",
+          "body": "Hazır — istifadəçinin əlində olan deməkdir. Sonra ölç, sonra təkmilləşdir.",
+          "agent": false
+        }
+      ]
+    },
+    "stats": {
+      "components": "qurulan komponent",
+      "time": "yığılma vaxtı",
+      "you": "sənin vaxtın",
+      "baku": "Bakı vaxtı"
+    },
+    "case": {
+      "prompt": "Prompt",
+      "decision": "İnsan qərarı",
+      "metric": "real göstərici",
+      "log": "Sessiya logu",
+      "back": "← Layihələr",
+      "repo": "Repo",
+      "fig": "Şəkil 01"
+    },
+    "dock": {
+      "placeholder": "yaz: layihələr · metod · əlaqə",
+      "hint": "sına: layihələr · metod · əlaqə · mirrorly",
+      "toggle": "log",
+      "label": "Əmr"
+    },
+    "a11y": {
+      "sections": "Bölmələr",
+      "filter": "Layihələri süz",
+      "chapters": "Fəsillər"
+    },
+    "clockCity": "Bakı",
+    "navMethod": "Metod"
   }
 }

@@ -27,11 +27,11 @@ export const beautyApp = {
     ru: ['TODO(content): Beauty App real outcomes (RU)'],
   },
   cover: {
-    src: '/images/project-beauty-app.png',
+    src: '/images/project-beauty-app-editorial.jpg',
     alt: {
-      az: 'Beauty App layihəsinin qaranlıq studiya vizualı',
-      en: 'Beauty App project dark studio visual',
-      ru: 'Темная студийная визуализация проекта Beauty App',
+      az: 'İnterfeys quruluşunu təmsil edən abstrakt canlı diaqram',
+      en: 'Abstract animated diagram representing interface structure',
+      ru: 'Абстрактная анимированная схема структуры интерфейса',
     },
     width: 1448,
     height: 1086,

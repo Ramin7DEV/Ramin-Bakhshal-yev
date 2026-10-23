@@ -11,9 +11,9 @@ export const mirrorly = {
     ru: 'Mirrorly — iOS-приложение, в котором можно примерить одежду, аксессуары или готовый образ на собственном фото.',
   },
   statement: {
-    az: 'Mirrorly-də istifadəçi öz şəklini və geyim şəklini yükləyir, nəticəni AI modeli yaradır. Tətbiq SwiftUI ilə yazılıb, backend Supabase üzərindədir, ödəniş kredit paketləri ilə işləyir. Məhsulun ətrafında admin panel, cihaz yoxlaması və server tərəfli limitlər də qurulub.',
-    en: 'In Mirrorly the user uploads their photo and a garment image, and an AI model generates the result. The app is written in SwiftUI, the backend runs on Supabase, and usage is paid through credit packs. Around the product sit an admin panel, device verification and server-side limits.',
-    ru: 'В Mirrorly пользователь загружает своё фото и изображение одежды, а результат генерирует AI-модель. Приложение написано на SwiftUI, бэкенд работает на Supabase, оплата устроена через пакеты кредитов. Вокруг продукта построены админ-панель, проверка устройства и серверные лимиты.',
+    az: 'Mirrorly-də istifadəçi öz şəklini və geyim şəklini yükləyir, nəticəni AI modeli yaradır. Tətbiq SwiftUI ilə yazılıb, backend Supabase üzərindədir, ödəniş kredit paketləri ilə işləyir. Tətbiqin arxasında admin panel, cihaz yoxlaması və serverdə işləyən limitlər də var.',
+    en: 'In Mirrorly the user uploads their photo and a garment image, and an AI model generates the result. The app is written in SwiftUI, the backend runs on Supabase, and usage is paid through credit packs. Behind the app there is also an admin panel, device verification and limits enforced on the server.',
+    ru: 'В Mirrorly пользователь загружает своё фото и изображение одежды, а результат генерирует AI-модель. Приложение написано на SwiftUI, бэкенд работает на Supabase, оплата устроена через пакеты кредитов. За приложением стоят ещё админ-панель, проверка устройства и лимиты на сервере.',
   },
   role: {
     az: [
@@ -83,6 +83,34 @@ export const mirrorly = {
       ru: 'Иконка Mirrorly раскрывается в реальные экраны приложения: главный экран, выбор образа и обработка',
     },
   },
+  icon: {
+    src: '/images/mirrorly/icon.png',
+    alt: {
+      az: 'Mirrorly tətbiq ikonu: tünd fonda qızılı asılqan və M hərfi',
+      en: 'The Mirrorly app icon: a gold hanger with an M on a dark background',
+      ru: 'Иконка Mirrorly: золотая вешалка с буквой M на тёмном фоне',
+    },
+    width: 512,
+    height: 512,
+  },
+  manifest: [
+    { key: 'platform', value: { az: 'iOS 16+ · iPhone, iPad', en: 'iOS 16+ · iPhone, iPad', ru: 'iOS 16+ · iPhone, iPad' } },
+    { key: 'client', value: { az: 'Swift · SwiftUI', en: 'Swift · SwiftUI', ru: 'Swift · SwiftUI' } },
+    { key: 'backend', value: { az: 'Supabase · 10 Edge Function', en: 'Supabase · 10 Edge Functions', ru: 'Supabase · 10 Edge Functions' } },
+    { key: 'ai', value: { az: 'Nano Banana 2 · EachLabs API', en: 'Nano Banana 2 · EachLabs API', ru: 'Nano Banana 2 · EachLabs API' } },
+    { key: 'payments', value: { az: 'RevenueCat · kredit paketləri', en: 'RevenueCat · credit packs', ru: 'RevenueCat · пакеты кредитов' } },
+    { key: 'integrity', value: { az: 'App Attest / DeviceCheck', en: 'App Attest / DeviceCheck', ru: 'App Attest / DeviceCheck' } },
+    { key: 'admin', value: { az: 'Next.js · TypeScript', en: 'Next.js · TypeScript', ru: 'Next.js · TypeScript' } },
+    { key: 'languages', value: { az: 'az · en · ru', en: 'az · en · ru', ru: 'az · en · ru' } },
+  ],
+  // Read from `git log` of the Mirrorly repo: 106 commits, all by Ramin7DEV
+  activity: {
+    source: 'git log',
+    weekStart: '2026-01-05',
+    first: '2026-01-08',
+    last: '2026-04-13',
+    weekly: [7, 23, 11, 11, 13, 8, 14, 7, 2, 0, 0, 0, 3, 6, 1],
+  },
   chapters: [
     {
       id: 'problem',
@@ -92,9 +120,9 @@ export const mirrorly = {
         ru: 'Проблема',
       },
       title: {
-        az: 'Paltarı almadan əvvəl necə oturduğunu görmək',
-        en: 'Seeing how a garment fits before buying it',
-        ru: 'Увидеть, как сидит одежда, до покупки',
+        az: 'Onlayn mağazada sınaq otağı yoxdur',
+        en: 'Online shops have no fitting room',
+        ru: 'В интернет-магазине нет примерочной',
       },
       body: {
         az: [
@@ -119,9 +147,9 @@ export const mirrorly = {
         ru: 'Роль',
       },
       title: {
-        az: 'Ideyadan App Store-a qədər tək',
-        en: 'From idea to App Store, alone',
-        ru: 'От идеи до App Store в одиночку',
+        az: 'Hər hissəsini özüm qurmuşam',
+        en: 'I built every part of it myself',
+        ru: 'Каждую часть я сделал сам',
       },
       body: {
         az: [
@@ -146,9 +174,9 @@ export const mirrorly = {
         ru: 'AI-процесс',
       },
       title: {
-        az: 'AI həm məhsulda, həm iş prosesində',
-        en: 'AI in the product and in the process',
-        ru: 'AI в продукте и в процессе работы',
+        az: 'Daha ucuz model eyni işi görəndə ona keçdim',
+        en: 'I switched models when a cheaper one did the same job',
+        ru: 'Перешёл на модель дешевле, когда она стала справляться не хуже',
       },
       body: {
         az: [
@@ -173,9 +201,9 @@ export const mirrorly = {
         ru: 'Система',
       },
       title: {
-        az: 'İstifadəçi şəkli, kredit və cihaz yoxlaması',
-        en: 'User photos, credits and device verification',
-        ru: 'Фото пользователя, кредиты и проверка устройства',
+        az: 'Try-on alınmasa, kredit geri qayıdır',
+        en: 'A failed try-on gives the credit back',
+        ru: 'Если примерка не удалась, кредит возвращается',
       },
       body: {
         az: [

@@ -70,7 +70,27 @@
     "outcomeTitle": "Nəticə",
     "linksTitle": "Keçidlər",
     "nextProject": "Növbəti layihə",
-    "pending": "Bu layihənin ətraflı təqdimatı hazırlanır."
+    "pending": "Bu layihənin ətraflı təqdimatı hazırlanır.",
+    "hero": {
+      "manifest": "Texniki kart",
+      "activity": "Həftəlik commit-lər",
+      "activitySummary": "{from} – {to} arası {total} commit, {weeks} həftə. Ən sıx həftə: {peak} commit.",
+      "peak": "pik · {count}",
+      "source": "mənbə: {source}",
+      "pending": "Texniki məlumat hələ əlavə olunmayıb.",
+      "keys": {
+        "platform": "Platforma",
+        "client": "Tətbiq",
+        "backend": "Backend",
+        "ai": "AI modeli",
+        "payments": "Ödəniş",
+        "integrity": "Cihaz yoxlaması",
+        "admin": "Admin panel",
+        "languages": "Dillər",
+        "stack": "Texnologiya"
+      },
+      "iconLabel": "AppIcon.png"
+    }
   },
   "process": {
     "eyebrow": "Proses",
@@ -221,13 +241,13 @@
         },
         {
           "tag": "Build",
-          "title": "Agentlər, istiqamətlə",
+          "title": "Agentlər yazır, mən yoxlayıram",
           "body": "Agentlər mənimlə birlikdə yazır. İstiqaməti mən verirəm, hər sətri yoxlayıram və buraxılana cavabdehəm.",
           "agent": true
         },
         {
           "tag": "Ship",
-          "title": "Sonra ölç",
+          "title": "Yayımla, sonra ölç",
           "body": "Hazır — istifadəçinin əlində olan deməkdir. Sonra ölç, sonra təkmilləşdir.",
           "agent": false
         }

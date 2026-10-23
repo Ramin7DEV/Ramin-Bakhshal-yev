@@ -165,3 +165,15 @@
   --live-dur-slow: 700ms;
   --live-dur-reveal: 1200ms;
 }
+
+/* Case hero: lede, build manifest, app icon and commit activity */
+:root {
+  --live-type-lede: clamp(1.625rem, 2.7vw, 2.75rem);
+  --live-manifest-key: 8.75rem;
+  --live-icon-tile: clamp(5.5rem, 9vw, 8.5rem);
+  --live-radius-icon: 22.5%; /* iOS app icon corner */
+  --live-shadow-icon: 0 28px 40px -24px rgba(17, 16, 14, 0.55);
+  --live-glare: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.28), transparent 55%);
+  --live-chart-h: clamp(4rem, 8vh, 6rem);
+  --live-perspective: 600px;
+}

@@ -1,0 +1,429 @@
+/* Case hero: prompt, title and lede on the left, the build manifest sheet on the right, meta as the base line */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: auto 1fr auto auto auto;
+  grid-template-areas:
+    "intro sheet"
+    "title sheet"
+    "lede  sheet"
+    "meta  meta"
+    "links links";
+  column-gap: var(--space-8);
+  min-height: 100svh;
+  padding: var(--live-header-pad) var(--live-gutter) var(--space-6);
+}
+
+.intro {
+  grid-area: intro;
+  min-width: 0;
+  padding-top: var(--space-4);
+}
+
+.idx {
+  font-weight: 400;
+  color: var(--live-hot);
+}
+
+/* Lifted away by the scroll choreography: own layers, so leaving the hero never repaints them */
+.hero [data-case-intro],
+.hero [data-case-drift] {
+  will-change: transform, opacity;
+}
+
+/* ---------- Lede ---------- */
+.lede {
+  grid-area: lede;
+  min-width: 0;
+  padding: var(--space-6) 0 var(--space-6);
+}
+
+.lede p {
+  max-width: 22ch;
+  font-family: var(--live-font-serif);
+  font-size: var(--live-type-lede);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  text-wrap: pretty;
+}
+
+.ledePending {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 34rem;
+  font-size: var(--live-type-lede);
+}
+
+/* ---------- Build manifest sheet ---------- */
+.sheet {
+  grid-area: sheet;
+  align-self: end;
+  min-width: 0;
+  margin: var(--space-4) 0 var(--space-6);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--live-ink);
+}
+
+.sheetHead,
+.activityHead {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono-s);
+  text-transform: uppercase;
+  color: var(--live-muted);
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--live-ink);
+}
+
+.status::before {
+  content: "";
+  width: var(--space-2);
+  height: var(--space-2);
+  border-radius: 50%;
+  background: var(--live-hot);
+  box-shadow: 0 0 0 var(--space-1) var(--live-hot-glow);
+}
+
+.spec {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.sheetHead + * {
+  margin-top: var(--space-4);
+}
+
+/* The real app icon inside a dashed bounding box, like a part on a drawing */
+.tileBox {
+  position: relative;
+  padding: var(--space-3);
+  border: 1px dashed var(--live-muted);
+  border-radius: var(--live-radius-s);
+  perspective: var(--live-perspective);
+}
+
+.tileLabel {
+  position: absolute;
+  top: 0;
+  left: var(--space-3);
+  padding: 0 var(--space-1);
+  background: var(--live-bone);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono-s);
+  line-height: 1;
+  color: var(--live-muted);
+  transform: translateY(-50%);
+}
+
+.tile {
+  position: relative;
+  overflow: hidden;
+  width: var(--live-icon-tile);
+  aspect-ratio: 1;
+  border-radius: var(--live-radius-icon);
+  box-shadow: var(--live-shadow-icon);
+  transition: transform var(--live-dur-slow) var(--live-ease-out);
+  will-change: transform;
+}
+
+.tile[data-tilt] {
+  transition-duration: var(--live-dur-fast);
+}
+
+.tile img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.glare {
+  position: absolute;
+  inset: -25%;
+  background: var(--live-glare);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity var(--live-dur-base),
+    transform var(--live-dur-fast) var(--live-ease-out);
+}
+
+.tile[data-tilt] .glare {
+  opacity: 1;
+}
+
+.manifest {
+  margin: 0;
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono-m);
+}
+
+.manifest > div {
+  display: grid;
+  grid-template-columns: var(--live-manifest-key) minmax(0, 1fr);
+  gap: var(--space-3);
+  padding: var(--space-1) 0 var(--space-2);
+  border-bottom: 1px dotted var(--live-rule);
+}
+
+.manifest > div:first-child {
+  padding-top: 0;
+}
+
+.manifest dt {
+  font-size: var(--live-type-mono);
+  text-transform: uppercase;
+  color: var(--live-muted);
+}
+
+.manifest dt::before {
+  content: "+ ";
+  color: var(--live-hot);
+}
+
+.manifest dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.manifestPending {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-size: var(--live-type-serif-m);
+}
+
+.manifestPending :global(.live-pending-text) {
+  margin-top: var(--space-2);
+}
+
+/* ---------- Commit activity ---------- */
+.activity {
+  margin: var(--space-5) 0 0;
+  min-width: 0;
+}
+
+.activityHead {
+  margin-bottom: var(--space-2);
+}
+
+.bars {
+  display: grid;
+  grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+  gap: var(--space-1);
+  height: calc(var(--live-chart-h) + var(--space-5));
+  margin: 0;
+  padding: var(--space-5) 0 0;
+  list-style: none;
+  border-bottom: 1px solid var(--live-ink);
+}
+
+.bars li {
+  position: relative;
+}
+
+.bars li::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--live-ink);
+  transform: scaleY(var(--v));
+  transform-origin: bottom;
+}
+
+.bars .peak::before {
+  background: var(--live-hot);
+}
+
+/* A week without commits keeps a stub on the base line, so the gap reads as data, not as missing data */
+.bars .zero::before {
+  inset: auto 0 0;
+  height: var(--space-1);
+  background: var(--live-rule);
+  transform: none;
+}
+
+.peakLabel {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + var(--space-1));
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono-s);
+  line-height: 1;
+  white-space: nowrap;
+  text-transform: uppercase;
+  color: var(--live-hot);
+}
+
+.ticks {
+  display: grid;
+  grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+  gap: var(--space-1);
+  overflow-x: clip;
+  margin-top: var(--space-2);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono-s);
+  text-transform: uppercase;
+  color: var(--live-muted);
+}
+
+.ticks span {
+  grid-row: 1;
+  white-space: nowrap;
+}
+
+.activity figcaption {
+  margin-top: var(--space-3);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono-s);
+  line-height: 1.7;
+  color: var(--live-ink-soft);
+}
+
+/* ---------- Build-in: rows type in like the build log, then the bars rise week by week ---------- */
+:global(.live-js) .manifest > div {
+  transition:
+    opacity var(--live-dur-base) ease,
+    transform var(--live-dur-slow) var(--live-ease-expo);
+  transition-delay: calc(var(--live-dur-fast) + var(--i) * 70ms);
+}
+
+:global(.live-js) .bars li::before {
+  transition: transform var(--live-dur-slow) var(--live-ease-expo);
+  transition-delay: calc(var(--live-dur-slow) + var(--i) * 35ms);
+}
+
+:global(.live-js) .peakLabel {
+  transition: opacity var(--live-dur-base) ease var(--live-dur-reveal);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :global(.live-js) .hero:not(:global(.is-built)) .manifest > div {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+  :global(.live-js) .hero:not(:global(.is-built)) .bars li::before {
+    transform: scaleY(0);
+  }
+
+  :global(.live-js) .hero:not(:global(.is-built)) .peakLabel {
+    opacity: 0;
+  }
+}
+
+/* ---------- Title, meta, links ---------- */
+.title {
+  grid-area: title;
+  align-self: end;
+  margin-top: var(--space-6);
+}
+
+.meta {
+  grid-area: meta;
+}
+
+.todo {
+  color: var(--live-pending);
+}
+
+.links {
+  grid-area: links;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-4);
+  padding-top: var(--space-3);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+  text-transform: uppercase;
+}
+
+.links span {
+  color: var(--live-muted);
+}
+
+.links a {
+  color: var(--live-hot);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.links a:focus-visible {
+  outline: 2px solid var(--live-hot);
+  outline-offset: 3px;
+}
+
+@media (max-width: 1100px) {
+  .hero {
+    column-gap: var(--space-6);
+  }
+
+  .spec {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
+  }
+
+  .tileBox {
+    justify-self: start;
+  }
+}
+
+/* Phones and narrow tablets: one column, the title right under the prompt */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    grid-template-areas:
+      "intro"
+      "title"
+      "lede"
+      "sheet"
+      "meta"
+      "links";
+    min-height: 0;
+  }
+
+  .title {
+    margin: var(--space-6) 0 0;
+  }
+
+  .lede {
+    padding: var(--space-6) 0;
+  }
+
+  .spec {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .spec {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .manifest > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile,
+  .glare,
+  :global(.live-js) .manifest > div,
+  :global(.live-js) .bars li::before,
+  :global(.live-js) .peakLabel {
+    transition: none;
+  }
+}

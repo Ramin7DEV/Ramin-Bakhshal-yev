@@ -3,9 +3,8 @@ import { getTranslations } from 'next-intl/server';
 import { projects } from '@/content/projects';
 import { profile } from '@/content/profile';
 import type { Locale, Project } from '@/content/types';
-import { BuildIntro } from '@/components/live/BuildIntro';
-import { KineticText } from '@/components/live/KineticText';
 import { TransitionLink } from '@/components/live/TransitionLink';
+import { CaseHero } from './CaseHero';
 import { ChapterRail } from './ChapterRail';
 import { CaseMotion } from './CaseMotion';
 import { PreviewVideo } from './PreviewVideo';
@@ -19,7 +18,7 @@ type Props = {
 const isPending = (text: string | undefined) => !text || text.startsWith('TODO(content)');
 const PENDING_BARS = [[92, 64], [80, 52], [88, 70], [76, 58]] as const;
 
-// A case study told as a build session: hero, cover, chapters with a pinned rail, outcome, next project
+// A case study told as a build session: hero (CaseHero), cover, chapters with a pinned rail, outcome, next project
 export async function CaseStudy({ project, locale }: Props) {
   const t = await getTranslations({ locale });
   const loc = locale as Locale;
@@ -50,49 +49,15 @@ export async function CaseStudy({ project, locale }: Props) {
 
   return (
     <>
-      <section id="hero" className={styles.hero} data-build="<CaseHero />" data-build-manual="">
-        <div data-case-intro="">
-          <BuildIntro
-            sectionId="hero"
-            prompt={t('live.casePrompt', { slug: project.slug })}
-            compileId="case-title"
-            logs={[t('live.log.caseHero', { slug: project.slug })]}
-            finalLog={contentPending ? t('live.log.casePending') : undefined}
-          />
-        </div>
-        <p className={styles.idx} data-case-intro="">
-          {project.index} / {String(projects.length).padStart(2, '0')}
-        </p>
-        <KineticText lines={project.title.split(' ')} id="title" label={project.title} fill maxHeight={0.3} compileId="case-title" compileStep={55} />
-        <dl className="live-meta-grid">
-          <div data-reveal="">
-            <dt>{t('live.work.field')}</dt>
-            <dd>{field}</dd>
-          </div>
-          <div data-reveal="2">
-            <dt>{t('caseStudy.factRole')}</dt>
-            <dd className={isPending(role) ? styles.todo : undefined}>{isPending(role) ? 'TODO(content)' : role}</dd>
-          </div>
-          <div data-reveal="3">
-            <dt>{t('caseStudy.factYear')}</dt>
-            <dd className={project.year ? undefined : styles.todo}>{project.year ?? 'TODO(content)'}</dd>
-          </div>
-          <div data-reveal="4">
-            <dt>{t('caseStudy.factStatus')}</dt>
-            <dd className={project.status ? undefined : styles.todo}>{statusLabel ?? 'TODO(content)'}</dd>
-          </div>
-        </dl>
-        {project.links.length > 0 && (
-          <nav className={styles.links} aria-label={t('caseStudy.linksTitle')} data-reveal="5">
-            <span>{t('caseStudy.linksTitle')}</span>
-            {project.links.map((link) => (
-              <a key={link.href} href={link.href} target="_blank" rel="noreferrer" aria-label={`${link.label[loc]} (${t('a11y.externalLink')})`}>
-                {link.label[loc]} ↗
-              </a>
-            ))}
-          </nav>
-        )}
-      </section>
+      <CaseHero
+        project={project}
+        locale={loc}
+        total={projects.length}
+        field={field}
+        role={role}
+        statusLabel={statusLabel}
+        contentPending={contentPending}
+      />
 
       <section className={styles.cover} data-build="<Cover />" data-log={t('live.log.cover')}>
         <figure className={project.preview ? styles.coverVideo : undefined}>

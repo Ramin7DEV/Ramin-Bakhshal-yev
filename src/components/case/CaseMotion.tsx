@@ -12,11 +12,12 @@ export function CaseMotion() {
     if (prefersReducedMotion()) return;
     registerScroll();
     const ctx = gsap.context(() => {
-      // Leaving the hero: title lines drift apart, the prompt lifts away
+      // Leaving the hero: title lines drift apart, the prompt lifts away, lede and manifest rise a little
       gsap
         .timeline({ scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: SCRUB } })
         .to('#title .kinetic-line', { xPercent: (i: number) => (i % 2 ? 6 : -6), ease: 'none' }, 0)
-        .to('[data-case-intro]', { yPercent: -200, opacity: 0, ease: 'none' }, 0);
+        .to('[data-case-intro]', { yPercent: -200, opacity: 0, ease: 'none' }, 0)
+        .to('[data-case-drift]', { yPercent: -12, ease: 'none' }, 0);
 
       // Cover zooms out slowly across its whole pass through the screen
       gsap.fromTo('[data-cover-img]', { scale: 1.15 }, {

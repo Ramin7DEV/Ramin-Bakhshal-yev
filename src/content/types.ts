@@ -27,6 +27,27 @@ export interface PreviewVideo {
   alt: Localized<string>;
 }
 
+/** Commit activity read from the project's git history, one bar per calendar week */
+export interface BuildActivity {
+  /** Where the numbers come from, shown as a source line */
+  source: string;
+  /** Monday (ISO date) of the week that holds the first commit */
+  weekStart: string;
+  /** ISO dates of the first and last commit */
+  first: string;
+  last: string;
+  /** Commits per week, Monday to Sunday, from weekStart on */
+  weekly: number[];
+}
+
+export type ManifestKey = 'platform' | 'client' | 'backend' | 'ai' | 'payments' | 'integrity' | 'admin' | 'languages';
+
+/** One line of the case hero's build manifest; the label comes from the messages */
+export interface ManifestRow {
+  key: ManifestKey;
+  value: Localized<string>;
+}
+
 export interface CaseChapter {
   id: string;
   eyebrow: Localized<string>;
@@ -49,6 +70,10 @@ export interface Project {
   outcome: Localized<string[]>;
   cover: MediaAsset;
   preview?: PreviewVideo;
+  /** The real app icon, shown as an object in the case hero */
+  icon?: MediaAsset;
+  manifest?: ManifestRow[];
+  activity?: BuildActivity;
   chapters: CaseChapter[];
   links: ProjectLink[];
   accent: 'gold' | 'signal' | 'ivory';

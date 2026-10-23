@@ -70,7 +70,27 @@
     "outcomeTitle": "Outcome",
     "linksTitle": "Links",
     "nextProject": "Next project",
-    "pending": "The detailed story of this project is in progress."
+    "pending": "The detailed story of this project is in progress.",
+    "hero": {
+      "manifest": "Build manifest",
+      "activity": "Commits per week",
+      "activitySummary": "{total} commits over {weeks} weeks, {from} – {to}. Busiest week: {peak} commits.",
+      "peak": "peak · {count}",
+      "source": "source: {source}",
+      "pending": "Technical details are not added yet.",
+      "keys": {
+        "platform": "Platform",
+        "client": "Client",
+        "backend": "Backend",
+        "ai": "AI model",
+        "payments": "Payments",
+        "integrity": "Device check",
+        "admin": "Admin panel",
+        "languages": "Languages",
+        "stack": "Stack"
+      },
+      "iconLabel": "AppIcon.png"
+    }
   },
   "process": {
     "eyebrow": "Process",
@@ -221,13 +241,13 @@
         },
         {
           "tag": "Build",
-          "title": "Agents, directed",
+          "title": "Agents write, I review",
           "body": "Agents write alongside me. I set the direction, review every line and own what ships.",
           "agent": true
         },
         {
           "tag": "Ship",
-          "title": "Then measure",
+          "title": "Ship it, then measure",
           "body": "Done means in users' hands. Then measure, then iterate.",
           "agent": false
         }

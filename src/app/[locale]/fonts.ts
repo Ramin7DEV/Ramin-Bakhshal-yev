@@ -9,11 +9,13 @@ const display = Bricolage_Grotesque({
   preload: true,
 });
 
-// Bricolage has no Cyrillic. Roboto Flex shares its width axis and fills in for Russian glyphs only
-// (the browser fetches it through unicode-range, so az/en pages never download it).
+// Bricolage has no Cyrillic and no schwa (U+0259 / U+018F, the Azerbaijani e-schwa letters). Roboto Flex shares its
+// width and weight axes, so it fills in for those glyphs only: Bricolage comes first in the stack and the browser
+// asks Roboto Flex solely for characters Bricolage lacks (it is fetched through unicode-range, so en pages skip it).
+// latin-ext is required for the schwa; without it the browser falls back to an unrelated system-ui font.
 const displayCyrillic = Roboto_Flex({
   variable: '--font-display-cyrillic',
-  subsets: ['cyrillic', 'cyrillic-ext'],
+  subsets: ['latin-ext', 'cyrillic', 'cyrillic-ext'],
   axes: ['opsz', 'wdth'],
   display: 'swap',
   preload: false,

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type ReactNode } from 'react';
 import { prefersReducedMotion } from '@/lib/motion';
 import { registerScroll, ScrollTrigger } from '@/lib/scroll';
 import styles from './Statement.module.css';
@@ -8,10 +8,12 @@ import styles from './Statement.module.css';
 type Props = {
   label: string;
   text: string;
+  /** Optional object beside the text (the case study's flip card) */
+  aside?: ReactNode;
 };
 
 // A paragraph that lights up word by word as it scrolls through the screen
-export function Statement({ label, text }: Props) {
+export function Statement({ label, text, aside }: Props) {
   const ref = useRef<HTMLHeadingElement>(null);
   const words = text.split(' ');
 
@@ -41,7 +43,7 @@ export function Statement({ label, text }: Props) {
   }, [text]);
 
   return (
-    <section id="statement" className={styles.statement}>
+    <section id="statement" className={`${styles.statement} ${aside ? styles.withAside : ''}`}>
       <span className="live-label" data-speed="1.25">
         {label}
       </span>
@@ -50,6 +52,7 @@ export function Statement({ label, text }: Props) {
           <span key={i}>{w} </span>
         ))}
       </h2>
+      {aside}
     </section>
   );
 }

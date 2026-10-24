@@ -39,15 +39,17 @@
 
 .live-js [data-build] [data-reveal] {
   opacity: 0;
-  transform: translateY(18px);
+  /* The individual translate property, not transform: scroll tweens write transform on some of these elements
+     (skew, climb, scale), and a transition on transform would drag every one of those frames behind the scroll */
+  translate: 0 18px;
   transition:
     opacity var(--live-dur-base) ease,
-    transform var(--live-dur-slow) var(--live-ease-expo);
+    translate var(--live-dur-slow) var(--live-ease-expo);
 }
 
 .live-js [data-build].is-built [data-reveal] {
   opacity: 1;
-  transform: none;
+  translate: none;
 }
 
 .live-js [data-build].is-built [data-reveal="2"] { transition-delay: 50ms; }
@@ -180,6 +182,7 @@
   .live-js [data-build] [data-reveal],
   .live-js .kinetic-ch[data-pending] {
     opacity: 1;
+    translate: none;
     transform: none;
   }
 }

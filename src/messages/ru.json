@@ -90,7 +90,16 @@
         "stack": "Стек"
       },
       "iconLabel": "AppIcon.png"
-    }
+    },
+    "sections": {
+      "pitch": "(01) Коротко",
+      "story": "(02) История",
+      "screens": "(03) Как это работает",
+      "flow": "(04) Как проходит одна примерка",
+      "outcome": "(05) Результат"
+    },
+    "screensHint": "Одна реальная примерка, шаг за шагом",
+    "cta": "Открыть в {store}"
   },
   "process": {
     "eyebrow": "Процесс",
@@ -184,7 +193,12 @@
       "chapter": "chapter {n} — {id}",
       "casePending": "content for this case is still TODO — shown as placeholders, not invented",
       "filter": "filter → {filter} ({count})",
-      "next": "Next.tsx — {slug}"
+      "next": "Next.tsx — {slug}",
+      "story": "Story.tsx — {count} chapters",
+      "screens": "Screens.tsx — real app UI",
+      "flow": "Flow.tsx — one request, step by step",
+      "outcome": "Outcome.tsx — outcome and App Store",
+      "coverVideo": "Cover.tsx — app preview video"
     },
     "headline": "Превращаю идею в *работающий* продукт.",
     "legend": "<b>■</b> шум = идеи<br></br>ведите курсором — он компилируется в код",
@@ -260,10 +274,6 @@
       "baku": "время в Баку"
     },
     "case": {
-      "prompt": "Промпт",
-      "decision": "Решение человека",
-      "metric": "реальная метрика",
-      "log": "Лог сессии",
       "back": "← Проекты",
       "repo": "Репозиторий",
       "fig": "Рис. 01"

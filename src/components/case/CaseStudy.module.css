@@ -1,4 +1,4 @@
-/* Cover: opens top to bottom once built, then slowly zooms out with the scroll */
+/* Cover: opens top to bottom once built; a still image then slowly zooms out with the scroll */
 .cover {
   padding: 0 var(--live-gutter);
 }
@@ -18,8 +18,7 @@
   clip-path: inset(0);
 }
 
-.cover img,
-.cover video {
+.cover img {
   object-fit: cover;
   transform: scale(1.15);
   will-change: transform;
@@ -47,146 +46,130 @@
   color: var(--live-muted);
 }
 
-.session {
-  display: grid;
-  grid-template-columns: var(--live-rail) 1fr;
-  gap: 0 var(--space-8);
-  padding: var(--live-section-pad) var(--live-gutter) 10vh;
+/* Story: the chapters as a row of short cards, like the home Method grid */
+.story {
+  padding: var(--space-8) var(--live-gutter) var(--live-section-pad);
 }
 
-.chapters {
+.storyGrid {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column; /* one equal column per chapter, however many there are */
+  margin-top: var(--space-6);
+  border-top: 1px solid var(--live-ink);
+}
+
+.storyGrid article {
   display: flex;
   flex-direction: column;
-  gap: 14vh;
-  min-width: 0;
+  padding: var(--space-6) var(--space-5) var(--space-7) 0;
+  border-right: 1px solid var(--live-rule);
 }
 
-.chapter {
-  padding: var(--space-7) 0 var(--space-3);
+.storyGrid article + article {
+  padding-left: var(--space-5);
 }
 
-.chapter::before {
-  left: 0;
+.storyGrid article:last-child {
+  border-right: 0;
 }
 
-.chapter::after {
-  inset: 0 calc(-1 * var(--space-4));
-}
-
-.chNo {
+.storyGrid b {
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
   font-weight: 400;
   color: var(--live-hot);
 }
 
-.chapter h2 {
-  margin: var(--space-5) 0 var(--space-6);
-  font-size: var(--live-type-chapter);
-  font-variation-settings: var(--live-vf-row);
-  line-height: 0.92;
+.storyGrid h3 {
+  margin: var(--space-4) 0 var(--space-2);
+  font-size: var(--live-type-method);
+  font-variation-settings: var(--live-vf-method);
+  line-height: 0.9;
   text-transform: uppercase;
+}
+
+.storyGrid h4 {
+  margin-bottom: var(--space-3);
+  font-family: var(--live-font-serif);
+  font-size: var(--live-type-serif-italic);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.storyGrid p {
+  font-family: var(--live-font-serif);
+  font-size: var(--live-type-serif-m);
+  line-height: 1.45;
+  color: var(--live-ink-soft);
 }
 
 .bars {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  max-width: 720px;
-  margin-bottom: var(--space-5);
-  font-size: var(--live-type-serif-l);
+  margin-top: var(--space-3);
 }
 
-.body {
-  max-width: 68ch;
-  font-family: var(--live-font-serif);
-  font-size: var(--live-type-serif-l);
-  line-height: 1.5;
-  color: var(--live-ink-soft);
-}
-
-.body p + p {
-  margin-top: var(--space-4);
-}
-
-/* Prompt / decision pair: the format every AI workflow chapter is told in */
-.pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
-  max-width: 900px;
-  margin-top: var(--space-7);
-}
-
-.pair > div {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  min-height: 200px;
-  padding: var(--space-5);
-  border-radius: var(--live-radius-s);
-}
-
-.prompt {
-  background: var(--live-ink);
-  color: var(--live-console-text);
-  font-family: var(--live-font-mono);
-  font-size: var(--live-type-mono-m);
-}
-
-.prompt span {
-  color: var(--live-hot);
-}
-
-.prompt :global(.live-pending-bar) {
-  height: 11px;
-  background: repeating-linear-gradient(90deg, var(--live-console-edge) 0 14px, transparent 14px 20px);
-}
-
-.decision {
-  border: 1px solid var(--live-ink);
-  font-family: var(--live-font-mono);
-  font-size: var(--live-type-mono-m);
-}
-
-.decision :global(.live-pending-bar) {
-  height: 12px;
-}
-
+/* Outcome: the short outcome list, then the way to the app itself */
 .outcome {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  padding: var(--space-8) var(--live-gutter) 18vh;
+}
+
+.outcomeList {
   margin: var(--space-6) 0 0;
   padding: 0;
   list-style: none;
-  border-top: 1px solid var(--live-ink);
 }
 
-.outcome li {
-  padding: var(--space-5) var(--space-5) 0 0;
+.outcomeList li {
+  display: flex;
+  gap: var(--space-5);
+  align-items: baseline;
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--live-rule);
+  font-family: var(--live-font-serif);
+  font-size: var(--live-type-serif-l);
 }
 
-.outcome strong {
-  display: block;
-  font-size: var(--live-type-outcome);
-  font-variation-settings: var(--live-vf-outcome);
-  font-weight: normal;
-  line-height: 0.85;
-  color: var(--live-pending);
-}
-
-.outcome span {
-  display: block;
-  margin-top: var(--space-3);
+.outcomeList b {
   font-family: var(--live-font-mono);
   font-size: var(--live-type-mono);
-  text-transform: uppercase;
+  font-weight: 400;
   color: var(--live-hot);
 }
 
-.outcome .outcomeText {
-  font-family: var(--live-font-serif);
-  font-size: var(--live-type-serif-l);
-  text-transform: none;
-  color: var(--live-ink);
+/* App Store call to action: a full-width dark bar, the arrow slides on hover */
+.cta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--space-7);
+  padding: var(--space-5) var(--space-6);
+  border-radius: var(--live-radius);
+  background: var(--live-ink);
+  color: var(--live-bone);
+  font-size: var(--live-type-method);
+  font-variation-settings: var(--live-vf-method);
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.cta span:last-child {
+  color: var(--live-hot);
+  transition: transform var(--live-dur-base) var(--live-ease-expo);
+}
+
+.cta:hover span:last-child,
+.cta:focus-visible span:last-child {
+  transform: translate(6px, -6px);
+}
+
+.cta:focus-visible {
+  outline: 2px solid var(--live-hot);
+  outline-offset: 4px;
 }
 
 /* Next project: full-width dark block, the next cover breathes in on hover */
@@ -265,13 +248,15 @@
 }
 
 @media (max-width: 900px) {
-  .session {
-    grid-template-columns: 1fr;
+  .storyGrid {
+    grid-auto-flow: row;
   }
 
-  .pair,
-  .outcome {
-    grid-template-columns: 1fr;
+  .storyGrid article,
+  .storyGrid article + article {
+    padding: var(--space-5) 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--live-rule);
   }
 
   .cover figure {
@@ -284,8 +269,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cover img,
-  .cover video {
+  .cover img {
     transform: none;
   }
 }

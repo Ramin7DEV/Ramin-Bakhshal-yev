@@ -90,7 +90,16 @@
         "stack": "Texnologiya"
       },
       "iconLabel": "AppIcon.png"
-    }
+    },
+    "sections": {
+      "pitch": "(01) Qısaca",
+      "story": "(02) Hekayə",
+      "screens": "(03) Necə işləyir",
+      "flow": "(04) Bir try-on necə işləyir",
+      "outcome": "(05) Nəticə"
+    },
+    "screensHint": "Bir real try-on, addım-addım",
+    "cta": "{store}-da aç"
   },
   "process": {
     "eyebrow": "Proses",
@@ -184,7 +193,12 @@
       "chapter": "chapter {n} — {id}",
       "casePending": "content for this case is still TODO — shown as placeholders, not invented",
       "filter": "filter → {filter} ({count})",
-      "next": "Next.tsx — {slug}"
+      "next": "Next.tsx — {slug}",
+      "story": "Story.tsx — {count} chapters",
+      "screens": "Screens.tsx — real app UI",
+      "flow": "Flow.tsx — one request, step by step",
+      "outcome": "Outcome.tsx — outcome and App Store",
+      "coverVideo": "Cover.tsx — app preview video"
     },
     "headline": "Fikri işləyən *məhsula* çevirirəm.",
     "legend": "<b>■</b> səs-küy = ideyalar<br></br>kursoru gəzdir — koda çevrilir",
@@ -260,10 +274,6 @@
       "baku": "Bakı vaxtı"
     },
     "case": {
-      "prompt": "Prompt",
-      "decision": "İnsan qərarı",
-      "metric": "real göstərici",
-      "log": "Sessiya logu",
       "back": "← Layihələr",
       "repo": "Repo",
       "fig": "Şəkil 01"

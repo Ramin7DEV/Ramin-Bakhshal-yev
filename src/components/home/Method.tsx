@@ -13,9 +13,9 @@ export async function Method({ locale }: { locale: string }) {
       <h2 className="live-label" data-reveal="">
         {t('sections.method')}
       </h2>
-      <div className={styles.grid} data-reveal="2">
+      <div className={styles.grid} data-reveal="2" data-climb="">
         {steps.map((step, i) => (
-          <article key={step.tag} className={step.agent ? styles.agent : undefined} data-method-step="">
+          <article key={step.tag} className={step.agent ? styles.agent : undefined}>
             <b>{String(i + 1).padStart(2, '0')}</b>
             <h3 lang="en" data-skew="">
               {step.tag}

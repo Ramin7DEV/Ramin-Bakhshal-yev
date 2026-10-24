@@ -2,11 +2,15 @@ import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { projects } from '@/content/projects';
 import { profile } from '@/content/profile';
-import type { Locale, Project } from '@/content/types';
+import type { Locale, ManifestKey, Project } from '@/content/types';
+import { PageMotion } from '@/components/live/PageMotion';
 import { TransitionLink } from '@/components/live/TransitionLink';
 import { CaseHero } from './CaseHero';
-import { ChapterRail } from './ChapterRail';
-import { CaseMotion } from './CaseMotion';
+import { Marquee } from '@/components/home/Marquee';
+import { Statement } from '@/components/home/Statement';
+import { CaseFlipCard } from './CaseFlipCard';
+import { CaseFlow } from './CaseFlow';
+import { CaseScreens } from './CaseScreens';
 import { PreviewVideo } from './PreviewVideo';
 import styles from './CaseStudy.module.css';
 
@@ -16,9 +20,10 @@ type Props = {
 };
 
 const isPending = (text: string | undefined) => !text || text.startsWith('TODO(content)');
+const CARD_KEYS: ManifestKey[] = ['platform', 'ai', 'languages'];
 const PENDING_BARS = [[92, 64], [80, 52], [88, 70], [76, 58]] as const;
 
-// A case study told as a build session: hero (CaseHero), cover, chapters with a pinned rail, outcome, next project
+// A case study told as a build session: hero, cover, pitch, story cards, the try-on walkthrough, the request flow, outcome, next
 export async function CaseStudy({ project, locale }: Props) {
   const t = await getTranslations({ locale });
   const loc = locale as Locale;
@@ -37,15 +42,12 @@ export async function CaseStudy({ project, locale }: Props) {
     : undefined;
   const contentPending = project.chapters.every((c) => isPending(c.body[loc][0]));
 
-  const chapters = [
-    ...project.chapters.map((c) => ({ id: c.id, label: c.eyebrow[loc] })),
-    { id: 'outcome', label: t('caseStudy.outcomeTitle') },
-  ];
-  const facts = [
-    { label: t('caseStudy.factStack'), value: project.stack.join(', ') || 'TODO', pending: project.stack.length === 0 },
-    { label: t('caseStudy.factYear'), value: project.year ?? 'TODO', pending: !project.year },
-    { label: t('caseStudy.factStatus'), value: statusLabel ?? 'TODO', pending: !statusLabel },
-  ];
+  const pitch = project.pitch?.[loc];
+  // The back of the pitch card: where it runs, what powers it, who can read it
+  const cardFacts = (project.manifest ?? [])
+    .filter((r) => CARD_KEYS.includes(r.key))
+    .map((r) => ({ label: t(`caseStudy.hero.keys.${r.key}`), value: r.value[loc] }));
+  const store = project.links.find((l) => l.kind === 'app-store');
 
   return (
     <>
@@ -59,7 +61,7 @@ export async function CaseStudy({ project, locale }: Props) {
         contentPending={contentPending}
       />
 
-      <section className={styles.cover} data-build="<Cover />" data-log={t('live.log.cover')}>
+      <section className={styles.cover} data-build="<Cover />" data-log={t(project.preview ? 'live.log.coverVideo' : 'live.log.cover')}>
         <figure className={project.preview ? styles.coverVideo : undefined}>
           {project.preview ? (
             <PreviewVideo preview={project.preview} alt={project.preview.alt[loc]} />
@@ -75,97 +77,98 @@ export async function CaseStudy({ project, locale }: Props) {
         </figcaption>
       </section>
 
-      <div className={styles.session}>
-        <ChapterRail title={t('live.case.log')} ariaLabel={t('live.a11y.chapters')} chapters={chapters} facts={facts} />
+      {pitch && (
+        <Statement
+          label={t('caseStudy.sections.pitch')}
+          text={pitch}
+          aside={
+            project.icon && cardFacts.length > 0 ? (
+              <CaseFlipCard icon={project.icon} title={project.title} field={field} locale={loc} facts={cardFacts} />
+            ) : undefined
+          }
+        />
+      )}
 
-        <div className={styles.chapters} data-chapters="">
+      <section
+        id="story"
+        className={styles.story}
+        data-build="<Story />"
+        data-log={t('live.log.story', { count: project.chapters.length })}
+      >
+        <span className="live-label" data-reveal="">
+          {t('caseStudy.sections.story')}
+        </span>
+        <div className={styles.storyGrid} data-reveal="2" data-climb="">
           {project.chapters.map((chapter, i) => {
-            const n = String(i + 1).padStart(2, '0');
             const title = chapter.title[loc];
             const body = chapter.body[loc];
             const bars = PENDING_BARS[i % PENDING_BARS.length] ?? PENDING_BARS[0];
             return (
-              <section
-                key={chapter.id}
-                id={`ch-${chapter.id}`}
-                className={styles.chapter}
-                data-build={`<Chapter id="${chapter.id}" />`}
-                data-log={t('live.log.chapter', { n, id: chapter.id })}
-              >
-                <span className="live-label" data-reveal="">
-                  <b className={styles.chNo}>ch/{n}</b> — {chapter.eyebrow[loc]}
-                </span>
-                <h2 data-reveal="2" data-skew="">
-                  {isPending(title) ? chapter.eyebrow[loc] : title}
-                </h2>
+              <article key={chapter.id} id={`ch-${chapter.id}`}>
+                <b>{String(i + 1).padStart(2, '0')}</b>
+                <h3 data-skew="">{chapter.eyebrow[loc]}</h3>
+                {isPending(title) ? null : <h4>{title}</h4>}
                 {isPending(body[0]) ? (
-                  <>
-                    <div className={styles.bars} data-reveal="3" aria-hidden="true">
-                      {bars.map((w) => (
-                        <div key={w} className="live-pending-bar" style={{ width: `${w}%` }} />
-                      ))}
-                    </div>
-                    <p className="live-pending-text" data-reveal="4">
-                      {t('caseStudy.pending')}
-                    </p>
-                  </>
-                ) : (
-                  <div className={styles.body} data-reveal="3">
-                    {body.map((p, j) => (
-                      <p key={j}>{p}</p>
+                  <div className={styles.bars} aria-hidden="true">
+                    {bars.map((w) => (
+                      <div key={w} className="live-pending-bar" style={{ width: `${w}%` }} />
                     ))}
                   </div>
+                ) : (
+                  body.map((p, j) => <p key={j}>{p}</p>)
                 )}
-                {chapter.id === 'ai-workflow' && (
-                  <div className={styles.pair} data-reveal="4">
-                    <div className={styles.prompt}>
-                      <span>› {t('live.case.prompt')}</span>
-                      <div className="live-pending-bar" style={{ width: '90%' }} />
-                      <div className="live-pending-bar" style={{ width: '72%' }} />
-                      <div className="live-pending-bar" style={{ width: '40%' }} />
-                    </div>
-                    <div className={styles.decision}>
-                      <span>✓ {t('live.case.decision')}</span>
-                      <div className="live-pending-bar" style={{ width: '85%' }} />
-                      <div className="live-pending-bar" style={{ width: '60%' }} />
-                    </div>
-                  </div>
-                )}
-              </section>
+              </article>
             );
           })}
-
-          <section
-            id="ch-outcome"
-            className={styles.chapter}
-            data-build="<Outcome />"
-            data-log={t('live.log.chapter', { n: String(project.chapters.length + 1).padStart(2, '0'), id: 'outcome' })}
-          >
-            <span className="live-label" data-reveal="">
-              <b className={styles.chNo}>ch/{String(project.chapters.length + 1).padStart(2, '0')}</b> — {t('caseStudy.outcomeTitle')}
-            </span>
-            <h2 data-reveal="2" data-skew="">
-              {t('caseStudy.outcomeTitle')}
-            </h2>
-            <ul className={styles.outcome} data-reveal="3">
-              {project.outcome[loc].map((item, i) =>
-                isPending(item) ? (
-                  [0, 1, 2].map((k) => (
-                    <li key={`${i}-${k}`}>
-                      <strong>—</strong>
-                      <span>TODO(content): {t('live.case.metric')}</span>
-                    </li>
-                  ))
-                ) : (
-                  <li key={i}>
-                    <span className={styles.outcomeText}>{item}</span>
-                  </li>
-                ),
-              )}
-            </ul>
-          </section>
         </div>
-      </div>
+        {contentPending && (
+          <p className="live-pending-text" data-reveal="3">
+            {t('caseStudy.pending')}
+          </p>
+        )}
+      </section>
+
+      {project.screens && (
+        <CaseScreens
+          screens={project.screens}
+          locale={loc}
+          label={t('caseStudy.sections.screens')}
+          hint={t('caseStudy.screensHint')}
+          log={t('live.log.screens')}
+        />
+      )}
+
+      {project.marquee && <Marquee words={project.marquee.flatMap((w) => [w, '+'])} />}
+
+      {project.flow && (
+        <CaseFlow flow={project.flow} locale={loc} label={t('caseStudy.sections.flow')} log={t('live.log.flow')} />
+      )}
+
+      <section id="outcome" className={styles.outcome} data-build="<Outcome />" data-log={t('live.log.outcome')}>
+        <span className="live-label" data-reveal="">
+          {t('caseStudy.sections.outcome')}
+        </span>
+        <ul className={styles.outcomeList} data-reveal="3" data-climb="">
+          {project.outcome[loc].map((item, i) =>
+            isPending(item) ? (
+              <li key={i} className="live-pending-text">
+                TODO(content)
+              </li>
+            ) : (
+              <li key={i}>
+                <b>{String(i + 1).padStart(2, '0')}</b>
+                {item}
+              </li>
+            ),
+          )}
+        </ul>
+        {store && (
+          <a className={styles.cta} href={store.href} target="_blank" rel="noreferrer" data-reveal="4">
+            <span>{t('caseStudy.cta', { store: store.label[loc] })}</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        )}
+      </section>
 
       <TransitionLink
         href={`/work/${next.slug}`}
@@ -191,7 +194,7 @@ export async function CaseStudy({ project, locale }: Props) {
           © {new Date().getFullYear()} {t('footer.copyright')}
         </span>
       </footer>
-      <CaseMotion />
+      <PageMotion page="case" />
     </>
   );
 }

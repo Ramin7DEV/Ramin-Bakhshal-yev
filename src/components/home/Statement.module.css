@@ -23,8 +23,15 @@
   opacity: 1;
 }
 
+.withAside {
+  grid-template-columns: 1fr 2.4fr 1fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+
 @media (max-width: 760px) {
-  .statement {
+  .statement,
+  .withAside {
     grid-template-columns: 1fr;
   }
 }

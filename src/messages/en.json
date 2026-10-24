@@ -90,7 +90,16 @@
         "stack": "Stack"
       },
       "iconLabel": "AppIcon.png"
-    }
+    },
+    "sections": {
+      "pitch": "(01) In short",
+      "story": "(02) Story",
+      "screens": "(03) How it works",
+      "flow": "(04) How one try-on runs",
+      "outcome": "(05) Outcome"
+    },
+    "screensHint": "One real try-on, step by step",
+    "cta": "Open in {store}"
   },
   "process": {
     "eyebrow": "Process",
@@ -184,7 +193,12 @@
       "chapter": "chapter {n} — {id}",
       "casePending": "content for this case is still TODO — shown as placeholders, not invented",
       "filter": "filter → {filter} ({count})",
-      "next": "Next.tsx — {slug}"
+      "next": "Next.tsx — {slug}",
+      "story": "Story.tsx — {count} chapters",
+      "screens": "Screens.tsx — real app UI",
+      "flow": "Flow.tsx — one request, step by step",
+      "outcome": "Outcome.tsx — outcome and App Store",
+      "coverVideo": "Cover.tsx — app preview video"
     },
     "headline": "I turn ideas into products that *ship.*",
     "legend": "<b>■</b> noise = ideas<br></br>move the cursor — it compiles into code",
@@ -260,10 +274,6 @@
       "baku": "time in Baku"
     },
     "case": {
-      "prompt": "Prompt",
-      "decision": "Human decision",
-      "metric": "real metric",
-      "log": "Session log",
       "back": "← Index",
       "repo": "Repo",
       "fig": "Fig. 01"

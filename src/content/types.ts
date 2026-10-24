@@ -56,6 +56,24 @@ export interface CaseChapter {
   media?: MediaAsset;
 }
 
+/** One real app screen in the case study's try-on walkthrough */
+export interface ScreenShot {
+  src: string;
+  width: number;
+  height: number;
+  label: Localized<string>;
+  /** One short line under the step label */
+  note: Localized<string>;
+}
+
+/** One request through the product, told as a row of steps; `fallback` is the failure branch */
+export interface RequestFlow {
+  steps: Localized<string[]>;
+  fallback: Localized<string>;
+  /** Index of the first step the failure branch undoes; the branch is drawn under it */
+  fallbackFrom: number;
+}
+
 export interface Project {
   slug: 'mirrorly' | 'azerbaijan-otur' | 'beauty-app';
   index: '01' | '02' | '03';
@@ -65,6 +83,8 @@ export interface Project {
   title: string;
   summary: Localized<string>;
   statement: Localized<string>;
+  /** One or two sentences that open the case study, lit word by word */
+  pitch?: Localized<string>;
   role: Localized<string[]>;
   stack: string[];
   outcome: Localized<string[]>;
@@ -75,6 +95,10 @@ export interface Project {
   manifest?: ManifestRow[];
   activity?: BuildActivity;
   chapters: CaseChapter[];
+  screens?: ScreenShot[];
+  flow?: RequestFlow;
+  /** Technology names for the moving band; not translated */
+  marquee?: string[];
   links: ProjectLink[];
   accent: 'gold' | 'signal' | 'ivory';
 }

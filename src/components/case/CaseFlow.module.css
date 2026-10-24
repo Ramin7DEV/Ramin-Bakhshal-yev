@@ -1,0 +1,92 @@
+.flow {
+  padding: var(--live-section-pad) var(--live-gutter);
+}
+
+.track {
+  position: relative;
+  margin-top: var(--space-7);
+}
+
+/* Drawn left to right by PageMotion as the section scrolls through */
+.line {
+  position: absolute;
+  top: 6px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: var(--live-ink);
+  transform-origin: 0 50%;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(var(--steps), 1fr);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.steps li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6) var(--space-4) 0 0;
+}
+
+.steps li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 13px;
+  height: 13px;
+  border: 1px solid var(--live-ink);
+  border-radius: 50%;
+  background: var(--live-bone);
+}
+
+.steps li:last-child::before {
+  border-color: var(--live-hot);
+  background: var(--live-hot);
+}
+
+.steps b {
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+  font-weight: 400;
+  color: var(--live-hot);
+}
+
+.steps span {
+  font-size: var(--live-type-flow);
+  font-variation-settings: var(--live-vf-method);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* The failure branch sits under the steps it undoes */
+.fallback {
+  margin: var(--space-6) 0 0 calc(100% / var(--steps) * var(--from));
+  padding-top: var(--space-3);
+  border-top: 1px dashed var(--live-hot);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono-m);
+  text-transform: uppercase;
+  color: var(--live-hot);
+}
+
+@media (max-width: 900px) {
+  .line {
+    display: none;
+  }
+
+  .steps {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-5) var(--space-4);
+  }
+
+  .fallback {
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,212 @@
+.walk {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: var(--space-8) var(--live-gutter);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--live-ink);
+}
+
+.body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  align-items: center;
+  padding-top: var(--space-6);
+}
+
+/* Step list: the current step is at full strength, the others wait in the background */
+.steps {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.steps li {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 0 var(--space-4);
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--live-rule);
+}
+
+.steps b {
+  grid-row: span 2;
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono);
+  font-weight: 400;
+  color: var(--live-hot);
+}
+
+.steps strong {
+  font-size: var(--live-type-method);
+  font-variation-settings: var(--live-vf-method);
+  font-weight: normal;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.steps span {
+  margin-top: var(--space-2);
+  font-family: var(--live-font-serif);
+  font-size: var(--live-type-serif-m);
+  font-style: italic;
+  color: var(--live-ink-soft);
+}
+
+/* Wide screens: one phone frame, the screens stacked inside it */
+.deck {
+  position: relative;
+  overflow: hidden;
+  justify-self: center;
+  width: calc(70vh * 739 / 1600);
+  aspect-ratio: 739 / 1600;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--live-ink);
+  border-radius: var(--live-radius-phone);
+  background: var(--live-ink);
+  box-shadow: var(--live-shadow-phone);
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* The wipe edge: a hot line riding the leading edge of each incoming screen */
+.layer + .layer::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: var(--live-hot);
+}
+
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Before PageMotion takes over, only the first screen shows */
+:global(.live-js) .layer + .layer {
+  transform: translateX(101%);
+}
+
+:global(.live-js) .layer + .layer .shot {
+  transform: translateX(-101%);
+}
+
+.cap {
+  display: none;
+}
+
+/* Phones: a swipe carousel of the same screens, each with its caption */
+@media (max-width: 900px) {
+  .walk {
+    min-height: 0;
+  }
+
+  .body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .steps {
+    display: none;
+  }
+
+  .deck {
+    display: flex;
+    gap: var(--space-4);
+    overflow-x: auto;
+    justify-self: stretch;
+    width: auto;
+    min-width: 0;
+    aspect-ratio: auto;
+    margin: 0 calc(-1 * var(--live-gutter));
+    padding: 0 var(--live-gutter) var(--space-4);
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 var(--live-gutter);
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  .deck::-webkit-scrollbar {
+    display: none;
+  }
+
+  .layer {
+    position: static;
+    flex: 0 0 68vw;
+    overflow: visible;
+    scroll-snap-align: start;
+  }
+
+  .layer + .layer::before {
+    display: none;
+  }
+
+  :global(.live-js) .layer + .layer,
+  :global(.live-js) .layer + .layer .shot {
+    transform: none;
+  }
+
+  .shot {
+    overflow: hidden;
+    border: 1px solid var(--live-ink);
+    border-radius: var(--live-radius-phone);
+    background: var(--live-ink);
+    box-shadow: var(--live-shadow-phone);
+  }
+
+  .cap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--space-2);
+    margin-top: var(--space-4);
+    font-family: var(--live-font-mono);
+    font-size: var(--live-type-mono);
+    text-transform: uppercase;
+  }
+
+  .cap b {
+    font-weight: 400;
+    color: var(--live-hot);
+  }
+
+  .cap span {
+    flex-basis: 100%;
+    margin-top: var(--space-2);
+    font-family: var(--live-font-serif);
+    font-size: var(--live-type-serif-m);
+    font-style: italic;
+    text-transform: none;
+    color: var(--live-ink-soft);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(.live-js) .layer + .layer,
+  :global(.live-js) .layer + .layer .shot {
+    transform: none;
+  }
+}

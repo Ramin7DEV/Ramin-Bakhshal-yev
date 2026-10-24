@@ -1,0 +1,119 @@
+.card {
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 3 / 4;
+  justify-self: end;
+  perspective: 1200px;
+}
+
+.inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.front,
+.back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: var(--space-5);
+  border-radius: var(--live-radius);
+  backface-visibility: hidden;
+  box-shadow: var(--live-shadow-phone);
+}
+
+.front {
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  background: var(--live-ink);
+  color: var(--live-bone);
+}
+
+.front img {
+  width: 112px;
+  height: 112px;
+  border-radius: var(--live-radius-icon);
+  box-shadow: var(--live-shadow-icon);
+}
+
+.front strong {
+  font-size: var(--live-type-method);
+  font-variation-settings: var(--live-vf-method);
+  font-weight: normal;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.front span {
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono-s);
+  text-transform: uppercase;
+  color: var(--live-dark-muted);
+}
+
+/* The back starts turned away and comes round as the card flips */
+.back {
+  justify-content: space-between;
+  border: 1px solid var(--live-ink);
+  background: var(--live-bone-2);
+  transform: rotateY(180deg);
+}
+
+.back div {
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--live-rule);
+}
+
+.back div:first-child {
+  border-top-color: var(--live-ink);
+}
+
+.back dt {
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono-s);
+  text-transform: uppercase;
+  color: var(--live-hot);
+}
+
+.back dd {
+  margin: var(--space-2) 0 0;
+  font-family: var(--live-font-serif);
+  font-size: var(--live-type-serif-m);
+  line-height: 1.3;
+}
+
+@media (max-width: 760px) {
+  .card {
+    justify-self: start;
+    max-width: 260px;
+  }
+}
+
+/* No flip under reduced motion: the faces stack so both stay readable */
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    aspect-ratio: auto;
+    perspective: none;
+  }
+
+  .inner {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .front,
+  .back {
+    position: static;
+    transform: none;
+  }
+
+  .front {
+    aspect-ratio: 3 / 4;
+  }
+}

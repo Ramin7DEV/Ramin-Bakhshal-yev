@@ -53,7 +53,6 @@ export function PreviewVideo({ preview, alt }: Props) {
       width={preview.width}
       height={preview.height}
       aria-label={alt}
-      data-cover-img=""
     >
       <source src={preview.webm} type="video/webm" />
       <source src={preview.mp4} type="video/mp4" />

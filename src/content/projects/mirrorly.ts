@@ -15,6 +15,11 @@ export const mirrorly = {
     en: 'In Mirrorly the user uploads their photo and a garment image, and an AI model generates the result. The app is written in SwiftUI, the backend runs on Supabase, and usage is paid through credit packs. Behind the app there is also an admin panel, device verification and limits enforced on the server.',
     ru: 'В Mirrorly пользователь загружает своё фото и изображение одежды, а результат генерирует AI-модель. Приложение написано на SwiftUI, бэкенд работает на Supabase, оплата устроена через пакеты кредитов. За приложением стоят ещё админ-панель, проверка устройства и лимиты на сервере.',
   },
+  pitch: {
+    az: 'Alış-verişdən əvvəl geyimi öz şəklinizdə görün. Mirrorly — iPhone və iPad üçün AI ilə virtual geyim sınağı tətbiqidir, App Store-da mövcuddur.',
+    en: 'See a garment on your own photo before you buy it. Mirrorly is an AI virtual try-on app for iPhone and iPad, available on the App Store.',
+    ru: 'Увидьте вещь на своём фото ещё до покупки. Mirrorly — AI-приложение для виртуальной примерки на iPhone и iPad, доступно в App Store.',
+  },
   role: {
     az: [
       'Məhsul ideyası və dizayn',
@@ -42,24 +47,9 @@ export const mirrorly = {
   year: '2026',
   status: 'live',
   outcome: {
-    az: [
-      'App Store-da yayımlanıb, iPhone və iPad üçün, iOS 16 və yuxarı',
-      'Üç dildə interfeys: Azərbaycan, ingilis, rus',
-      '10 Edge Function, 6 SQL miqrasiya və ayrıca admin panel',
-      'Kredit paketləri ilə ödəniş, qonaq rejimi və hesabın silinməsi',
-    ],
-    en: [
-      'Released on the App Store for iPhone and iPad, iOS 16 and later',
-      'Interface in three languages: Azerbaijani, English, Russian',
-      '10 Edge Functions, 6 SQL migrations and a separate admin panel',
-      'Credit-pack payments, guest mode and account deletion',
-    ],
-    ru: [
-      'Выпущено в App Store для iPhone и iPad, iOS 16 и новее',
-      'Интерфейс на трёх языках: азербайджанский, английский, русский',
-      '10 Edge Functions, 6 SQL-миграций и отдельная админ-панель',
-      'Оплата пакетами кредитов, гостевой режим и удаление аккаунта',
-    ],
+    az: ['App Store-da: iPhone və iPad, iOS 16+', 'Kredit paketləri ilə ödəniş və qonaq rejimi', 'Ayrıca Next.js admin panel'],
+    en: ['Live on the App Store: iPhone and iPad, iOS 16+', 'Credit-pack payments and guest mode', 'A separate Next.js admin panel'],
+    ru: ['В App Store: iPhone и iPad, iOS 16+', 'Оплата пакетами кредитов и гостевой режим', 'Отдельная админ-панель на Next.js'],
   },
   cover: {
     src: '/images/project-mirrorly-editorial.jpg',
@@ -114,116 +104,99 @@ export const mirrorly = {
   chapters: [
     {
       id: 'problem',
-      eyebrow: {
-        az: 'Problem',
-        en: 'Problem',
-        ru: 'Проблема',
-      },
+      eyebrow: { az: 'Problem', en: 'Problem', ru: 'Проблема' },
       title: {
         az: 'Onlayn mağazada sınaq otağı yoxdur',
         en: 'Online shops have no fitting room',
         ru: 'В интернет-магазине нет примерочной',
       },
       body: {
-        az: [
-          'Onlayn alış-verişdə geyimin üzərində necə görünəcəyini bilmək çətindir; mağazada isə sınaq otağında növbə gözləmək və soyunub-geyinmək lazımdır.',
-          'Mirrorly bu boşluğu istifadəçinin öz şəkli üzərində vizual nəticə ilə doldurmağa çalışır.',
-        ],
-        en: [
-          'When shopping online it is hard to know how a garment will look on you, and in a store it means queuing for a fitting room and changing.',
-          'Mirrorly tries to close that gap with a visual result on the user\'s own photo.',
-        ],
-        ru: [
-          'При онлайн-покупках трудно понять, как вещь будет смотреться на вас, а в магазине нужно ждать примерочную и переодеваться.',
-          'Mirrorly пытается закрыть этот разрыв: показывает результат на собственном фото пользователя.',
-        ],
-      },
-    },
-    {
-      id: 'role',
-      eyebrow: {
-        az: 'Rol',
-        en: 'Role',
-        ru: 'Роль',
-      },
-      title: {
-        az: 'Hər hissəsini özüm qurmuşam',
-        en: 'I built every part of it myself',
-        ru: 'Каждую часть я сделал сам',
-      },
-      body: {
-        az: [
-          'Layihəni tək hazırlamışam: məhsul ideyası, dizayn, iOS tətbiqi, backend və admin panel mənimdir.',
-          'Nəticədə tətbiq App Store-da yayımlanıb.',
-        ],
-        en: [
-          'I built the project alone: the product idea, design, iOS app, backend and admin panel are all mine.',
-          'The result is an app released on the App Store.',
-        ],
-        ru: [
-          'Проект я сделал один: идея продукта, дизайн, iOS-приложение, бэкенд и админ-панель — всё моё.',
-          'В итоге приложение вышло в App Store.',
-        ],
+        az: ['Onlayn alınan geyimin üzərinizdə necə görünəcəyini bilmək çətindir. Mirrorly nəticəni istifadəçinin öz şəklində göstərir.'],
+        en: ['It is hard to know how a garment bought online will look on you. Mirrorly shows the result on the user\'s own photo.'],
+        ru: ['Сложно понять, как вещь из интернет-магазина будет смотреться на вас. Mirrorly показывает результат на собственном фото.'],
       },
     },
     {
       id: 'ai-workflow',
-      eyebrow: {
-        az: 'AI İş Prosesi',
-        en: 'AI Workflow',
-        ru: 'AI-процесс',
-      },
+      eyebrow: { az: 'AI', en: 'AI', ru: 'AI' },
       title: {
-        az: 'Daha ucuz model eyni işi görəndə ona keçdim',
-        en: 'I switched models when a cheaper one did the same job',
-        ru: 'Перешёл на модель дешевле, когда она стала справляться не хуже',
+        az: 'Daha ucuz model, eyni nəticə',
+        en: 'Cheaper model, same result',
+        ru: 'Модель дешевле, результат тот же',
       },
       body: {
-        az: [
-          'Məhsulda AI cihazda işləmir: Supabase Edge Function EachLabs API-si ilə Nano Banana 2 modelini çağırır, paltar, aksesuar və outfit üçün ayrı prompt-lar var. Əvvəl GPT Image modeli işləyirdi; yenisi eyni işi xeyli ucuz gördüyü üçün ona keçdim.',
-          'İş prosesində ekran dizaynlarını Google Stitch ilə hazırladım. Kodu isə Codex, Claude və Gemini ilə bir qrup kimi, paralel yazdım.',
-        ],
-        en: [
-          'In the product, AI does not run on the device: a Supabase Edge Function calls the Nano Banana 2 model through the EachLabs API, with separate prompts for garments, accessories and outfits. It started on a GPT Image model; I switched because the newer model did the same job much cheaper.',
-          'In the process, I designed the screens with Google Stitch and wrote the code with Codex, Claude and Gemini running in parallel as a group.',
-        ],
-        ru: [
-          'В продукте AI работает не на устройстве: Edge Function в Supabase вызывает модель Nano Banana 2 через API EachLabs, с отдельными промптами для одежды, аксессуаров и образов. Сначала стояла модель GPT Image; я перешёл на новую, потому что она делает ту же работу заметно дешевле.',
-          'В процессе работы экраны я проектировал в Google Stitch, а код писал с помощью Codex, Claude и Gemini, запущенных параллельно как группа.',
-        ],
+        az: ['Try-on-u Nano Banana 2 yaradır: GPT Image-dən ona keçdim, çünki eyni işi xeyli ucuz görür. Ekranları Google Stitch-də, kodu Codex, Claude və Gemini ilə paralel yazdım.'],
+        en: ['Try-ons are generated by Nano Banana 2: I moved off GPT Image because it does the same job much cheaper. Screens designed in Google Stitch, code written with Codex, Claude and Gemini in parallel.'],
+        ru: ['Примерку генерирует Nano Banana 2: я ушёл с GPT Image, потому что новая модель делает то же заметно дешевле. Экраны — в Google Stitch, код — с Codex, Claude и Gemini параллельно.'],
       },
     },
     {
       id: 'system',
-      eyebrow: {
-        az: 'Sistem',
-        en: 'System',
-        ru: 'Система',
-      },
+      eyebrow: { az: 'Sistem', en: 'System', ru: 'Система' },
       title: {
-        az: 'Try-on alınmasa, kredit geri qayıdır',
-        en: 'A failed try-on gives the credit back',
-        ru: 'Если примерка не удалась, кредит возвращается',
+        az: 'Alınmasa, kredit geri qayıdır',
+        en: 'If it fails, the credit comes back',
+        ru: 'Не вышло — кредит возвращается',
       },
       body: {
-        az: [
-          'SwiftUI tətbiqi Supabase ilə danışır. Try-on sorğusu Edge Function-a gedir: o, JWT-ni yoxlayır, rate limit tətbiq edir, krediti atomik çıxır və AI sorğusunu başladır. Uğursuz sorğuda kredit geri qaytarılır, ilişmiş sorğuları ayrıca bir iş uzlaşdırır.',
-          'İstifadəçi şəkilləri private bucket-dədir və qısa ömürlü signed URL ilə verilir, 30 gündən sonra avtomatik silinir. Qonaq rejimində hesab lazım deyil, kredit sui-istifadəsi Apple DeviceCheck / App Attest ilə məhdudlaşdırılır.',
-          'Ödəniş RevenueCat vasitəsilə gedir, kreditlər webhook ilə əlavə olunur. Next.js admin paneldə istifadəçilər, try-on-lar, tranzaksiyalar və yoxlama log-ları görünür.',
-        ],
-        en: [
-          'The SwiftUI app talks to Supabase. A try-on request goes to an Edge Function that verifies the JWT, applies a rate limit, deducts the credit atomically and starts the AI request. On failure the credit is refunded, and a separate job reconciles stuck requests.',
-          'User images live in private buckets served through short-lived signed URLs and are deleted automatically after 30 days. Guest mode needs no account, and credit abuse is limited with Apple DeviceCheck / App Attest.',
-          'Payments go through RevenueCat and credits are added by webhook. A Next.js admin panel shows users, try-ons, transactions and verification logs.',
-        ],
-        ru: [
-          'Приложение на SwiftUI работает с Supabase. Запрос на примерку уходит в Edge Function: она проверяет JWT, применяет лимит запросов, атомарно списывает кредит и запускает AI-запрос. При сбое кредит возвращается, а зависшие запросы сверяет отдельная задача.',
-          'Изображения пользователей хранятся в приватных бакетах, отдаются по короткоживущим signed URL и автоматически удаляются через 30 дней. Гостевой режим не требует аккаунта, а злоупотребление кредитами ограничено через Apple DeviceCheck / App Attest.',
-          'Оплата идёт через RevenueCat, кредиты начисляются вебхуком. Админ-панель на Next.js показывает пользователей, примерки, транзакции и логи проверок.',
-        ],
+        az: ['Hər sorğu serverdə yoxlanır, kredit atomik çıxılır və uğursuz olsa geri qaytarılır. Şəkillər private saxlanır, 30 gündən sonra silinir.'],
+        en: ['Every request is checked on the server, the credit is deducted atomically and refunded if the try-on fails. Photos are stored privately and deleted after 30 days.'],
+        ru: ['Каждый запрос проверяется на сервере, кредит списывается атомарно и возвращается при сбое. Фото хранятся приватно и удаляются через 30 дней.'],
       },
     },
   ],
+  // Real screens from one try-on, in order; the last two are the result screen before and after
+  screens: [
+    {
+      src: '/images/mirrorly/tryon-upload.webp',
+      width: 739,
+      height: 1600,
+      label: { az: 'Şəklini yüklə', en: 'Upload your photo', ru: 'Загрузите фото' },
+      note: { az: 'Tam boy şəkil ən yaxşı nəticə verir.', en: 'A full-body photo works best.', ru: 'Лучше всего работает фото в полный рост.' },
+    },
+    {
+      src: '/images/mirrorly/tryon-outfit.webp',
+      width: 739,
+      height: 1600,
+      label: { az: 'Geyimi seç', en: 'Choose the outfit', ru: 'Выберите образ' },
+      note: { az: 'Hazır outfit və ya ayrı-ayrı geyimlər.', en: 'A ready outfit, or mix and match pieces.', ru: 'Готовый образ или отдельные вещи.' },
+    },
+    {
+      src: '/images/mirrorly/screen-04.webp',
+      width: 739,
+      height: 1600,
+      label: { az: 'AI emal edir', en: 'AI at work', ru: 'AI обрабатывает' },
+      note: { az: 'Adətən 30–60 saniyə çəkir.', en: 'Usually takes 30–60 seconds.', ru: 'Обычно занимает 30–60 секунд.' },
+    },
+    {
+      src: '/images/mirrorly/tryon-before.webp',
+      width: 739,
+      height: 1600,
+      label: { az: 'Öncə', en: 'Before', ru: 'До' },
+      note: { az: 'İstifadəçinin öz şəkli.', en: 'The user\'s own photo.', ru: 'Собственное фото пользователя.' },
+    },
+    {
+      src: '/images/mirrorly/tryon-after.webp',
+      width: 739,
+      height: 1600,
+      label: { az: 'Sonra', en: 'After', ru: 'После' },
+      note: { az: 'Eyni şəkil, seçilmiş geyimdə.', en: 'The same photo, in the chosen outfit.', ru: 'То же фото, в выбранном образе.' },
+    },
+  ],
+  flow: {
+    steps: {
+      az: ['Sorğu', 'JWT yoxlanışı', 'Rate limit', 'Kredit çıxılır', 'Nano Banana 2', 'Nəticə'],
+      en: ['Request', 'JWT check', 'Rate limit', 'Credit deducted', 'Nano Banana 2', 'Result'],
+      ru: ['Запрос', 'Проверка JWT', 'Лимит запросов', 'Списание кредита', 'Nano Banana 2', 'Результат'],
+    },
+    fallback: {
+      az: 'Uğursuz olsa → kredit geri qaytarılır',
+      en: 'On failure → the credit is refunded',
+      ru: 'При сбое → кредит возвращается',
+    },
+    fallbackFrom: 3,
+  },
+  marquee: ['SwiftUI', 'Supabase', 'Nano Banana 2', 'RevenueCat', 'App Attest', 'Next.js'],
   links: [
     {
       kind: 'app-store',

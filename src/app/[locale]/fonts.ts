@@ -1,24 +1,15 @@
-import { Bricolage_Grotesque, Roboto_Flex, Source_Serif_4, JetBrains_Mono } from 'next/font/google';
+import { Roboto_Flex, Source_Serif_4, JetBrains_Mono } from 'next/font/google';
 
-// Display face. Width and optical-size axes drive the kinetic type.
-const display = Bricolage_Grotesque({
+// Display face. Width, weight and optical-size axes drive the kinetic type.
+// One family covers latin, the Azerbaijani schwa (U+0259 / U+018F) and Cyrillic, so az, en and ru headings share the
+// same letterforms. (Bricolage Grotesque, used before, has neither: its missing glyphs fell through to a local Arial.)
+// Only latin is preloaded; latin-ext and Cyrillic files load through unicode-range on the pages that use them.
+const display = Roboto_Flex({
   variable: '--font-display-sans',
-  subsets: ['latin', 'latin-ext'],
+  subsets: ['latin'],
   axes: ['opsz', 'wdth'],
   display: 'swap',
   preload: true,
-});
-
-// Bricolage has no Cyrillic and no schwa (U+0259 / U+018F, the Azerbaijani e-schwa letters). Roboto Flex shares its
-// width and weight axes, so it fills in for those glyphs only: Bricolage comes first in the stack and the browser
-// asks Roboto Flex solely for characters Bricolage lacks (it is fetched through unicode-range, so en pages skip it).
-// latin-ext is required for the schwa; without it the browser falls back to an unrelated system-ui font.
-const displayCyrillic = Roboto_Flex({
-  variable: '--font-display-cyrillic',
-  subsets: ['latin-ext', 'cyrillic', 'cyrillic-ext'],
-  axes: ['opsz', 'wdth'],
-  display: 'swap',
-  preload: false,
 });
 
 const serif = Source_Serif_4({
@@ -38,4 +29,4 @@ const mono = JetBrains_Mono({
   preload: false,
 });
 
-export const fontClassName = `${display.variable} ${displayCyrillic.variable} ${serif.variable} ${mono.variable}`;
+export const fontClassName = `${display.variable} ${serif.variable} ${mono.variable}`;

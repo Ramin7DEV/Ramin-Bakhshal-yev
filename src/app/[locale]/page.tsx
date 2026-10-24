@@ -9,7 +9,7 @@ import { WorkSection } from '@/components/home/WorkSection';
 import { Method } from '@/components/home/Method';
 import { LiveStats } from '@/components/home/LiveStats';
 import { ContactBlock } from '@/components/home/ContactBlock';
-import { HomeMotion } from '@/components/home/HomeMotion';
+import { PageMotion } from '@/components/live/PageMotion';
 import type { Locale } from '@/content/types';
 
 export function generateStaticParams() {
@@ -61,7 +61,7 @@ export default async function HomePage({ params }: Props) {
         }}
       />
       <ContactBlock locale={locale} />
-      <HomeMotion />
+      <PageMotion page="home" />
     </>
   );
 }

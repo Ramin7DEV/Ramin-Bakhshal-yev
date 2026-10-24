@@ -10,8 +10,16 @@
     "meta  meta"
     "links links";
   column-gap: var(--space-8);
-  min-height: 100svh;
+  position: relative;
+  /* Content height, not a full screen: on tall monitors a full-height hero left half the screen empty,
+     so the cover (the product itself) now starts inside the first screen */
   padding: var(--live-header-pad) var(--live-gutter) var(--space-6);
+}
+
+/* The glyph field sits behind everything; the content keeps its own layer above it */
+.hero > *:not([data-field]) {
+  position: relative;
+  z-index: 1;
 }
 
 .intro {
@@ -39,12 +47,12 @@
 }
 
 .lede p {
-  max-width: 22ch;
+  max-width: 36ch;
   font-family: var(--live-font-serif);
   font-size: var(--live-type-lede);
   font-weight: 300;
-  line-height: 1.1;
-  letter-spacing: -0.015em;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
   text-wrap: pretty;
 }
 
@@ -327,6 +335,7 @@
   grid-area: title;
   align-self: end;
   margin-top: var(--space-6);
+  font-size: var(--live-type-case-title);
 }
 
 .meta {

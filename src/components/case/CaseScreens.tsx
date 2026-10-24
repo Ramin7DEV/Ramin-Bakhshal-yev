@@ -37,6 +37,7 @@ export function CaseScreens({ screens, locale, label, hint, log }: Props) {
         <ol className={styles.deck}>
           {screens.map((s, i) => (
             <li key={s.src} className={styles.layer} data-walk-layer="">
+              {i > 0 && <span className={styles.edge} data-walk-edge="" aria-hidden="true" />}
               <div className={styles.shot} data-walk-inner="">
                 <Image
                   src={s.src}

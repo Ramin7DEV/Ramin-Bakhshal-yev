@@ -115,6 +115,7 @@
   /* Type scale */
   --live-type-headline: clamp(3.25rem, 7.2vw, 8.25rem);
   --live-type-name: clamp(2.25rem, 4.6vw, 5rem);
+  --live-type-case-title: clamp(2.75rem, 5.4vw, 6rem);
   --live-type-statement: clamp(2rem, 4.4vw, 4.75rem);
   --live-type-row: clamp(2.25rem, 6.5vw, 6.5rem);
   --live-type-marquee: clamp(1.75rem, 4vw, 3.5rem);
@@ -169,7 +170,7 @@
 
 /* Case hero: lede, build manifest, app icon and commit activity */
 :root {
-  --live-type-lede: clamp(1.625rem, 2.7vw, 2.75rem);
+  --live-type-lede: clamp(1.125rem, 1.45vw, 1.5rem);
   --live-manifest-key: 8.75rem;
   --live-icon-tile: clamp(5.5rem, 9vw, 8.5rem);
   --live-radius-icon: 22.5%; /* iOS app icon corner */

@@ -1,7 +1,7 @@
 export type Locale = 'az' | 'en' | 'ru';
 export type Localized<T> = Record<Locale, T>;
 
-export type ProjectStatus = 'live' | 'in-development' | 'concept';
+export type ProjectStatus = 'live' | 'in-development' | 'prototype' | 'concept';
 export type ProjectCategory = 'ai' | 'mobile' | 'product-design';
 
 export interface ProjectLink {
@@ -40,7 +40,7 @@ export interface BuildActivity {
   weekly: number[];
 }
 
-export type ManifestKey = 'platform' | 'client' | 'backend' | 'ai' | 'payments' | 'integrity' | 'admin' | 'languages';
+export type ManifestKey = 'platform' | 'client' | 'backend' | 'ai' | 'payments' | 'integrity' | 'admin' | 'data' | 'languages';
 
 /** One line of the case hero's build manifest; the label comes from the messages */
 export interface ManifestRow {
@@ -75,7 +75,7 @@ export interface RequestFlow {
 }
 
 export interface Project {
-  slug: 'mirrorly' | 'azerbaijan-otur' | 'beauty-app';
+  slug: 'mirrorly' | 'azerbaijan-tour-guide' | 'beauty-app';
   index: '01' | '02' | '03';
   status?: ProjectStatus;
   categories: ProjectCategory[];

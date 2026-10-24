@@ -62,11 +62,11 @@ export const mirrorly = {
     height: 1086,
   },
   preview: {
-    webm: '/videos/mirrorly-preview.webm',
-    mp4: '/videos/mirrorly-preview.mp4',
-    poster: '/videos/mirrorly-preview-poster.jpg',
-    width: 1920,
-    height: 1080,
+    webm: '/videos/mirrorly-preview-v2.webm',
+    mp4: '/videos/mirrorly-preview-v2.mp4',
+    poster: '/videos/mirrorly-preview-v2-poster.jpg',
+    width: 2560,
+    height: 1440,
     alt: {
       az: 'Mirrorly tətbiq ikonu açılır və tətbiqin real ekranları görünür: ana səhifə, geyim seçimi və emal mərhələsi',
       en: 'The Mirrorly app icon opens into the real screens of the app: home, choosing an outfit and processing',

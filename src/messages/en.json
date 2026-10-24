@@ -45,6 +45,7 @@
     "title": "Shipped software, measured outcomes, and technical rigor",
     "statusLive": "Live",
     "statusDev": "In development",
+    "statusPrototype": "Prototype",
     "statusConcept": "Concept"
   },
   "work": {
@@ -86,6 +87,7 @@
         "payments": "Payments",
         "integrity": "Device check",
         "admin": "Admin panel",
+        "data": "Data",
         "languages": "Languages",
         "stack": "Stack"
       },
@@ -98,7 +100,7 @@
       "flow": "(04) How one try-on runs",
       "outcome": "(05) Outcome"
     },
-    "screensHint": "One real try-on, step by step",
+    "screensHint": "Real screens, step by step",
     "cta": "Open in {store}"
   },
   "process": {

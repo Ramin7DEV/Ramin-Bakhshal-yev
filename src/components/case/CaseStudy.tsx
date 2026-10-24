@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { projects } from '@/content/projects';
 import { profile } from '@/content/profile';
-import type { Locale, ManifestKey, Project } from '@/content/types';
+import type { Locale, ManifestKey, Project, ProjectStatus } from '@/content/types';
 import { PageMotion } from '@/components/live/PageMotion';
 import { TransitionLink } from '@/components/live/TransitionLink';
 import { CaseHero } from './CaseHero';
@@ -20,6 +20,12 @@ type Props = {
 };
 
 const isPending = (text: string | undefined) => !text || text.startsWith('TODO(content)');
+const STATUS_KEY = {
+  live: 'proof.statusLive',
+  'in-development': 'proof.statusDev',
+  prototype: 'proof.statusPrototype',
+  concept: 'proof.statusConcept',
+} as const satisfies Record<ProjectStatus, string>;
 const CARD_KEYS: ManifestKey[] = ['platform', 'ai', 'languages'];
 const PENDING_BARS = [[92, 64], [80, 52], [88, 70], [76, 58]] as const;
 
@@ -33,13 +39,7 @@ export async function CaseStudy({ project, locale }: Props) {
     .map((c) => (c === 'ai' ? t('work.filterAi') : c === 'mobile' ? t('work.filterMobile') : t('work.filterDesign')))
     .join(' · ');
   const role = project.role[loc][0];
-  const statusLabel = project.status
-    ? project.status === 'live'
-      ? t('proof.statusLive')
-      : project.status === 'in-development'
-        ? t('proof.statusDev')
-        : t('proof.statusConcept')
-    : undefined;
+  const statusLabel = project.status ? t(STATUS_KEY[project.status]) : undefined;
   const contentPending = project.chapters.every((c) => isPending(c.body[loc][0]));
 
   const pitch = project.pitch?.[loc];

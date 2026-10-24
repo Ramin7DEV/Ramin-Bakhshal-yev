@@ -45,6 +45,7 @@
     "title": "İstehsalata buraxılmış sistemlər və real təcrübə",
     "statusLive": "İstifadədədir",
     "statusDev": "Hazırlanır",
+    "statusPrototype": "Prototip",
     "statusConcept": "Konsept"
   },
   "work": {
@@ -86,6 +87,7 @@
         "payments": "Ödəniş",
         "integrity": "Cihaz yoxlaması",
         "admin": "Admin panel",
+        "data": "Məlumat",
         "languages": "Dillər",
         "stack": "Texnologiya"
       },
@@ -98,7 +100,7 @@
       "flow": "(04) Bir try-on necə işləyir",
       "outcome": "(05) Nəticə"
     },
-    "screensHint": "Bir real try-on, addım-addım",
+    "screensHint": "Real ekranlar, addım-addım",
     "cta": "{store}-da aç"
   },
   "process": {

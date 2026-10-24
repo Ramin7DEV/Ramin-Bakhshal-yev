@@ -4,6 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import type { BuildActivity, Locale, Project } from '@/content/types';
 import { BuildIntro } from '@/components/live/BuildIntro';
 import { KineticText } from '@/components/live/KineticText';
+import { GlyphField } from '@/components/home/GlyphField';
 import { IconTilt } from './IconTilt';
 import styles from './CaseHero.module.css';
 
@@ -21,6 +22,18 @@ const isPending = (text: string | undefined) => !text || text.startsWith('TODO(c
 const PENDING_LEDE = [94, 82, 58] as const;
 const PENDING_ROWS = [72, 54, 66, 40] as const;
 const DAY = 86_400_000;
+
+/** At most two lines, split where they come out closest in length ("Azerbaijan / Tour Guide") */
+function titleLines(title: string): string[] {
+  const words = title.split(' ');
+  if (words.length < 3) return [title];
+  let best = 1;
+  for (let i = 1; i < words.length; i++) {
+    const gap = (k: number) => Math.abs(words.slice(0, k).join(' ').length - words.slice(k).join(' ').length);
+    if (gap(i) < gap(best)) best = i;
+  }
+  return [words.slice(0, best).join(' '), words.slice(best).join(' ')];
+}
 
 const toDate = (iso: string) => new Date(`${iso}T00:00:00Z`);
 const vars = (v: Record<string, string | number>) => v as CSSProperties;
@@ -54,8 +67,9 @@ export async function CaseHero({ project, locale, total, field, role, statusLabe
   const day = new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 
   return (
-    <section id="hero" className={styles.hero} data-build="<CaseHero />" data-build-manual="">
-      <div className={styles.intro} data-case-intro="">
+    <section id="hero" className={styles.hero} data-build="<CaseHero />" data-build-manual="" data-no-trail="">
+      <GlyphField code={t('live.fieldCode')} />
+      <div className={styles.intro} data-case-intro="" data-quiet="">
         <BuildIntro
           sectionId="hero"
           prompt={t('live.casePrompt', { slug: project.slug })}
@@ -65,17 +79,16 @@ export async function CaseHero({ project, locale, total, field, role, statusLabe
         />
       </div>
       <KineticText
-        lines={project.title.split(' ')}
+        lines={titleLines(project.title)}
         id="title"
         className={styles.title}
         label={project.title}
-        fill
-        maxHeight={0.3}
         compileId="case-title"
         compileStep={55}
+        quiet
       />
 
-      <div className={styles.lede} data-case-drift="">
+      <div className={styles.lede} data-case-drift="" data-quiet="">
         {isPending(summary) ? (
           <div className={styles.ledePending} data-reveal="" aria-hidden="true">
             {PENDING_LEDE.map((w) => (
@@ -87,7 +100,7 @@ export async function CaseHero({ project, locale, total, field, role, statusLabe
         )}
       </div>
 
-      <div className={styles.sheet} data-case-drift="">
+      <div className={styles.sheet} data-case-drift="" data-quiet="">
         <div data-reveal="2">
           <header className={styles.sheetHead}>
             <span>

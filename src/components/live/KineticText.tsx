@@ -16,13 +16,15 @@ type Props = {
   /** The letters stay hidden until live.emit('compile', compileId) */
   compileId?: string;
   compileStep?: number;
+  /** Mark the block as a calm zone for the glyph field behind it */
+  quiet?: boolean;
 };
 
 const REACH = 420; // px around the pointer that letters respond to
 const STEPS = 20; // weight is quantised so untouched letters cost nothing
 
 // Big variable-font type: letters gain weight and narrow as the pointer approaches
-export function KineticText({ lines, as = 'h1', id, className, label, fill = false, maxHeight = 0.56, compileId, compileStep = 35 }: Props) {
+export function KineticText({ lines, as = 'h1', id, className, label, fill = false, maxHeight = 0.56, compileId, compileStep = 35, quiet = false }: Props) {
   const ref = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
@@ -124,7 +126,7 @@ export function KineticText({ lines, as = 'h1', id, className, label, fill = fal
 
   const Tag = as;
   return (
-    <Tag ref={ref} id={id} className={`kinetic ${className ?? ''}`} aria-label={label} lang="en">
+    <Tag ref={ref} id={id} className={`kinetic ${className ?? ''}`} aria-label={label} lang="en" data-quiet={quiet ? '' : undefined}>
       {lines.map((line) => (
         <span className="kinetic-line" key={line} aria-hidden="true">
           {[...line].map((ch, i) => (

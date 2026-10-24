@@ -73,7 +73,8 @@ const CHOREO: Record<Page, () => (() => void) | void> = {
       .timeline({ scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: SCRUB } })
       .to('#title .kinetic-line', { xPercent: (i: number) => (i % 2 ? 6 : -6), ease: 'none' }, 0)
       .to('[data-case-intro]', { yPercent: -200, opacity: 0, ease: 'none' }, 0)
-      .to('[data-case-drift]', { yPercent: -12, ease: 'none' }, 0);
+      .to('[data-case-drift]', { yPercent: -12, ease: 'none' }, 0)
+      .to('#hero [data-field]', { opacity: 0, ease: 'none' }, 0);
 
     // A still cover zooms out slowly across its whole pass through the screen (the video stays put)
     gsap.utils.toArray<HTMLElement>('[data-cover-img]').forEach((img) => {
@@ -121,8 +122,11 @@ const CHOREO: Record<Page, () => (() => void) | void> = {
       tl.fromTo(steps.slice(1), { opacity: STEP_DIM }, { opacity: STEP_DIM, duration: 0 }, 0);
       layers.slice(1).forEach((layer, k) => {
         const inner = layer.querySelector('[data-walk-inner]');
+        const edge = layer.querySelector('[data-walk-edge]');
         tl.fromTo(layer, { x: 0, xPercent: 101 }, { xPercent: 0, ease: 'power2.inOut', duration: 1 }, k)
           .fromTo(inner, { x: 0, xPercent: -101 }, { xPercent: 0, ease: 'power2.inOut', duration: 1 }, k)
+          // The edge line only marks the wipe while it moves; it fades as the screen lands at the frame's left side
+          .fromTo(edge ?? [], { opacity: 1 }, { opacity: 0, ease: 'none', duration: 0.15 }, k + 0.85)
           .to(steps[k] ?? [], { opacity: STEP_DIM, ease: 'none', duration: 0.5 }, k + 0.25)
           .to(steps[k + 1] ?? [], { opacity: 1, ease: 'none', duration: 0.5 }, k + 0.25);
       });

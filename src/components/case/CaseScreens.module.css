@@ -85,9 +85,8 @@
   overflow: hidden;
 }
 
-/* The wipe edge: a hot line riding the leading edge of each incoming screen */
-.layer + .layer::before {
-  content: '';
+/* The wipe edge: a hot line riding the leading edge of each incoming screen; PageMotion fades it once the screen lands */
+.edge {
   position: absolute;
   z-index: 1;
   top: 0;
@@ -97,10 +96,16 @@
   background: var(--live-hot);
 }
 
+.shot,
 .shot img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+}
+
+/* Screens from different sources differ a few pixels in aspect: fill the frame instead of leaving a dark sliver */
+.shot img {
+  object-fit: cover;
 }
 
 /* Before PageMotion takes over, only the first screen shows */
@@ -161,7 +166,7 @@
     scroll-snap-align: start;
   }
 
-  .layer + .layer::before {
+  .edge {
     display: none;
   }
 
@@ -171,11 +176,16 @@
   }
 
   .shot {
+    height: auto;
     overflow: hidden;
     border: 1px solid var(--live-ink);
     border-radius: var(--live-radius-phone);
     background: var(--live-ink);
     box-shadow: var(--live-shadow-phone);
+  }
+
+  .shot img {
+    height: auto;
   }
 
   .cap {
@@ -205,6 +215,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .edge {
+    display: none;
+  }
+
   :global(.live-js) .layer + .layer,
   :global(.live-js) .layer + .layer .shot {
     transform: none;

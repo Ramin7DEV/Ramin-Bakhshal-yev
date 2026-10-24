@@ -1,0 +1,55 @@
+/* Wide screens: tucked away on the right, it turns and slides into place while the next-project link is hovered */
+.card {
+  position: absolute;
+  top: 50%;
+  right: var(--live-gutter);
+  z-index: -1; /* behind the title; the link is an isolated stacking context, so still above its dark background */
+  width: var(--live-next-card-width);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--live-radius);
+  box-shadow: var(--live-shadow-dock);
+  opacity: 0;
+  transform: translate(12%, -50%) rotate(-3deg) scale(0.94);
+  transition:
+    opacity var(--live-dur-base) var(--live-ease-out),
+    transform var(--live-dur-reveal) var(--live-ease-expo);
+  pointer-events: none;
+}
+
+:global([data-next-href]:hover) .card,
+:global([data-next-href]:focus-visible) .card {
+  opacity: 1;
+  transform: translate(0, -50%) rotate(0deg) scale(1);
+}
+
+.card video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Touch screens and narrow windows: no hover to reveal it, so the card simply sits under the title */
+@media (hover: none), (max-width: 900px) {
+  .card {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    margin-top: var(--space-6);
+    opacity: 1;
+    transform: none;
+  }
+
+  :global([data-next-href]:hover) .card,
+  :global([data-next-href]:focus-visible) .card {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}

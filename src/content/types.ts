@@ -40,7 +40,7 @@ export interface BuildActivity {
   weekly: number[];
 }
 
-export type ManifestKey = 'platform' | 'client' | 'backend' | 'ai' | 'payments' | 'integrity' | 'admin' | 'data' | 'languages';
+export type ManifestKey = 'platform' | 'client' | 'backend' | 'ai' | 'payments' | 'integrity' | 'admin' | 'data' | 'apps' | 'languages';
 
 /** One line of the case hero's build manifest; the label comes from the messages */
 export interface ManifestRow {

@@ -81,6 +81,7 @@
       "pending": "Technical details are not added yet.",
       "keys": {
         "platform": "Platform",
+        "apps": "Users",
         "client": "Client",
         "backend": "Backend",
         "ai": "AI model",

@@ -158,7 +158,7 @@
   left: 0;
   z-index: 40;
   width: var(--live-peek-width);
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9; /* the covers are frames of the 16:9 preview videos */
   overflow: hidden;
   pointer-events: none;
   clip-path: inset(50%);

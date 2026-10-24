@@ -11,6 +11,7 @@ import { Statement } from '@/components/home/Statement';
 import { CaseFlipCard } from './CaseFlipCard';
 import { CaseFlow } from './CaseFlow';
 import { CaseScreens } from './CaseScreens';
+import { NextPreview } from './NextPreview';
 import { PreviewVideo } from './PreviewVideo';
 import styles from './CaseStudy.module.css';
 
@@ -178,7 +179,7 @@ export async function CaseStudy({ project, locale }: Props) {
         data-next-label={`› ${t('live.casePrompt', { slug: next.slug })}`}
         data-dock-hide=""
       >
-        <Image src={next.cover.src} alt="" fill sizes="100vw" />
+        {next.preview && <NextPreview preview={next.preview} />}
         <span className="live-label">{t('caseStudy.nextProject')}</span>
         <span className={styles.nextTitle} lang="en" data-skew="" data-next-title="">
           {next.title}

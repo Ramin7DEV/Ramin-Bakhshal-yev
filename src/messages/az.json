@@ -81,6 +81,7 @@
       "pending": "Texniki məlumat hələ əlavə olunmayıb.",
       "keys": {
         "platform": "Platforma",
+        "apps": "İstifadəçilər",
         "client": "Tətbiq",
         "backend": "Backend",
         "ai": "AI modeli",

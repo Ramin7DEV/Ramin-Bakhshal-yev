@@ -51,15 +51,16 @@ export const mirrorly = {
     en: ['Live on the App Store: iPhone and iPad, iOS 16+', 'Credit-pack payments and guest mode', 'A separate Next.js admin panel'],
     ru: ['В App Store: iPhone и iPad, iOS 16+', 'Оплата пакетами кредитов и гостевой режим', 'Отдельная админ-панель на Next.js'],
   },
+  // First frame of the preview video: real screens, used wherever a still is needed (home peek, next-project card)
   cover: {
-    src: '/images/project-mirrorly-editorial.jpg',
+    src: '/videos/mirrorly-preview-v2-poster.jpg',
     alt: {
-      az: 'AI əlaqələrini təmsil edən abstrakt canlı diaqram',
-      en: 'Abstract animated diagram representing AI connections',
-      ru: 'Абстрактная анимированная схема связей ИИ',
+      az: 'Mirrorly-nin real ekranları: ana səhifə, geyim seçimi və AI emalı',
+      en: 'Real screens of Mirrorly: home, choosing an outfit and AI processing',
+      ru: 'Реальные экраны Mirrorly: главный экран, выбор образа и обработка AI',
     },
-    width: 1448,
-    height: 1086,
+    width: 2560,
+    height: 1440,
   },
   preview: {
     webm: '/videos/mirrorly-preview-v2.webm',
@@ -68,9 +69,9 @@ export const mirrorly = {
     width: 2560,
     height: 1440,
     alt: {
-      az: 'Mirrorly tətbiq ikonu açılır və tətbiqin real ekranları görünür: ana səhifə, geyim seçimi və emal mərhələsi',
-      en: 'The Mirrorly app icon opens into the real screens of the app: home, choosing an outfit and processing',
-      ru: 'Иконка Mirrorly раскрывается в реальные экраны приложения: главный экран, выбор образа и обработка',
+      az: 'Mirrorly-nin real ekranları: ana səhifə, geyim seçimi və AI emalı',
+      en: 'Real screens of Mirrorly: home, choosing an outfit and AI processing',
+      ru: 'Реальные экраны Mirrorly: главный экран, выбор образа и обработка AI',
     },
   },
   icon: {

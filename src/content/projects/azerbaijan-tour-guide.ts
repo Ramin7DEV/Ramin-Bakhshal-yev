@@ -33,15 +33,16 @@ export const azerbaijanTourGuide = {
     en: ['Installable test builds for iOS and Android (EAS)', 'Interface in Azerbaijani and English; the route is written in the chosen language', 'No sign-up, and no personal data is sent to the AI'],
     ru: ['Устанавливаемые тестовые сборки для iOS и Android (EAS)', 'Интерфейс на азербайджанском и английском; маршрут пишется на выбранном языке', 'Без регистрации, личные данные в AI не отправляются'],
   },
+  // First frame of the preview video: real screens, used wherever a still is needed (home peek, next-project card)
   cover: {
-    src: '/images/project-azerbaijan-tour-guide-editorial.jpg',
+    src: '/videos/tour-guide-preview-v3-poster.jpg',
     alt: {
-      az: 'Kəşf və əlaqələri təmsil edən abstrakt canlı diaqram',
-      en: 'Abstract animated diagram representing discovery and connections',
-      ru: 'Абстрактная анимированная схема поиска и связей',
+      az: 'Azerbaijan Tour Guide tətbiqinin real ekranları: tarix seçimi, kateqoriya kartı, xəritədə marşrut və gün-gün plan',
+      en: 'Real screens of Azerbaijan Tour Guide: choosing dates, a category card, the route on a map and the day-by-day plan',
+      ru: 'Реальные экраны Azerbaijan Tour Guide: выбор дат, карточка категории, маршрут на карте и план по дням',
     },
-    width: 1448,
-    height: 1086,
+    width: 2560,
+    height: 1440,
   },
   preview: {
     webm: '/videos/tour-guide-preview-v3.webm',

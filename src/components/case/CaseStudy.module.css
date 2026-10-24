@@ -172,7 +172,7 @@
   outline-offset: 4px;
 }
 
-/* Next project: full-width dark block, the next cover breathes in on hover */
+/* Next project: full-width dark block; the next project's own preview slides in on hover (NextPreview) */
 .next {
   position: relative;
   isolation: isolate;
@@ -182,20 +182,6 @@
   background: var(--live-ink);
   color: var(--live-bone);
   text-decoration: none;
-}
-
-.next img {
-  z-index: -1;
-  object-fit: cover;
-  opacity: 0;
-  transform: scale(1.08);
-  transition: opacity 600ms, transform 1.2s var(--live-ease);
-}
-
-.next:hover img,
-.next:focus-visible img {
-  opacity: 0.35;
-  transform: scale(1);
 }
 
 .next :global(.live-label) {

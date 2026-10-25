@@ -86,6 +86,8 @@ export interface Project {
   /** One or two sentences that open the case study, lit word by word */
   pitch?: Localized<string>;
   role: Localized<string[]>;
+  /** One line for the case hero: the whole span of work, not just the first item of `role` */
+  roleShort?: Localized<string>;
   stack: string[];
   outcome: Localized<string[]>;
   cover: MediaAsset;

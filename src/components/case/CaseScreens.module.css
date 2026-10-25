@@ -73,9 +73,9 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  border: 1px solid var(--live-ink);
+  border: 1px solid var(--live-panel-edge);
   border-radius: var(--live-radius-phone);
-  background: var(--live-ink);
+  background: var(--live-panel);
   box-shadow: var(--live-shadow-phone);
 }
 
@@ -178,9 +178,9 @@
   .shot {
     height: auto;
     overflow: hidden;
-    border: 1px solid var(--live-ink);
+    border: 1px solid var(--live-panel-edge);
     border-radius: var(--live-radius-phone);
-    background: var(--live-ink);
+    background: var(--live-panel);
     box-shadow: var(--live-shadow-phone);
   }
 

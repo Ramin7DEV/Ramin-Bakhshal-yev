@@ -1,0 +1,73 @@
+.panel {
+  padding: var(--space-5);
+  border: 1px solid var(--live-dark-rule);
+  border-radius: var(--live-radius);
+  color: var(--live-on-panel);
+  font-family: var(--live-font-mono);
+  font-size: var(--live-type-mono-m);
+}
+
+.prompt {
+  margin: 0 0 var(--space-4);
+  color: var(--live-dark-muted);
+}
+
+.prompt span {
+  color: var(--live-hot);
+}
+
+.rows {
+  margin: 0;
+}
+
+.rows > div {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--live-dark-rule);
+}
+
+.rows dt {
+  color: var(--live-dark-muted);
+  text-transform: uppercase;
+}
+
+.rows dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Padding and a matching negative margin: a 44px-ish hit area without changing the row height */
+.rows a,
+.copy {
+  display: inline-block;
+  padding-block: var(--space-3);
+  margin-block: calc(-1 * var(--space-3));
+}
+
+.rows a {
+  text-decoration: none;
+  transition: color var(--live-dur-fast);
+}
+
+.rows a:hover,
+.rows a:focus-visible,
+.copy:hover,
+.copy:focus-visible {
+  color: var(--live-hot);
+}
+
+.copy {
+  padding-inline: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  cursor: pointer;
+  transition: color var(--live-dur-fast);
+}

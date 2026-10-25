@@ -3,7 +3,7 @@ import { getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { profile } from '@/content/profile';
 
-export const alt = 'Ramin Bakhshalıyev — AI-first Engineer';
+export const alt = 'Ramin Bakhshalıyev — Mobile & AI Product Builder';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -82,7 +82,7 @@ export default async function Image({ params }: Props) {
               textTransform: 'uppercase',
             }}
           >
-            AI-First Engineer
+            Mobile & AI Product Builder
           </span>
         </div>
 
@@ -133,7 +133,7 @@ export default async function Image({ params }: Props) {
             }}
           >
             <span>raminbakhshaliyev.com</span>
-            <span>Baku · Available for Select Work / 2026</span>
+            <span>Baku · Open to Job Offers / 2026</span>
           </div>
         </div>
       </div>

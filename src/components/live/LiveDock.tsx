@@ -22,7 +22,6 @@ const SECTIONS: [RegExp, string][] = [
   [/work|project|case|portfolio|layih|işlər|проект|работ/, 'work'],
   [/method|process|how|metod|proses|метод|процесс/, 'method'],
   [/contact|hire|email|talk|əlaqə|elaqe|контакт|связ/, 'contact'],
-  [/stat|page|səhifə|страниц/, 'stats'],
   [/home|top|who|about|haqq|о себе/, 'hero'],
   [/problem|проблем/, 'ch-problem'],
   [/role|rol|роль/, 'ch-role'],

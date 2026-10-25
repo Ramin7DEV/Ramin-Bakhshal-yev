@@ -1,4 +1,9 @@
 {
+  "notFound": {
+    "title": "Page not found",
+    "description": "This address does not exist or has moved.",
+    "back": "Back to the home page"
+  },
   "common": {
     "actions": {
       "viewWork": "View selected work",
@@ -19,10 +24,12 @@
     "menu": "Menu",
     "close": "Close",
     "skipToContent": "Skip to main content",
-    "status": "Available for select work / 2026",
+    "status": "Open to job offers / 2026",
     "primaryLabel": "Primary navigation",
     "mobileLabel": "Mobile navigation",
-    "themeDark": "Dark theme"
+    "themeDark": "Dark theme",
+    "themeLogDark": "theme: dark",
+    "themeLogLight": "theme: light"
   },
   "locale": {
     "switcherLabel": "Switch language",
@@ -31,9 +38,9 @@
     "ru": "Русский"
   },
   "hero": {
-    "eyebrow": "AI-first engineer",
+    "eyebrow": "Mobile & AI Product Builder",
     "title": "I turn ideas into<br></br>products that <em>ship</em>.",
-    "description": "I build products for iOS and the web, from the first sketch to release. AI is a working part of my process — it changes how fast I get there, not what I ship.",
+    "description": "I build mobile and AI products, from the first sketch to release. AI is a working part of my process — it changes how fast I get there, not what I ship.",
     "ctaPrimary": "View work",
     "ctaSecondary": "Get in touch",
     "mediaAlt": "Ramin Bakhshalıyev engineering workbench and studio",
@@ -98,7 +105,7 @@
       "pitch": "(01) In short",
       "story": "(02) Story",
       "screens": "(03) How it works",
-      "flow": "(04) How one try-on runs",
+      "flow": "(04) How one request runs",
       "outcome": "(05) Outcome"
     },
     "screensHint": "Real screens, step by step",
@@ -169,7 +176,7 @@
     "log": "Contact.tsx — mail, phone, links",
     "eyebrow": "Contact",
     "title": "Let's *build* it together.",
-    "intro": "A new product, an AI integration, automation or a job offer — I'm open to all of it.",
+    "intro": "Open to projects, collaborations and job offers.",
     "sections": {
       "reach": "(01) Directly",
       "brief": "(02) Let's write the email together"
@@ -215,7 +222,8 @@
     "title": "Have a product worth <em>building</em>?",
     "description": "Write for new projects, collaboration or a technical second opinion.",
     "emailLabel": "Write via email",
-    "githubLabel": "GitHub"
+    "githubLabel": "GitHub",
+    "panelCommand": "contact --open"
   },
   "footer": {
     "copyright": "Ramin Bakhshalıyev. All rights reserved.",
@@ -224,12 +232,12 @@
   },
   "meta": {
     "siteName": "Ramin Bakhshalıyev",
-    "defaultTitle": "Ramin Bakhshalıyev — AI-first Engineer",
-    "defaultDescription": "Personal portfolio of Ramin Bakhshalıyev — AI-first product engineering for iOS and web.",
+    "defaultTitle": "Ramin Bakhshalıyev — Mobile & AI Product Builder",
+    "defaultDescription": "Personal portfolio of Ramin Bakhshalıyev — mobile and AI products.",
     "titleTemplate": "%s — Ramin Bakhshalıyev",
     "home": {
-      "title": "Ramin Bakhshalıyev — AI-first Engineer",
-      "description": "Personal portfolio of Ramin Bakhshalıyev — AI-first product engineering for iOS and web."
+      "title": "Ramin Bakhshalıyev — Mobile & AI Product Builder",
+      "description": "Personal portfolio of Ramin Bakhshalıyev — mobile and AI products."
     },
     "work": {
       "title": "Selected Work",
@@ -251,7 +259,7 @@
     "currentLanguage": "Current language"
   },
   "live": {
-    "prompt": "build a portfolio for Ramin — AI-first engineer, Baku",
+    "prompt": "build a portfolio for Ramin — mobile & AI product builder, Baku",
     "casePrompt": "open case {slug}",
     "fieldCode": "const idea=listen(user);const system=design(idea);const product=build(system,agents);review(product);ship(product);measure();iterate();",
     "log": {
@@ -291,19 +299,18 @@
     ],
     "meta": {
       "practice": "Practice",
-      "practiceValue": "AI-first engineer",
+      "practiceValue": "Mobile & AI Product Builder",
       "builds": "Builds",
-      "buildsValue": "iOS · Web · AI systems",
+      "buildsValue": "iOS · AI systems",
       "based": "Based",
       "basedValue": "Baku, UTC+4",
       "bakuTime": "Time in Baku"
     },
     "sections": {
-      "statement": "(01) Statement",
-      "work": "(02) Selected work",
-      "method": "(03) Method — who does what",
-      "stats": "(04) This page, honestly",
-      "contact": "(05) Contact"
+      "statement": "(01) Intro",
+      "work": "(02) Work",
+      "method": "(03) Method",
+      "contact": "(04) Contact"
     },
     "work": {
       "no": "No.",

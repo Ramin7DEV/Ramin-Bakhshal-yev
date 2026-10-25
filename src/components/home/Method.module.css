@@ -28,7 +28,7 @@
   font-family: var(--live-font-mono);
   font-size: var(--live-type-mono);
   font-weight: 400;
-  color: var(--live-hot);
+  color: var(--live-hot-text);
 }
 
 .grid h3 {
@@ -72,8 +72,8 @@
 }
 
 .whoAgent {
-  border-color: var(--live-hot);
-  color: var(--live-hot);
+  border-color: var(--live-hot-text);
+  color: var(--live-hot-text);
 }
 
 @media (max-width: 760px) {

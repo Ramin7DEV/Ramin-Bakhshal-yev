@@ -158,7 +158,7 @@ export default async function Image({ params }: Props) {
             }}
           >
             <span>raminbakhshaliyev.com</span>
-            <span>Ramin Bakhshalıyev · AI-first Engineer</span>
+            <span>Ramin Bakhshalıyev · Mobile & AI Product Builder</span>
           </div>
         </div>
       </div>

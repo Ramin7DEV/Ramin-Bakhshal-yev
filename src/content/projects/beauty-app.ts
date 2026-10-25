@@ -25,6 +25,11 @@ export const beautyApp = {
     en: ['Product idea and design', 'Client and salon owner apps (React Native, Expo)', 'Express API and Supabase database'],
     ru: ['Идея продукта и дизайн', 'Приложения для клиента и владельца салона (React Native, Expo)', 'API на Express и база данных Supabase'],
   },
+  roleShort: {
+    az: 'Dizayn, mobil tətbiqlər, API və verilənlər bazası',
+    en: 'Design, mobile apps, API and database',
+    ru: 'Дизайн, мобильные приложения, API и база данных',
+  },
   stack: ['JavaScript', 'React Native', 'Expo', 'Redux Toolkit', 'Node.js', 'Express', 'Supabase (Postgres, Storage)', 'JWT', 'react-native-maps', 'i18next'],
   year: '2025',
   status: 'prototype',
@@ -188,6 +193,16 @@ export const beautyApp = {
     fallbackFrom: 3,
   },
   marquee: ['React Native', 'Expo', 'Redux Toolkit', 'Express', 'Supabase', 'i18next'],
-  links: [],
+  links: [
+    {
+      kind: 'linkedin',
+      href: 'https://lnkd.in/p/drKhRUJR',
+      label: {
+        az: 'LinkedIn-də video və post',
+        en: 'Video and post on LinkedIn',
+        ru: 'Видео и пост в LinkedIn',
+      },
+    },
+  ],
   accent: 'ivory',
 } satisfies Project;

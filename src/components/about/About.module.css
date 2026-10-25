@@ -70,7 +70,7 @@
   font-family: var(--live-font-mono);
   font-size: var(--live-type-mono);
   font-weight: 400;
-  color: var(--live-hot);
+  color: var(--live-hot-text);
 }
 
 .grid h3 {
@@ -136,12 +136,12 @@
 .company span {
   font-size: 0.5em;
   vertical-align: top;
-  color: var(--live-hot);
+  color: var(--live-hot-text);
 }
 
 .company:hover,
 .company:focus-visible {
-  color: var(--live-hot);
+  color: var(--live-hot-text);
 }
 
 .role {
@@ -225,7 +225,7 @@
 
 .used a:hover,
 .used a:focus-visible {
-  color: var(--live-hot);
+  color: var(--live-hot-text);
   text-decoration-color: currentColor;
 }
 
@@ -265,13 +265,13 @@
 }
 
 .go {
-  color: var(--live-hot);
+  color: var(--live-hot-text);
   transition: transform var(--live-dur-base) var(--live-ease-expo);
 }
 
 .row:hover .name,
 .row:focus-visible .name {
-  color: var(--live-hot);
+  color: var(--live-hot-text);
 }
 
 .row:hover .go,

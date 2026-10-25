@@ -1,7 +1,8 @@
 .contact {
+  position: relative;
   padding: 18vh var(--live-gutter) 120px;
-  background: var(--live-ink);
-  color: var(--live-bone);
+  background: var(--live-panel);
+  color: var(--live-on-panel);
 }
 
 .contact::after {
@@ -22,7 +23,7 @@
 }
 
 .title {
-  color: var(--live-bone);
+  color: var(--live-on-panel);
 }
 
 .mail {
@@ -32,7 +33,7 @@
 .foot {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   gap: var(--space-3);
   padding-top: var(--space-4);
   border-top: 1px solid var(--live-dark-rule);
@@ -47,5 +48,20 @@
 }
 
 .foot a:hover {
-  color: var(--live-bone);
+  color: var(--live-on-panel);
+}
+
+/* Wide screens: the panel fills the empty right half, level with the intro text. Narrow: it follows the email. */
+.panel {
+  margin-bottom: var(--space-8);
+}
+
+@media (min-width: 75rem) {
+  .panel {
+    position: absolute;
+    top: 18vh;
+    right: var(--live-gutter);
+    width: min(32rem, 38vw);
+    margin-bottom: 0;
+  }
 }

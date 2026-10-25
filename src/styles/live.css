@@ -168,7 +168,7 @@
 
 .live-prompt b {
   font-weight: 400;
-  color: var(--live-hot);
+  color: var(--live-hot-text);
 }
 
 .live-caret {
@@ -196,7 +196,7 @@
 
 .live-pending-text::before {
   content: "TODO(content) — ";
-  color: var(--live-hot);
+  color: var(--live-hot-text);
 }
 
 .live-pending-bar {

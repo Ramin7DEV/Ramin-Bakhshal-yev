@@ -28,6 +28,15 @@ export function CursorTrail() {
     size();
     addEventListener('resize', size);
 
+    // The ribbon is the hot signal colour of the active theme, read from the token (canvas cannot use var())
+    let hot = '';
+    const readHot = () => {
+      hot = getComputedStyle(document.documentElement).getPropertyValue('--live-hot').trim();
+    };
+    readHot();
+    const themeWatch = new MutationObserver(readHot);
+    themeWatch.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
     const pts: Point[] = [];
     let mx = 0, my = 0, hx = 0, hy = 0, seen = false, muted = false, dirty = false;
     let box = { x0: Infinity, y0: Infinity, x1: -Infinity, y1: -Infinity };
@@ -85,7 +94,8 @@ export function CursorTrail() {
         const a = pts[i - 2], b = pts[i - 1], c = pts[i];
         if (!a || !b || !c) continue;
         const life = 1 - (now - c.t) / LIFE;
-        ctx.strokeStyle = `rgba(255, 74, 28, ${life * 0.7})`;
+        ctx.strokeStyle = hot;
+        ctx.globalAlpha = life * 0.7;
         ctx.lineWidth = 0.5 + life * 2.5;
         ctx.beginPath();
         ctx.moveTo((a.x + b.x) / 2, (a.y + b.y) / 2);
@@ -97,6 +107,7 @@ export function CursorTrail() {
 
     return () => {
       cancelAnimationFrame(raf);
+      themeWatch.disconnect();
       removeEventListener('resize', size);
       removeEventListener('pointermove', onMove);
       document.removeEventListener('pointerleave', onLeave);

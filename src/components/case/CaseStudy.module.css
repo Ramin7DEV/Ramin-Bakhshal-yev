@@ -24,6 +24,11 @@
   will-change: transform;
 }
 
+.cover img,
+.cover video {
+  filter: var(--live-media-dim);
+}
+
 .cover video {
   position: absolute;
   inset: 0;
@@ -179,8 +184,8 @@
   display: block;
   overflow: hidden;
   padding: 14vh var(--live-gutter) 10vh;
-  background: var(--live-ink);
-  color: var(--live-bone);
+  background: var(--live-panel);
+  color: var(--live-on-panel);
   text-decoration: none;
 }
 
@@ -226,7 +231,7 @@
   gap: var(--space-3);
   padding: var(--space-4) var(--live-gutter) 110px;
   border-top: 1px solid var(--live-dark-rule);
-  background: var(--live-ink);
+  background: var(--live-panel);
   color: var(--live-dark-muted);
   font-family: var(--live-font-mono);
   font-size: var(--live-type-mono);
@@ -238,7 +243,7 @@
 }
 
 .foot a:hover {
-  color: var(--live-bone);
+  color: var(--live-on-panel);
 }
 
 @media (max-width: 900px) {

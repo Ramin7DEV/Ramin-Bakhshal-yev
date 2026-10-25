@@ -4,7 +4,7 @@ import { profile } from '@/content/profile';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${profile.name} — AI-first Engineer`,
+    name: `${profile.name} — Mobile & AI Product Builder`,
     short_name: profile.name,
     description: `Personal portfolio of ${profile.name}.`,
     start_url: '/az',
@@ -13,9 +13,9 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: THEME_COLOR,
     icons: [
       {
-        src: '/favicon.ico',
+        src: '/icon.svg',
         sizes: 'any',
-        type: 'image/x-icon',
+        type: 'image/svg+xml',
       },
     ],
   };

@@ -7,7 +7,6 @@ import { Marquee } from '@/components/home/Marquee';
 import { Statement } from '@/components/home/Statement';
 import { WorkSection } from '@/components/home/WorkSection';
 import { Method } from '@/components/home/Method';
-import { LiveStats } from '@/components/home/LiveStats';
 import { ContactBlock } from '@/components/home/ContactBlock';
 import { PageMotion } from '@/components/live/PageMotion';
 import type { Locale } from '@/content/types';
@@ -50,16 +49,6 @@ export default async function HomePage({ params }: Props) {
       <Statement label={t('live.sections.statement')} text={t('hero.description')} />
       <WorkSection locale={locale} />
       <Method locale={locale} />
-      <LiveStats
-        label={t('live.sections.stats')}
-        log={t('live.log.stats')}
-        labels={{
-          components: t('live.stats.components'),
-          time: t('live.stats.time'),
-          you: t('live.stats.you'),
-          baku: t('live.stats.baku'),
-        }}
-      />
       <ContactBlock locale={locale} />
       <PageMotion page="home" />
     </>

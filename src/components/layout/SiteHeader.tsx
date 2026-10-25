@@ -5,13 +5,14 @@ import { projects } from '@/content/projects';
 import { BakuClock } from '@/components/live/BakuClock';
 import { LocaleSwitcher } from './LocaleSwitcher';
 import { MobileMenu } from './MobileMenu';
+import { ThemeToggle } from './ThemeToggle';
 import styles from './SiteHeader.module.css';
 
 type SiteHeaderProps = {
   locale: string;
 };
 
-const SECTIONS = ['statement', 'work', 'method', 'stats', 'contact'] as const;
+const SECTIONS = ['statement', 'work', 'method', 'contact'] as const;
 
 const initials = profile.name
   .split(' ')
@@ -39,6 +40,11 @@ export async function SiteHeader({ locale }: SiteHeaderProps) {
         <div className={styles.locales}>
           <LocaleSwitcher />
         </div>
+        <ThemeToggle
+          label={t('nav.themeDark')}
+          logDark={t('nav.themeLogDark')}
+          logLight={t('nav.themeLogLight')}
+        />
         <MobileMenu
           monogram={initials}
           labels={{
@@ -49,10 +55,13 @@ export async function SiteHeader({ locale }: SiteHeaderProps) {
             clockCity: t('live.clockCity'),
             github: t('finalCta.githubLabel'),
           }}
-          sections={SECTIONS.map((id) => ({ id, label: t(`live.sections.${id}`) }))}
+          sections={SECTIONS.map((id) => ({
+            id,
+            label: t(`live.sections.${id}`),
+            href: id === 'contact' ? '/contact' : undefined,
+          }))}
           pages={[
             { href: '/about', label: t('nav.about') },
-            { href: '/contact', label: t('nav.contact') },
           ]}
           projects={projects.map((p) => ({
             slug: p.slug,

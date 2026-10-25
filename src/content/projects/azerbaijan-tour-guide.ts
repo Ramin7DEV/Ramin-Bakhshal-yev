@@ -25,6 +25,11 @@ export const azerbaijanTourGuide = {
     en: ['Product idea and design', 'Mobile app (React Native, Expo)', 'Supabase backend and Edge Function', 'A database of 10 cities and 239 places'],
     ru: ['Идея продукта и дизайн', 'Мобильное приложение (React Native, Expo)', 'Бэкенд на Supabase и Edge Function', 'База из 10 городов и 239 мест'],
   },
+  roleShort: {
+    az: 'Dizayn, mobil tətbiq, backend və məkan bazası',
+    en: 'Design, mobile app, backend and places database',
+    ru: 'Дизайн, мобильное приложение, бэкенд и база мест',
+  },
   stack: ['TypeScript', 'React Native', 'Expo (EAS)', 'Supabase (Postgres, Edge Functions, RLS)', 'Gemma 4 (OpenRouter)', 'react-native-maps', 'Zustand', 'i18next', 'Sentry'],
   year: '2025',
   status: 'prototype',

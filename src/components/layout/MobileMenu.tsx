@@ -20,7 +20,8 @@ type Props = {
     clockCity: string;
     github: string;
   };
-  sections: { id: string; label: string }[];
+  /** Sections with an href open that page instead of scrolling to an anchor on the home page */
+  sections: { id: string; label: string; href?: string }[];
   /** Separate pages (About, Contact) listed under the home sections */
   pages: { href: string; label: string }[];
   projects: { slug: string; index: string; title: string; transitionLabel: string }[];
@@ -161,7 +162,10 @@ export function MobileMenu({ labels, sections, pages, projects, locales, email, 
               <ol className={styles.sections}>
                 {sections.map((s, i) => (
                   <li key={s.id} style={{ '--i': i } as CSSProperties}>
-                    <a href={`/${locale}#${s.id}`} onClick={(e) => goToSection(e, s.id)}>
+                    <a
+                      href={s.href ? `/${locale}${s.href}` : `/${locale}#${s.id}`}
+                      onClick={(e) => (s.href ? goToPage(e, s.href) : goToSection(e, s.id))}
+                    >
                       <span className={styles.no}>{String(i + 1).padStart(2, '0')}</span>
                       <span className={styles.label}>{s.label.replace(/^\(\d+\)\s*/, '')}</span>
                     </a>

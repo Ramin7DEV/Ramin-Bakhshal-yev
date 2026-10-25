@@ -32,8 +32,8 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   padding: var(--space-5) var(--live-gutter) calc(var(--space-6) + env(safe-area-inset-bottom));
-  background: var(--live-ink);
-  color: var(--live-bone);
+  background: var(--live-panel);
+  color: var(--live-on-panel);
   animation: drop 600ms var(--live-ease) both;
 }
 
@@ -127,7 +127,7 @@
   align-items: baseline;
   gap: var(--space-4);
   padding: var(--space-4) 0;
-  color: var(--live-bone);
+  color: var(--live-on-panel);
   text-decoration: none;
   animation: rise 700ms var(--live-ease-expo) both;
   animation-delay: calc(180ms + var(--i, 0) * 60ms);
@@ -200,7 +200,7 @@
   font-size: var(--live-type-serif-l);
   font-style: italic;
   font-weight: 300;
-  color: var(--live-bone);
+  color: var(--live-on-panel);
   text-decoration: none;
 }
 
@@ -226,7 +226,7 @@
 
 .mail {
   font-size: var(--live-type-mono-m);
-  color: var(--live-bone);
+  color: var(--live-on-panel);
   text-transform: none;
   word-break: break-all;
 }
@@ -259,13 +259,13 @@
 }
 
 .locales button[aria-current="true"] {
-  color: var(--live-bone);
+  color: var(--live-on-panel);
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
 .github {
-  color: var(--live-bone);
+  color: var(--live-on-panel);
   text-decoration: none;
 }
 

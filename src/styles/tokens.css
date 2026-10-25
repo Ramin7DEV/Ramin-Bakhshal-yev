@@ -92,9 +92,11 @@
   --live-bone-2: #E2DDD1;
   --live-ink: #11100E;
   --live-ink-soft: #3C3A35;
-  --live-muted: #7B766B;
+  --live-muted: #5F5A50;
   --live-rule: #CFC9BB;
   --live-hot: #FF4A1C;
+  /* The signal colour as small text on bone: --live-hot alone is 2.7:1 there, this is 4.8:1. Fills and large type keep --live-hot. */
+  --live-hot-text: #BA3010;
   --live-hot-glow: rgba(255, 74, 28, 0.18);
   --live-pending: #A49D8F;
   --live-todo: #8A5A00;
@@ -181,4 +183,72 @@
   --live-glare: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.28), transparent 55%);
   --live-chart-h: clamp(4rem, 8vh, 6rem);
   --live-perspective: 600px;
+}
+
+/* ==========================================================================
+   Theme layer: surfaces that keep their role in both themes
+   - panel:   terminal / console / closing blocks; dark in both themes
+   - on-panel: text on a panel
+   - on-hot:  text on the hot signal colour
+   - blend:   header colour; the header inverts with mix-blend-mode: difference,
+              so it must stay light in both themes to read on any background
+   - media-dim: filter on large bright product media; none in light
+   ========================================================================== */
+:root {
+  color-scheme: light;
+
+  --live-panel: #11100E;
+  --live-panel-edge: #11100E;
+  --live-on-panel: #EBE7DD;
+  --live-on-hot: #11100E;
+  --live-blend: #EBE7DD;
+  --live-media-dim: none;
+  --live-grain: 0.06;
+
+  /* Theme switch: a circle of the new theme opens from the toggle */
+  --live-dur-theme: 900ms;
+  --live-ease-theme: var(--live-ease);
+}
+
+/* ==========================================================================
+   Dark theme: warm charcoal paper, cream ink, the same hot signal re-tuned.
+   Set by an inline script before first paint (data-theme on <html>).
+   Contrast on --live-bone (measured): ink 14.9:1, ink-soft 9.9:1, muted 5.6:1, hot 5.8:1.
+   Light theme: muted #5F5A50 is 5.5:1 and --live-hot-text 4.8:1 on its bone.
+   ========================================================================== */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --live-bone: #191713;
+  --live-bone-2: #221F1A;
+  --live-ink: #EAE4D6;
+  --live-ink-soft: #C2BBAC;
+  --live-muted: #969083;
+  --live-rule: #38342D;
+  --live-hot: #FF5A2B;
+  --live-hot-text: #FF5A2B;
+  --live-hot-glow: rgba(255, 90, 43, 0.22);
+  --live-pending: #7D776B;
+  --live-todo: #D99A2B;
+  --live-console-text: #DCD6C9;
+  --live-console-dim: #7A746A;
+  --live-console-edge: #2C2924;
+  --live-dark-muted: #8F897D;
+  --live-dark-rule: #2C2924;
+  --live-dark-desc: #B9B3A6;
+  --live-dark-edge: #4A463F;
+
+  --live-panel: #0E0D0B;
+  --live-panel-edge: #34302A;
+  --live-on-panel: #EAE4D6;
+  --live-on-hot: #11100E;
+  /* Bright product covers are toned down a little, so they sit in the dark page instead of glaring out of it */
+  --live-media-dim: brightness(0.9);
+  --live-grain: 0.045;
+
+  /* Shadows sink into a dark page, so a hairline ring carries the edge instead */
+  --live-shadow-dock: 0 0 0 1px rgba(234, 228, 214, 0.06), 0 24px 60px -20px rgba(0, 0, 0, 0.8);
+  --live-shadow-icon: 0 0 0 1px rgba(234, 228, 214, 0.08), 0 28px 40px -24px rgba(0, 0, 0, 0.85);
+  --live-shadow-phone: 0 0 0 1px rgba(234, 228, 214, 0.09), 0 40px 60px -36px rgba(0, 0, 0, 0.9);
+  --live-glare: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.16), transparent 55%);
 }

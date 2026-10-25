@@ -58,14 +58,6 @@ const CHOREO: Record<Page, () => (() => void) | void> = {
       .to('#hero [data-field]', { opacity: 0, ease: 'none' }, 0)
       .to('#name', { xPercent: 4, ease: 'none' }, 0);
 
-    // Stats rise out of their cells
-    gsap.from('[data-stat]', {
-      yPercent: 100,
-      ease: 'none',
-      stagger: 0.08,
-      scrollTrigger: { trigger: '#stats', start: 'top bottom', end: 'top 50%', scrub: SCRUB },
-    });
-
     // The email grows into place as the dark block arrives
     gsap.from('[data-mail]', {
       scale: 0.8,

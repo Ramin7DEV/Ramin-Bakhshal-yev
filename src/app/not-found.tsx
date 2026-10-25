@@ -1,20 +1,25 @@
 import Link from 'next/link';
 import az from '@/messages/az.json';
 import { fontClassName } from '@/app/[locale]/fonts';
+import { THEME_SCRIPT } from '@/lib/theme';
 
 export const metadata = {
-  title: `404 — ${az.meta.siteName}`,
-  description: az.common.states.empty,
+  title: `${az.notFound.title} — ${az.meta.siteName}`,
+  description: az.notFound.description,
 };
 
 export default function RootNotFound() {
   return (
-    <html lang="az" className={fontClassName}>
+    // data-theme is set by the inline script before React hydrates, so <html> legitimately differs
+    <html lang="az" className={fontClassName} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+      </head>
       <body>
         <main>
-          <h1>404</h1>
-          <p>{az.common.states.empty}</p>
-          <Link href="/az">{az.common.actions.backToWork}</Link>
+          <h1>{az.notFound.title}</h1>
+          <p>{az.notFound.description}</p>
+          <Link href="/az">{az.notFound.back}</Link>
         </main>
       </body>
     </html>

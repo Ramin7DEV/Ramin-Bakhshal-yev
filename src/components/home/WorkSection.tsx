@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { projects } from '@/content/projects';
 import type { Locale } from '@/content/types';
+import { STATUS_KEY } from '@/lib/status';
 import { WorkIndex, type WorkIndexItem } from './WorkIndex';
 import styles from './WorkSection.module.css';
 
@@ -14,6 +15,7 @@ export async function WorkSection({ locale }: { locale: string }) {
     index: p.index,
     title: p.title,
     categories: p.categories,
+    status: p.status ? t(STATUS_KEY[p.status]) : undefined,
     cover: { src: p.cover.src, alt: p.cover.alt[loc] },
     transitionLabel: `› ${t('live.casePrompt', { slug: p.slug })}`,
   }));

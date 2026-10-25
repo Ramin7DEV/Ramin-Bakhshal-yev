@@ -25,16 +25,16 @@
 
 .add::before {
   content: "+ ";
-  color: var(--live-hot);
+  color: var(--live-hot-text);
 }
 
 .ok {
-  color: var(--live-hot);
+  color: var(--live-hot-text);
 }
 
 .you::before {
   content: "› ";
-  color: var(--live-hot);
+  color: var(--live-hot-text);
 }
 
 @keyframes log-in {

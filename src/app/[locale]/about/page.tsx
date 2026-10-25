@@ -43,7 +43,7 @@ export default async function AboutPage({ params }: Props) {
       <AboutExperience locale={loc} />
       <AboutCapabilities locale={loc} />
       <AboutTimeline locale={loc} />
-      <ContactBlock locale={locale} />
+      <ContactBlock locale={locale} label={t('nav.contact')} />
       <PageMotion page="about" />
     </>
   );

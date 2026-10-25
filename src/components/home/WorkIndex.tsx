@@ -14,6 +14,8 @@ export type WorkIndexItem = {
   index: string;
   title: string;
   categories: ProjectCategory[];
+  /** Where the project stands (live, prototype), already translated */
+  status?: string;
   cover: { src: string; alt: string };
   transitionLabel: string;
 };
@@ -110,7 +112,7 @@ export function WorkIndex({ items, labels }: Props) {
   return (
     <>
       <div className={styles.top} data-reveal="">
-        <span className="live-label">{labels.section}</span>
+        <h2 className="live-label">{labels.section}</h2>
         <div className={styles.filters} role="group" aria-label={labels.filterAria}>
           {FILTERS.map((f) => (
             <button key={f} type="button" aria-pressed={filter === f} onClick={() => choose(f)}>
@@ -151,7 +153,10 @@ export function WorkIndex({ items, labels }: Props) {
                   <h3 lang="en" data-skew="">
                     {p.title}
                   </h3>
-                  <span className={styles.tags}>{p.categories.map((c) => labels.categories[c]).join(' · ')}</span>
+                  <span className={styles.tags}>
+                    {p.categories.map((c) => labels.categories[c]).join(' · ')}
+                    {p.status && <span className={styles.status}>{p.status}</span>}
+                  </span>
                   <span className={styles.go}>{labels.case}</span>
                 </TransitionLink>
               </div>

@@ -171,6 +171,7 @@
 
 .peek img {
   object-fit: cover;
+  filter: var(--live-media-dim);
   opacity: 0;
   transition: opacity 200ms;
 }
@@ -208,5 +209,22 @@
   .go,
   .peek {
     display: none;
+  }
+}
+
+.status {
+  display: block;
+  margin-top: var(--space-1);
+  color: var(--live-muted);
+}
+
+.row:hover .status,
+.row:focus-visible .status {
+  color: inherit;
+}
+
+@media (pointer: coarse) {
+  .filters button {
+    min-height: 44px;
   }
 }

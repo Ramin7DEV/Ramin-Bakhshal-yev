@@ -24,9 +24,9 @@ export const profile: Profile = {
     ru: 'Баку, Азербайджан (UTC+4)',
   },
   availability: {
-    az: 'Freelance layihələr, tam iş və birgə məhsullar üçün açığam',
-    en: 'Open to freelance projects, full-time roles and product collaborations',
-    ru: 'Открыт к фриланс-проектам, работе в штате и совместным продуктам',
+    az: 'Yeni layihə və iş təkliflərinə açığam',
+    en: 'Open to new projects and job offers',
+    ru: 'Открыт к новым проектам и предложениям о работе',
   },
   focus: {
     az: 'Generativ AI · coding agentlər',

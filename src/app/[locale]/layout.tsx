@@ -4,7 +4,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { fontClassName } from './fonts';
-import { THEME_COLOR } from '@/lib/theme';
+import { THEME_COLOR, THEME_COLOR_DARK, THEME_SCRIPT } from '@/lib/theme';
 import { getSiteUrl } from '@/lib/seo';
 import { getAllSlugs } from '@/content/projects';
 import { SkipLink } from '@/components/layout/SkipLink';
@@ -41,12 +41,17 @@ export async function generateMetadata({
   };
 }
 
+// Matches the system preference on first load; ThemeToggle re-syncs it when the visitor picks a theme
 export const viewport = {
-  themeColor: THEME_COLOR,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: THEME_COLOR },
+    { media: '(prefers-color-scheme: dark)', color: THEME_COLOR_DARK },
+  ],
 };
 
-// Runs before first paint: content that animates in is only hidden when JavaScript is there to reveal it
-const LIVE_JS = "document.documentElement.classList.add('live-js')";
+// Runs before first paint: content that animates in is only hidden when JavaScript is there to reveal it,
+// and the theme is set before anything is drawn, so a dark visitor never sees a light flash
+const LIVE_JS = `document.documentElement.classList.add('live-js');${THEME_SCRIPT}`;
 
 type Props = {
   children: ReactNode;
@@ -70,7 +75,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   };
 
   return (
-    // live-js is added by the inline script before React hydrates, so the class list legitimately differs
+    // live-js and data-theme are set by the inline script before React hydrates, so <html> legitimately differs
     <html lang={locale} className={fontClassName} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: LIVE_JS }} />

@@ -43,6 +43,11 @@ export const mirrorly = {
       'Платежи, проверка устройства и слой безопасности',
     ],
   },
+  roleShort: {
+    az: 'Dizayn, iOS, backend, ödəniş və təhlükəsizlik',
+    en: 'Design, iOS, backend, payments and security',
+    ru: 'Дизайн, iOS, бэкенд, платежи и безопасность',
+  },
   stack: ['Swift', 'SwiftUI', 'Supabase (Postgres, Edge Functions, Storage, Auth)', 'Nano Banana 2 (EachLabs API)', 'RevenueCat', 'Apple App Attest / DeviceCheck', 'Next.js (admin panel)', 'TypeScript'],
   year: '2026',
   status: 'live',

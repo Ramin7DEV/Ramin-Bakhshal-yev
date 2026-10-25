@@ -1,4 +1,9 @@
 {
+  "notFound": {
+    "title": "Səhifə tapılmadı",
+    "description": "Axtardığınız ünvan mövcud deyil və ya köçürülüb.",
+    "back": "Ana səhifəyə qayıt"
+  },
   "common": {
     "actions": {
       "viewWork": "Layihələrə bax",
@@ -19,10 +24,12 @@
     "menu": "Menyu",
     "close": "Bağla",
     "skipToContent": "Əsas məzmuna keç",
-    "status": "Seçilmiş layihələr üçün açıqdır / 2026",
+    "status": "İş təkliflərinə açığam / 2026",
     "primaryLabel": "Əsas naviqasiya",
     "mobileLabel": "Mobil naviqasiya",
-    "themeDark": "Qaranlıq tema"
+    "themeDark": "Qaranlıq tema",
+    "themeLogDark": "tema: qaranlıq",
+    "themeLogLight": "tema: işıqlı"
   },
   "locale": {
     "switcherLabel": "Dili dəyiş",
@@ -31,9 +38,9 @@
     "ru": "Русский"
   },
   "hero": {
-    "eyebrow": "AI-first mühəndis",
+    "eyebrow": "Mobile & AI Product Builder",
     "title": "Fikri işləyən<br></br><em>məhsula</em> çevirirəm.",
-    "description": "iOS və veb üçün məhsullar qururam — ideyadan buraxılışa qədər. AI iş prosesimin real hissəsidir: sürəti dəyişir, keyfiyyət standartı yox.",
+    "description": "Mobil və AI məhsulları qururam — ideyadan buraxılışa qədər. AI iş prosesimin real hissəsidir: sürəti dəyişir, keyfiyyət standartı yox.",
     "ctaPrimary": "İşlərimə bax",
     "ctaSecondary": "Əlaqə saxla",
     "mediaAlt": "Ramin Bakhshalıyev mühəndis studiyası və iş masası",
@@ -98,7 +105,7 @@
       "pitch": "(01) Qısaca",
       "story": "(02) Hekayə",
       "screens": "(03) Necə işləyir",
-      "flow": "(04) Bir try-on necə işləyir",
+      "flow": "(04) Bir sorğu necə işləyir",
       "outcome": "(05) Nəticə"
     },
     "screensHint": "Real ekranlar, addım-addım",
@@ -169,7 +176,7 @@
     "log": "Contact.tsx — mail, phone, links",
     "eyebrow": "Əlaqə",
     "title": "Gəlin birlikdə *quraq*.",
-    "intro": "Yeni məhsul, AI inteqrasiyası, avtomatlaşdırma və ya iş təklifi — hamısı üçün açığam.",
+    "intro": "Layihə, əməkdaşlıq və ya iş təkliflərinə açığam.",
     "sections": {
       "reach": "(01) Birbaşa",
       "brief": "(02) Məktubu birlikdə yazaq"
@@ -215,7 +222,8 @@
     "title": "Qurmağa dəyər bir <em>məhsulun</em> var?",
     "description": "Yeni layihələr, əməkdaşlıq və texniki məsləhət üçün yaz.",
     "emailLabel": "Email ilə yaz",
-    "githubLabel": "GitHub"
+    "githubLabel": "GitHub",
+    "panelCommand": "contact --open"
   },
   "footer": {
     "copyright": "Ramin Bakhshalıyev. Bütün hüquqlar qorunur.",
@@ -224,12 +232,12 @@
   },
   "meta": {
     "siteName": "Ramin Bakhshalıyev",
-    "defaultTitle": "Ramin Bakhshalıyev — AI-first Mühəndis",
-    "defaultDescription": "Ramin Bakhshalıyevin fərdi portfoliosu — iOS və veb üçün AI-first məhsul mühəndisliyi.",
+    "defaultTitle": "Ramin Bakhshalıyev — Mobile & AI Product Builder",
+    "defaultDescription": "Ramin Bakhshalıyevin fərdi portfoliosu — mobil və AI məhsulları.",
     "titleTemplate": "%s — Ramin Bakhshalıyev",
     "home": {
-      "title": "Ramin Bakhshalıyev — AI-first Mühəndis",
-      "description": "Ramin Bakhshalıyevin fərdi portfoliosu — iOS və veb üçün AI-first məhsul mühəndisliyi."
+      "title": "Ramin Bakhshalıyev — Mobile & AI Product Builder",
+      "description": "Ramin Bakhshalıyevin fərdi portfoliosu — mobil və AI məhsulları."
     },
     "work": {
       "title": "Seçilmiş Layihələr",
@@ -251,7 +259,7 @@
     "currentLanguage": "Hazırkı dil"
   },
   "live": {
-    "prompt": "build a portfolio for Ramin — AI-first engineer, Baku",
+    "prompt": "build a portfolio for Ramin — mobile & AI product builder, Baku",
     "casePrompt": "open case {slug}",
     "fieldCode": "const idea=listen(user);const system=design(idea);const product=build(system,agents);review(product);ship(product);measure();iterate();",
     "log": {
@@ -291,19 +299,18 @@
     ],
     "meta": {
       "practice": "Peşə",
-      "practiceValue": "AI-first mühəndis",
+      "practiceValue": "Mobile & AI Product Builder",
       "builds": "Qurur",
-      "buildsValue": "iOS · Veb · AI sistemləri",
+      "buildsValue": "iOS · AI sistemləri",
       "based": "Məkan",
       "basedValue": "Bakı, UTC+4",
       "bakuTime": "Bakı vaxtı"
     },
     "sections": {
-      "statement": "(01) Bəyanat",
-      "work": "(02) Seçilmiş layihələr",
-      "method": "(03) Metod — kim nə edir",
-      "stats": "(04) Bu səhifə, dürüst",
-      "contact": "(05) Əlaqə"
+      "statement": "(01) Giriş",
+      "work": "(02) Layihələr",
+      "method": "(03) Metod",
+      "contact": "(04) Əlaqə"
     },
     "work": {
       "no": "№",

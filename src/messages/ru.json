@@ -1,4 +1,9 @@
 {
+  "notFound": {
+    "title": "Страница не найдена",
+    "description": "Такого адреса нет или страница переехала.",
+    "back": "На главную"
+  },
   "common": {
     "actions": {
       "viewWork": "Смотреть проекты",
@@ -19,10 +24,12 @@
     "menu": "Меню",
     "close": "Закрыть",
     "skipToContent": "Перейти к основному контенту",
-    "status": "Открыт для избранных проектов / 2026",
+    "status": "Открыт к предложениям о работе / 2026",
     "primaryLabel": "Основная навигация",
     "mobileLabel": "Мобильная навигация",
-    "themeDark": "Тёмная тема"
+    "themeDark": "Тёмная тема",
+    "themeLogDark": "тема: тёмная",
+    "themeLogLight": "тема: светлая"
   },
   "locale": {
     "switcherLabel": "Выбрать язык",
@@ -31,9 +38,9 @@
     "ru": "Русский"
   },
   "hero": {
-    "eyebrow": "AI-first инженер",
+    "eyebrow": "Mobile & AI Product Builder",
     "title": "Превращаю идею<br></br>в <em>работающий</em> продукт.",
-    "description": "Создаю продукты для iOS и веба — от идеи до релиза. ИИ — рабочая часть процесса: он меняет скорость, а не планку качества.",
+    "description": "Создаю мобильные и AI-продукты — от идеи до релиза. ИИ — рабочая часть процесса: он меняет скорость, а не планку качества.",
     "ctaPrimary": "Смотреть работы",
     "ctaSecondary": "Связаться",
     "mediaAlt": "Инженерная студия и рабочее место Рамина Бахшалиева",
@@ -98,7 +105,7 @@
       "pitch": "(01) Коротко",
       "story": "(02) История",
       "screens": "(03) Как это работает",
-      "flow": "(04) Как проходит одна примерка",
+      "flow": "(04) Как проходит один запрос",
       "outcome": "(05) Результат"
     },
     "screensHint": "Реальные экраны, шаг за шагом",
@@ -169,7 +176,7 @@
     "log": "Contact.tsx — mail, phone, links",
     "eyebrow": "Контакты",
     "title": "Давайте *построим* вместе.",
-    "intro": "Новый продукт, AI-интеграция, автоматизация или предложение о работе — открыт ко всему.",
+    "intro": "Открыт к проектам, сотрудничеству и предложениям о работе.",
     "sections": {
       "reach": "(01) Напрямую",
       "brief": "(02) Напишем письмо вместе"
@@ -215,7 +222,8 @@
     "title": "Есть продукт, который стоит <em>создать</em>?",
     "description": "Пишите по новым проектам, сотрудничеству или за техническим мнением.",
     "emailLabel": "Написать по email",
-    "githubLabel": "GitHub"
+    "githubLabel": "GitHub",
+    "panelCommand": "contact --open"
   },
   "footer": {
     "copyright": "Рамин Бахшалиев. Все права защищены.",
@@ -224,12 +232,12 @@
   },
   "meta": {
     "siteName": "Рамин Бахшалиев",
-    "defaultTitle": "Рамин Бахшалиев — AI-first Инженер",
-    "defaultDescription": "Персональное портфолио Рамина Бахшалиева — AI-first разработка для iOS и веба.",
+    "defaultTitle": "Рамин Бахшалиев — Mobile & AI Product Builder",
+    "defaultDescription": "Персональное портфолио Рамина Бахшалиева — мобильные и AI-продукты.",
     "titleTemplate": "%s — Рамин Бахшалиев",
     "home": {
-      "title": "Рамин Бахшалиев — AI-first Инженер",
-      "description": "Персональное портфолио Рамина Бахшалиева — AI-first разработка для iOS и веба."
+      "title": "Рамин Бахшалиев — Mobile & AI Product Builder",
+      "description": "Персональное портфолио Рамина Бахшалиева — мобильные и AI-продукты."
     },
     "work": {
       "title": "Избранные проекты",
@@ -251,7 +259,7 @@
     "currentLanguage": "Текущий язык"
   },
   "live": {
-    "prompt": "build a portfolio for Ramin — AI-first engineer, Baku",
+    "prompt": "build a portfolio for Ramin — mobile & AI product builder, Baku",
     "casePrompt": "open case {slug}",
     "fieldCode": "const idea=listen(user);const system=design(idea);const product=build(system,agents);review(product);ship(product);measure();iterate();",
     "log": {
@@ -291,19 +299,18 @@
     ],
     "meta": {
       "practice": "Практика",
-      "practiceValue": "AI-first инженер",
+      "practiceValue": "Mobile & AI Product Builder",
       "builds": "Создаёт",
-      "buildsValue": "iOS · Веб · AI системы",
+      "buildsValue": "iOS · AI-системы",
       "based": "Город",
       "basedValue": "Баку, UTC+4",
       "bakuTime": "Время в Баку"
     },
     "sections": {
-      "statement": "(01) Позиция",
-      "work": "(02) Избранные работы",
-      "method": "(03) Метод — кто что делает",
-      "stats": "(04) Эта страница, честно",
-      "contact": "(05) Контакты"
+      "statement": "(01) Введение",
+      "work": "(02) Работы",
+      "method": "(03) Метод",
+      "contact": "(04) Контакты"
     },
     "work": {
       "no": "№",

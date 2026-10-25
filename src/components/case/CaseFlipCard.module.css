@@ -31,8 +31,8 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-4);
-  background: var(--live-ink);
-  color: var(--live-bone);
+  background: var(--live-panel);
+  color: var(--live-on-panel);
 }
 
 .front img {

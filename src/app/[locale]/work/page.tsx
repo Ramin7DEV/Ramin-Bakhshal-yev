@@ -37,7 +37,7 @@ export default async function WorkPage({ params }: Props) {
         <h1>{t('work.title')}</h1>
         <WorkSection locale={locale} />
       </PageShell>
-      <ContactBlock locale={locale} />
+      <ContactBlock locale={locale} label={t('nav.contact')} />
     </>
   );
 }

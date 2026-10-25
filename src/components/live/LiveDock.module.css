@@ -7,7 +7,7 @@
   overflow: hidden;
   border: 1px solid var(--live-console-edge);
   border-radius: var(--live-radius);
-  background: var(--live-ink);
+  background: var(--live-panel);
   box-shadow: var(--live-shadow-dock);
   color: var(--live-console-text);
   font-family: var(--live-font-mono);
@@ -128,6 +128,11 @@
 }
 
 @media (max-width: 760px) {
+  /* 16px or more, or iOS Safari zooms the page when the field takes focus */
+  .input {
+    font-size: 1rem;
+  }
+
   .last {
     display: none;
   }

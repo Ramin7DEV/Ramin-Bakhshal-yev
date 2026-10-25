@@ -11,7 +11,7 @@ type HeroProps = {
   locale: string;
 };
 
-const SECTIONS = ['statement', 'work', 'method', 'stats', 'contact'] as const;
+const SECTIONS = ['statement', 'work', 'method', 'contact'] as const;
 
 /** "Words with *emphasis*" -> words, each flagged when wrapped in asterisks */
 function splitWords(text: string) {

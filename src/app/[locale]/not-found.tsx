@@ -7,9 +7,9 @@ export default function NotFound() {
 
   return (
     <PageShell>
-      <h1>404</h1>
-      <p>{t('common.states.empty')}</p>
-      <Link href="/">{t('common.actions.backToWork')}</Link>
+      <h1>{t('notFound.title')}</h1>
+      <p>{t('notFound.description')}</p>
+      <Link href="/">{t('notFound.back')}</Link>
     </PageShell>
   );
 }

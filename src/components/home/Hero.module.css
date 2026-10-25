@@ -75,7 +75,7 @@
 
 .toc a:hover i,
 .toc a:focus-visible i {
-  color: var(--live-hot);
+  color: var(--live-hot-text);
   transform: translateY(3px);
 }
 
@@ -131,7 +131,7 @@
 
 .legend b {
   font-weight: 400;
-  color: var(--live-hot);
+  color: var(--live-hot-text);
 }
 
 .sign {

@@ -14,7 +14,7 @@ type Props = {
 
 // A paragraph that lights up word by word as it scrolls through the screen
 export function Statement({ label, text, aside }: Props) {
-  const ref = useRef<HTMLHeadingElement>(null);
+  const ref = useRef<HTMLParagraphElement>(null);
   const words = text.split(' ');
 
   useEffect(() => {
@@ -44,14 +44,14 @@ export function Statement({ label, text, aside }: Props) {
 
   return (
     <section id="statement" className={`${styles.statement} ${aside ? styles.withAside : ''}`}>
-      <span className="live-label" data-speed="1.25">
+      <h2 className="live-label" data-speed="1.25">
         {label}
-      </span>
-      <h2 ref={ref} className={styles.text}>
+      </h2>
+      <p ref={ref} className={styles.text}>
         {words.map((w, i) => (
           <span key={i}>{w} </span>
         ))}
-      </h2>
+      </p>
       {aside}
     </section>
   );

@@ -80,12 +80,14 @@ export function personJsonLd(locale: Locale) {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: profile.name,
+    jobTitle: profile.role[locale],
     url: `${siteUrl}/${locale}`,
     email: `mailto:${profile.email}`,
     sameAs: profile.social.map((s) => s.href),
     address: {
       '@type': 'PostalAddress',
-      addressLocality: profile.location[locale],
+      // The time zone belongs in the profile text, not in a postal address
+      addressLocality: profile.location[locale].replace(/\s*\(UTC[^)]*\)/, ''),
     },
   };
 }

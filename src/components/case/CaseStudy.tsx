@@ -34,7 +34,7 @@ export async function CaseStudy({ project, locale }: Props) {
   const field = project.categories
     .map((c) => (c === 'ai' ? t('work.filterAi') : c === 'mobile' ? t('work.filterMobile') : t('work.filterDesign')))
     .join(' · ');
-  const role = project.role[loc][0];
+  const role = project.roleShort?.[loc] ?? project.role[loc][0];
   const statusLabel = project.status ? t(STATUS_KEY[project.status]) : undefined;
   const contentPending = project.chapters.every((c) => isPending(c.body[loc][0]));
 

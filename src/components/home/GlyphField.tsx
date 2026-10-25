@@ -11,11 +11,12 @@ type Props = {
 };
 
 const RAMP = '  ..·:;-=+*'; // density ramp; two spaces keep calm empty patches
-// Colours baked into the sprite atlas: noise (normal, quiet), code ink x4, hot x3
-const LEVELS = [
-  'rgba(17,16,14,.16)', 'rgba(17,16,14,.06)',
-  'rgba(17,16,14,.2)', 'rgba(17,16,14,.32)', 'rgba(17,16,14,.45)', 'rgba(17,16,14,.6)',
-  'rgba(255,74,28,.7)', 'rgba(255,74,28,.85)', 'rgba(255,74,28,1)',
+// Colours baked into the sprite atlas: noise (normal, quiet), code ink x4, hot x3.
+// Token + alpha, resolved from the active theme whenever the atlas is (re)built.
+const LEVELS: [token: string, alpha: number][] = [
+  ['--live-ink', 0.16], ['--live-ink', 0.06],
+  ['--live-ink', 0.2], ['--live-ink', 0.32], ['--live-ink', 0.45], ['--live-ink', 0.6],
+  ['--live-hot', 0.7], ['--live-hot', 0.85], ['--live-hot', 1],
 ];
 const HEADER_BAND = 64; // px under the fixed header that stays calm
 const DECAY = 0.9; // afterglow per 60fps frame: short, so the blob sits on the cursor
@@ -60,11 +61,18 @@ export function GlyphField({ code }: Props) {
       a.font = `${cs * 0.72}px ${monoEl ? getComputedStyle(monoEl).fontFamily : 'monospace'}`;
       a.textAlign = 'center';
       a.textBaseline = 'middle';
-      LEVELS.forEach((colour, l) => {
-        a.fillStyle = colour;
+      // Canvas cannot read CSS variables either: resolve each colour token once per build
+      const tokens = getComputedStyle(document.documentElement);
+      LEVELS.forEach(([token, alpha], l) => {
+        a.globalAlpha = alpha;
+        a.fillStyle = tokens.getPropertyValue(token).trim();
         glyphs.forEach((g, i) => a.fillText(g, i * cs + cs / 2, l * cs + cs / 2));
       });
     };
+
+    // A theme switch repaints the atlas in the new ink; the frame loop picks it up on its next draw
+    const themeWatch = new MutationObserver(buildAtlas);
+    themeWatch.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
     const quietEls = [...hero.querySelectorAll<HTMLElement>('[data-quiet]')];
 
@@ -197,6 +205,7 @@ export function GlyphField({ code }: Props) {
       clearTimeout(resizeTimer);
       io.disconnect();
       ro.disconnect();
+      themeWatch.disconnect();
       removeEventListener('resize', onResize);
       removeEventListener('pointermove', onMove);
     };

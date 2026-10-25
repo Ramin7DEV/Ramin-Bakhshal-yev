@@ -58,9 +58,6 @@ export async function Hero({ locale }: HeroProps) {
             </Fragment>
           ))}
         </p>
-        <p className={styles.legend} data-reveal="">
-          {t.rich('live.legend', { b: (chunks) => <b>{chunks}</b>, br: () => <br /> })}
-        </p>
       </div>
 
       <div className={styles.sign}>

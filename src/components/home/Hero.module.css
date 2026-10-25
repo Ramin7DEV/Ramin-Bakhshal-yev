@@ -119,21 +119,6 @@
   }
 }
 
-.legend {
-  max-width: 260px;
-  font-family: var(--live-font-mono);
-  font-size: var(--live-type-mono-s);
-  line-height: 1.8;
-  text-align: right;
-  text-transform: uppercase;
-  color: var(--live-muted);
-}
-
-.legend b {
-  font-weight: 400;
-  color: var(--live-hot-text);
-}
-
 .sign {
   display: flex;
   flex-wrap: wrap;
@@ -196,9 +181,5 @@
 
   .toc {
     display: none;
-  }
-
-  .legend {
-    text-align: left;
   }
 }

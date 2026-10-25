@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import type { Locale, Project } from '@/content/types';
 import { profile } from '@/content/profile';
+import { routing } from '@/i18n/routing';
 
 export function getSiteUrl(): string {
   const url = process.env.NEXT_PUBLIC_SITE_URL || 'https://raminbakhshaliyev.com';
@@ -45,7 +46,7 @@ export function buildMetadata({
         az: `${siteUrl}/az${cleanPath}`,
         en: `${siteUrl}/en${cleanPath}`,
         ru: `${siteUrl}/ru${cleanPath}`,
-        'x-default': `${siteUrl}/az${cleanPath}`,
+        'x-default': `${siteUrl}/${routing.defaultLocale}${cleanPath}`,
       },
     },
     openGraph: {

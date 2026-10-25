@@ -96,6 +96,40 @@
   color: var(--live-hot);
 }
 
+/* ---------- The email as kinetic type (home contact block, contact page) ----------
+   Letters thicken and narrow near the pointer like the name; on hover they turn hot one after another, left to right.
+   The sweep is a per-letter colour change, not a clipped gradient, so descenders (g, y, @) are never cut off. */
+.live-mail {
+  display: inline-block;
+  color: inherit;
+  font-size: var(--live-type-mail);
+  text-decoration: none;
+}
+
+.live-mail .kinetic {
+  display: block;
+  line-height: 1.02;
+  text-transform: none; /* an address is written as it is typed */
+}
+
+.live-mail .kinetic-ch {
+  transition:
+    font-variation-settings var(--live-dur-fast) var(--live-ease-out),
+    color var(--live-dur-fast) ease calc(var(--ci, 0) * 18ms),
+    opacity var(--live-dur-fast),
+    transform var(--live-dur-base) var(--live-ease);
+}
+
+.live-mail:hover .kinetic-ch,
+.live-mail:focus-visible .kinetic-ch {
+  color: var(--live-hot);
+}
+
+.live-mail:focus-visible {
+  outline: 2px solid var(--live-hot);
+  outline-offset: 6px;
+}
+
 /* ---------- Shared editorial bits ---------- */
 .live-label {
   font-family: var(--live-font-mono);

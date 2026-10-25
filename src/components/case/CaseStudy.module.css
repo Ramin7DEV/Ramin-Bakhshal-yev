@@ -202,6 +202,14 @@
   font-variation-settings: var(--live-vf-row-hover);
 }
 
+/* Where the preview card slides in on hover, the title keeps to the space on its left and wraps there */
+@media (hover: hover) and (min-width: 901px) {
+  .nextTitle {
+    max-width: calc(100% - var(--live-next-card-width) - var(--space-7));
+    line-height: 0.9;
+  }
+}
+
 .nextGo {
   display: inline-block;
   margin-top: var(--space-6);

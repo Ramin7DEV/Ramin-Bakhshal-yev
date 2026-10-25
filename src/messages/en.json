@@ -123,20 +123,92 @@
     ]
   },
   "about": {
+    "prompt": "cat about.md",
+    "log": "About.tsx — profile.ts",
     "eyebrow": "About",
-    "title": "First-principles engineering in the AI era",
-    "principlesTitle": "Engineering Principles",
-    "toolsTitle": "Stack & Capabilities",
-    "aiWorkflowTitle": "AI Integration Methodology"
+    "sections": {
+      "bio": "(01) In short",
+      "principles": "(02) How I work",
+      "experience": "(03) Experience",
+      "tools": "(04) Capabilities",
+      "timeline": "(05) Projects"
+    },
+    "meta": {
+      "role": "Role",
+      "focus": "Focus",
+      "base": "Based in",
+      "status": "Status"
+    },
+    "principles": [
+      {
+        "tag": "Product",
+        "title": "Product thinking",
+        "body": "Before writing code, I define the problem, the user and what the product is for. I built this approach working on iOS and fintech products."
+      },
+      {
+        "tag": "Agents",
+        "title": "Agent orchestration",
+        "body": "I don't work with a single agent but with several in parallel, and I orchestrate them. I approve serious changes and decisions only after reviewing them myself."
+      },
+      {
+        "tag": "Ship",
+        "title": "A working product",
+        "body": "My goal is to turn an idea into a working, useful product faster."
+      }
+    ],
+    "timelineNote": "Dates come from each project's first commit.",
+    "timelineCommits": "{count} commits",
+    "capNote": "On the right: the projects where it is used",
+    "capArea": "Area",
+    "capTech": "Technology",
+    "capProjects": "Projects",
+    "present": "present"
   },
   "contact": {
+    "prompt": "open contact",
+    "log": "Contact.tsx — mail, phone, links",
     "eyebrow": "Contact",
-    "title": "Let's build something enduring",
-    "intro": "TODO(content): Contact intro",
+    "title": "Let's *build* it together.",
+    "intro": "A new product, an AI integration, automation or a job offer — I'm open to all of it.",
+    "sections": {
+      "reach": "(01) Directly",
+      "brief": "(02) Let's write the email together"
+    },
     "emailLabel": "Email",
-    "responseTime": "Typically replies within 24 hours",
-    "location": "Baku, Azerbaijan (UTC+4)",
-    "socialTitle": "Networks"
+    "phoneLabel": "Phone",
+    "linksLabel": "Links",
+    "baseLabel": "Based in",
+    "statusLabel": "Status",
+    "responseTime": "I usually reply within 24 hours",
+    "copy": "Copy",
+    "copied": "Copied",
+    "brief": {
+      "hint": "Pick a few options and your mail app opens with the email ready. Nothing is stored on this site.",
+      "topicLabel": "Topic",
+      "timingLabel": "Timing",
+      "noteLabel": "What would you like to build? (optional)",
+      "notePlaceholder": "For example: a booking app for salons, MVP in 6 weeks",
+      "topics": [
+        "Mobile app",
+        "AI product",
+        "Automation",
+        "Job offer",
+        "Something else"
+      ],
+      "timings": [
+        "Urgent",
+        "1–3 months",
+        "Still planning"
+      ],
+      "previewLabel": "Email",
+      "subject": "From the site: {topic}",
+      "greeting": "Hi Ramin,",
+      "topicLine": "Topic: {topic}",
+      "timingLine": "Timing: {timing}",
+      "signoff": "Best,",
+      "send": "Open in email",
+      "copyText": "Copy text"
+    }
   },
   "finalCta": {
     "eyebrow": "Contact",

@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type CSSProperties } from 'react';
 import { live, wait } from '@/lib/live';
 import { prefersReducedMotion } from '@/lib/motion';
 
 type Props = {
   lines: string[];
-  as?: 'h1' | 'h2' | 'p';
+  as?: 'h1' | 'h2' | 'p' | 'span';
   id?: string;
   className?: string;
   label: string;
@@ -130,7 +130,8 @@ export function KineticText({ lines, as = 'h1', id, className, label, fill = fal
       {lines.map((line) => (
         <span className="kinetic-line" key={line} aria-hidden="true">
           {[...line].map((ch, i) => (
-            <span className="kinetic-ch" data-pending="" key={i}>
+            // --ci: the letter's place in its line, for staggered CSS effects (the email's colour sweep)
+            <span className="kinetic-ch" data-pending="" key={i} style={{ '--ci': i } as CSSProperties}>
               {ch === ' ' ? '\u00a0' : ch}
             </span>
           ))}

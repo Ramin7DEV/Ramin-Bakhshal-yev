@@ -5,7 +5,7 @@ export type ProjectStatus = 'live' | 'in-development' | 'prototype' | 'concept';
 export type ProjectCategory = 'ai' | 'mobile' | 'product-design';
 
 export interface ProjectLink {
-  kind: 'app-store' | 'google-play' | 'github' | 'website' | 'video';
+  kind: 'app-store' | 'google-play' | 'github' | 'linkedin' | 'website' | 'video';
   href: string;
   label: Localized<string>;
 }
@@ -103,6 +103,24 @@ export interface Project {
   accent: 'gold' | 'signal' | 'ivory';
 }
 
+/** One job. Dates are 'YYYY-MM'; no end means it is ongoing. Dates are optional until Ramin confirms them */
+export interface Experience {
+  company: string;
+  href: string;
+  role: Localized<string>;
+  mode: Localized<string>;
+  start?: string;
+  end?: string;
+  summary: Localized<string[]>;
+}
+
+/** One area of work, the technology used for it and the projects where it is used */
+export interface Capability {
+  area: Localized<string>;
+  tech: Localized<string>;
+  projects: Project['slug'][];
+}
+
 export interface Profile {
   name: string;
   role: Localized<string>;
@@ -110,7 +128,15 @@ export interface Profile {
   bio: Localized<string[]>;
   location: Localized<string>;
   availability: Localized<string>;
+  /** What the work is about right now, one short line */
+  focus: Localized<string>;
   email: string;
+  /** Shown as written; dialled as `tel` */
+  phone: { display: string; tel: string };
+  /** Jobs, newest first */
+  experience: Experience[];
+  /** What Ramin builds, each area tied to the projects that show it */
+  capabilities: Capability[];
   social: ProjectLink[];
   portrait?: { src: string; alt: Localized<string> };
 }

@@ -26,27 +26,7 @@
 }
 
 .mail {
-  display: block;
   margin: var(--space-7) 0 15vh;
-  background: linear-gradient(90deg, var(--live-hot) 50%, var(--live-bone) 50%);
-  background-position: 100% 0;
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-size: var(--live-type-mail);
-  font-variation-settings: var(--live-vf-mail);
-  letter-spacing: -0.02em;
-  line-height: 0.95;
-  text-decoration: none;
-  word-break: break-all;
-  transition: background-position var(--live-dur-slow) var(--live-ease);
-}
-
-.mail:hover,
-.mail:focus-visible {
-  background-position: 0 0;
-  outline: none;
 }
 
 .foot {

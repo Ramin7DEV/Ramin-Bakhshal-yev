@@ -123,20 +123,92 @@
     ]
   },
   "about": {
+    "prompt": "cat about.md",
+    "log": "About.tsx — profile.ts",
     "eyebrow": "Haqqımda",
-    "title": "Sistemli düşüncə və AI-first mühəndislik",
-    "principlesTitle": "İş Prinsipləri",
-    "toolsTitle": "Alətlər və Texnologiyalar",
-    "aiWorkflowTitle": "AI İş Prosesi"
+    "sections": {
+      "bio": "(01) Qısaca",
+      "principles": "(02) Necə işləyirəm",
+      "experience": "(03) İş təcrübəsi",
+      "tools": "(04) Bacarıqlar",
+      "timeline": "(05) Layihələr"
+    },
+    "meta": {
+      "role": "Rol",
+      "focus": "Fokus",
+      "base": "Baza",
+      "status": "Status"
+    },
+    "principles": [
+      {
+        "tag": "Product",
+        "title": "Məhsul düşüncəsi",
+        "body": "Kod yazmazdan əvvəl problemi, istifadəçini və məhsulun məqsədini müəyyən edirəm. Bu yanaşmanı iOS və fintech məhsulları üzərində işləyərkən formalaşdırmışam."
+      },
+      {
+        "tag": "Agents",
+        "title": "Agent orkestrasiyası",
+        "body": "Bir agentlə yox, bir neçə agentlə paralel işləyirəm və onları orkestrasiya edirəm. Ciddi dəyişiklikləri və qərarları özüm incələdikdən sonra təsdiqləyirəm."
+      },
+      {
+        "tag": "Ship",
+        "title": "İşlək məhsul",
+        "body": "Məqsədim ideyanı daha sürətli şəkildə işlək və faydalı məhsula çevirməkdir."
+      }
+    ],
+    "timelineNote": "Tarixlər hər layihənin ilk commit-indən götürülüb.",
+    "timelineCommits": "{count} commit",
+    "capNote": "Sağda — bu sahənin istifadə olunduğu layihələr",
+    "capArea": "Sahə",
+    "capTech": "Texnologiya",
+    "capProjects": "Layihələr",
+    "present": "indi"
   },
   "contact": {
+    "prompt": "open contact",
+    "log": "Contact.tsx — mail, phone, links",
     "eyebrow": "Əlaqə",
-    "title": "Gəlin birlikdə quraq",
-    "intro": "TODO(content): Contact intro",
-    "emailLabel": "Email",
-    "responseTime": "Adətən 24 saat ərzində cavab verilir",
-    "location": "Bakı, Azərbaycan (UTC+4)",
-    "socialTitle": "Şəbəkələr"
+    "title": "Gəlin birlikdə *quraq*.",
+    "intro": "Yeni məhsul, AI inteqrasiyası, avtomatlaşdırma və ya iş təklifi — hamısı üçün açığam.",
+    "sections": {
+      "reach": "(01) Birbaşa",
+      "brief": "(02) Məktubu birlikdə yazaq"
+    },
+    "emailLabel": "E-poçt",
+    "phoneLabel": "Telefon",
+    "linksLabel": "Linklər",
+    "baseLabel": "Baza",
+    "statusLabel": "Status",
+    "responseTime": "Adətən 24 saat ərzində cavab verirəm",
+    "copy": "Kopyala",
+    "copied": "Kopyalandı",
+    "brief": {
+      "hint": "Bir neçə seçim edin — e-poçt proqramınız hazır məktubla açılacaq. Heç nə saytda saxlanmır.",
+      "topicLabel": "Mövzu",
+      "timingLabel": "Vaxt",
+      "noteLabel": "Qısaca nə qurmaq istəyirsiniz? (istəyə bağlı)",
+      "notePlaceholder": "Məsələn: salonlar üçün randevu tətbiqi, MVP 6 həftəyə",
+      "topics": [
+        "Mobil tətbiq",
+        "AI məhsulu",
+        "Avtomatlaşdırma",
+        "İş təklifi",
+        "Başqa"
+      ],
+      "timings": [
+        "Təcili",
+        "1–3 ay",
+        "Hələ planlaşdırıram"
+      ],
+      "previewLabel": "Məktub",
+      "subject": "Saytdan: {topic}",
+      "greeting": "Salam Ramin,",
+      "topicLine": "Mövzu: {topic}",
+      "timingLine": "Vaxt: {timing}",
+      "signoff": "Hörmətlə,",
+      "send": "E-poçtda aç",
+      "copyText": "Mətni kopyala"
+    }
   },
   "finalCta": {
     "eyebrow": "Əlaqə",

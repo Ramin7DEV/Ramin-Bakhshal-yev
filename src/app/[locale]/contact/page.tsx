@@ -4,7 +4,14 @@ import { routing } from '@/i18n/routing';
 import { profile } from '@/content/profile';
 import { buildMetadata } from '@/lib/seo';
 import type { Locale } from '@/content/types';
-import { PageShell } from '@/components/live/PageShell';
+import { BuildIntro } from '@/components/live/BuildIntro';
+import { BakuClock } from '@/components/live/BakuClock';
+import { KineticText } from '@/components/live/KineticText';
+import { PageMotion } from '@/components/live/PageMotion';
+import { GlyphField } from '@/components/home/GlyphField';
+import { BriefBuilder, type BriefLabels } from '@/components/contact/BriefBuilder';
+import { CopyButton } from '@/components/contact/CopyButton';
+import styles from '@/components/contact/Contact.module.css';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -25,38 +32,95 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
+/** "Let's *build* it together." -> words, the starred one in italics */
+function emphasise(text: string) {
+  return text.split(/(\*[^*]+\*)/).map((part, i) => (part.startsWith('*') ? <em key={i}>{part.slice(1, -1)}</em> : part));
+}
+
+// Contact: a short hero, every direct way to reach Ramin, then the brief builder that drafts the first email
 export default async function ContactPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale });
   const loc = locale as Locale;
+  const [user, domain] = profile.email.split('@');
 
   return (
-    <PageShell>
-      <h1>{t('contact.title')}</h1>
-      <p>{t('contact.intro')}</p>
-      <dl>
-        <dt>{t('contact.emailLabel')}</dt>
-        <dd>
-          <a href={`mailto:${profile.email}`}>{profile.email}</a>
-        </dd>
-        <dt>{t('contact.responseTime')}</dt>
-        <dd>{profile.availability[loc]}</dd>
-        <dt>{t('contact.location')}</dt>
-        <dd>{profile.location[loc]}</dd>
-      </dl>
-      <section>
-        <h2>{t('contact.socialTitle')}</h2>
-        <ul>
-          {profile.social.map((s) => (
-            <li key={s.href}>
-              <a href={s.href} target="_blank" rel="noopener noreferrer">
-                {s.label[loc]}
-              </a>
-            </li>
-          ))}
-        </ul>
+    <>
+      <section id="hero" className={styles.hero} data-build="<ContactHero />" data-build-manual="" data-no-trail="">
+        <GlyphField code={t('live.fieldCode')} />
+        <div data-quiet="">
+          <BuildIntro sectionId="hero" prompt={t('contact.prompt')} compileId="contact" logs={[t('contact.log')]} />
+        </div>
+        <h1 className={styles.title} data-reveal="" data-quiet="">
+          {emphasise(t('contact.title'))}
+        </h1>
+        <p className={styles.intro} data-reveal="2" data-quiet="">
+          {t('contact.intro')}
+        </p>
       </section>
-    </PageShell>
+
+      <section id="reach" className={styles.block} data-build="<Reach />" data-log={t('contact.log')}>
+        <span className="live-label" data-reveal="">
+          {t('contact.sections.reach')}
+        </span>
+        <div className={styles.mailRow} data-reveal="2">
+          <a className={`live-mail ${styles.mail}`} href={`mailto:${profile.email}`} aria-label={profile.email} data-mail="">
+            <KineticText as="span" lines={[user ?? profile.email, `@${domain}`]} label={profile.email} />
+          </a>
+          <CopyButton text={profile.email} label={t('contact.copy')} copiedLabel={t('contact.copied')} />
+        </div>
+        <dl className={styles.details} data-reveal="3" data-climb="">
+          <div>
+            <dt>{t('contact.phoneLabel')}</dt>
+            <dd>
+              <a href={`tel:${profile.phone.tel}`}>{profile.phone.display}</a>
+            </dd>
+          </div>
+          <div>
+            <dt>{t('contact.linksLabel')}</dt>
+            <dd className={styles.links}>
+              {profile.social.map((s) => (
+                <a key={s.href} href={s.href} target="_blank" rel="noreferrer">
+                  {s.label[loc]} ↗
+                </a>
+              ))}
+            </dd>
+          </div>
+          <div>
+            <dt>{t('contact.baseLabel')}</dt>
+            <dd>
+              {profile.location[loc]}
+              <span className={styles.clock}>
+                <BakuClock prefix={`${t('live.clockCity')} `} />
+              </span>
+            </dd>
+          </div>
+          <div>
+            <dt>{t('contact.statusLabel')}</dt>
+            <dd>
+              {profile.availability[loc]}
+              <span className={styles.response}>{t('contact.responseTime')}</span>
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <section id="brief" className={styles.block} data-build="<Brief />" data-log={t('contact.log')}>
+        <span className="live-label" data-reveal="">
+          {t('contact.sections.brief')}
+        </span>
+        <div data-reveal="2">
+          <BriefBuilder
+            email={profile.email}
+            labels={{
+              ...(t.raw('contact.brief') as Omit<BriefLabels, 'copied'>),
+              copied: t('contact.copied'),
+            }}
+          />
+        </div>
+      </section>
+      <PageMotion page="contact" />
+    </>
   );
 }

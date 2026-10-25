@@ -2,7 +2,8 @@ import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { projects } from '@/content/projects';
 import { profile } from '@/content/profile';
-import type { Locale, ManifestKey, Project, ProjectStatus } from '@/content/types';
+import type { Locale, ManifestKey, Project } from '@/content/types';
+import { STATUS_KEY } from '@/lib/status';
 import { PageMotion } from '@/components/live/PageMotion';
 import { TransitionLink } from '@/components/live/TransitionLink';
 import { CaseHero } from './CaseHero';
@@ -21,12 +22,6 @@ type Props = {
 };
 
 const isPending = (text: string | undefined) => !text || text.startsWith('TODO(content)');
-const STATUS_KEY = {
-  live: 'proof.statusLive',
-  'in-development': 'proof.statusDev',
-  prototype: 'proof.statusPrototype',
-  concept: 'proof.statusConcept',
-} as const satisfies Record<ProjectStatus, string>;
 const CARD_KEYS: ManifestKey[] = ['platform', 'ai', 'languages'];
 const PENDING_BARS = [[92, 64], [80, 52], [88, 70], [76, 58]] as const;
 
@@ -139,7 +134,7 @@ export async function CaseStudy({ project, locale }: Props) {
         />
       )}
 
-      {project.marquee && <Marquee words={project.marquee.flatMap((w) => [w, '+'])} />}
+      {project.marquee && <Marquee words={project.marquee.flatMap((w) => [w, '+'])} lang="en" />}
 
       {project.flow && (
         <CaseFlow flow={project.flow} locale={loc} label={t('caseStudy.sections.flow')} log={t('live.log.flow')} />
@@ -185,12 +180,14 @@ export async function CaseStudy({ project, locale }: Props) {
           {next.title}
         </span>
         <span className={styles.nextGo}>
-          {next.index} / {next.title} →
+          {next.index} / <span lang="en">{next.title}</span> →
         </span>
       </TransitionLink>
       <footer className={styles.foot}>
         <span>{t('footer.builtIn')}</span>
-        <a href={`mailto:${profile.email}`}>{profile.email}</a>
+        <a href={`mailto:${profile.email}`} lang="en">
+          {profile.email}
+        </a>
         <span>
           © {new Date().getFullYear()} {t('footer.copyright')}
         </span>

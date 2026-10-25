@@ -16,7 +16,7 @@ const STEP_DIM = 0.25; // opacity of the steps that are not current
 const WIDE = '(min-width: 901px)';
 const FLIP_LEAN = -4; // deg the pitch card tilts halfway through its turn
 
-type Page = 'home' | 'case';
+type Page = 'home' | 'case' | 'about' | 'contact';
 
 // Scroll choreography for every page. Each tween is tied to the scroll position, not to time.
 // Shared: [data-climb] blocks rise in a staggered wave, [data-skew] headings lean with the glide.
@@ -42,6 +42,14 @@ export function PageMotion({ page }: { page: Page }) {
 
 // Each entry may return a cleanup for anything gsap.context does not revert on its own (matchMedia, tickers)
 const CHOREO: Record<Page, () => (() => void) | void> = {
+  // About and Contact: the shared climb and skew, plus the hero field fading as the page leaves it
+  about() {
+    fadeHeroField();
+  },
+  contact() {
+    fadeHeroField();
+  },
+
   home() {
     // Leaving the hero: the headline lifts, the field fades, the menu drifts away
     gsap
@@ -136,6 +144,15 @@ const CHOREO: Record<Page, () => (() => void) | void> = {
     return () => mm.revert();
   },
 };
+
+function fadeHeroField() {
+  if (!document.querySelector('#hero [data-field]')) return;
+  gsap.to('#hero [data-field]', {
+    opacity: 0,
+    ease: 'none',
+    scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: SCRUB },
+  });
+}
 
 // The children of every [data-climb] block climb in a staggered wave while the block enters the screen
 function climb() {

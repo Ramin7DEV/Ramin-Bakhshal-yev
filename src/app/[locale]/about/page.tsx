@@ -4,7 +4,11 @@ import { routing } from '@/i18n/routing';
 import { profile } from '@/content/profile';
 import { buildMetadata } from '@/lib/seo';
 import type { Locale } from '@/content/types';
-import { PageShell } from '@/components/live/PageShell';
+import { AboutHero } from '@/components/about/AboutHero';
+import { AboutCapabilities, AboutExperience, AboutPrinciples, AboutTimeline } from '@/components/about/AboutSections';
+import { Statement } from '@/components/home/Statement';
+import { ContactBlock } from '@/components/home/ContactBlock';
+import { PageMotion } from '@/components/live/PageMotion';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -32,25 +36,15 @@ export default async function AboutPage({ params }: Props) {
   const loc = locale as Locale;
 
   return (
-    <PageShell>
-      <h1>{t('about.title')}</h1>
-      <p>{profile.positioning[loc]}</p>
-      <section>
-        <h2>{t('about.principlesTitle')}</h2>
-        <ul>
-          {profile.bio[loc].map((item, i) => (
-            <li key={i}>{item}</li>
-          ))}
-        </ul>
-      </section>
-      <section>
-        <h2>{t('about.toolsTitle')}</h2>
-        <p>{profile.role[loc]}</p>
-      </section>
-      <section>
-        <h2>{t('about.aiWorkflowTitle')}</h2>
-        <p>{t('process.title')}</p>
-      </section>
-    </PageShell>
+    <>
+      <AboutHero locale={loc} />
+      <Statement label={t('about.sections.bio')} text={profile.bio[loc].join(' ')} />
+      <AboutPrinciples locale={loc} />
+      <AboutExperience locale={loc} />
+      <AboutCapabilities locale={loc} />
+      <AboutTimeline locale={loc} />
+      <ContactBlock locale={locale} />
+      <PageMotion page="about" />
+    </>
   );
 }

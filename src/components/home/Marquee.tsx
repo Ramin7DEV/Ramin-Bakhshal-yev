@@ -8,13 +8,15 @@ import styles from './Marquee.module.css';
 type Props = {
   /** Alternating words: even items are display words, odd ones are serif connectors */
   words: string[];
+  /** Language of the words, when it differs from the page (tech names: "en", so az uppercase keeps "SwiftUI" as SWIFTUI) */
+  lang?: string;
 };
 
 const BASE_SPEED = 0.6; // px per frame at rest
 const MAX_BOOST = 14;
 
 // Drifts on its own, speeds up with scroll velocity and turns around with scroll direction
-export function Marquee({ words }: Props) {
+export function Marquee({ words, lang }: Props) {
   const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -48,7 +50,7 @@ export function Marquee({ words }: Props) {
   const items = words.map((w, i) => (i % 2 ? <i key={i}>{w}</i> : <span key={i}>{w}</span>));
 
   return (
-    <div className={styles.marquee} aria-hidden="true">
+    <div className={styles.marquee} aria-hidden="true" lang={lang}>
       <div ref={trackRef} className={styles.track}>
         {items}
         {items.map((item, i) => (

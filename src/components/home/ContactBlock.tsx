@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { profile } from '@/content/profile';
+import { KineticText } from '@/components/live/KineticText';
 import styles from './ContactBlock.module.css';
 
 // Dark closing block: the email is the call to action
@@ -17,9 +18,8 @@ export async function ContactBlock({ locale }: { locale: string }) {
         <span className={styles.title}>{t.rich('finalCta.title', { em: (chunks) => <em>{chunks}</em> })}</span>{' '}
         {t('finalCta.description')}
       </p>
-      <a className={styles.mail} href={`mailto:${profile.email}`} data-reveal="3" data-mail="">
-        {user}
-        <br />@{domain}
+      <a className={`live-mail ${styles.mail}`} href={`mailto:${profile.email}`} aria-label={profile.email} data-reveal="3" data-mail="">
+        <KineticText as="span" lines={[user ?? profile.email, `@${domain}`]} label={profile.email} />
       </a>
       <div className={styles.foot} data-reveal="4">
         <span>{t('footer.builtIn')}</span>

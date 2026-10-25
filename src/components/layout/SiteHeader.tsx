@@ -33,8 +33,8 @@ export async function SiteHeader({ locale }: SiteHeaderProps) {
       <div className={styles.right}>
         <nav aria-label={t('nav.primaryLabel')} className={styles.nav}>
           <Link href="/#work">{t('nav.work')}</Link>
-          <Link href="/#method">{t('live.navMethod')}</Link>
-          <Link href="/#contact">{t('nav.contact')}</Link>
+          <Link href="/about">{t('nav.about')}</Link>
+          <Link href="/contact">{t('nav.contact')}</Link>
         </nav>
         <div className={styles.locales}>
           <LocaleSwitcher />
@@ -50,6 +50,10 @@ export async function SiteHeader({ locale }: SiteHeaderProps) {
             github: t('finalCta.githubLabel'),
           }}
           sections={SECTIONS.map((id) => ({ id, label: t(`live.sections.${id}`) }))}
+          pages={[
+            { href: '/about', label: t('nav.about') },
+            { href: '/contact', label: t('nav.contact') },
+          ]}
           projects={projects.map((p) => ({
             slug: p.slug,
             index: p.index,

@@ -21,6 +21,8 @@ type Props = {
     github: string;
   };
   sections: { id: string; label: string }[];
+  /** Separate pages (About, Contact) listed under the home sections */
+  pages: { href: string; label: string }[];
   projects: { slug: string; index: string; title: string; transitionLabel: string }[];
   locales: Record<Locale, string>;
   email: string;
@@ -35,7 +37,7 @@ const FOCUSABLE = 'a[href], button:not([disabled])';
 // Phone navigation: a full-screen ink panel that drops from the top.
 // Rendered into <body> through a portal, because the header blends with the page (mix-blend-mode)
 // and anything inside it would be colour-inverted.
-export function MobileMenu({ labels, sections, projects, locales, email, githubHref, monogram }: Props) {
+export function MobileMenu({ labels, sections, pages, projects, locales, email, githubHref, monogram }: Props) {
   const [phase, setPhase] = useState<Phase>('closed');
   const buttonRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -102,6 +104,11 @@ export function MobileMenu({ labels, sections, projects, locales, email, githubH
     });
   };
 
+  const goToPage = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    close(() => live.emit('navigate', { href }));
+  };
+
   const goToProject = (e: MouseEvent<HTMLAnchorElement>, slug: string, label: string) => {
     e.preventDefault();
     close(() => live.emit('navigate', { href: `/work/${slug}`, label }));
@@ -161,6 +168,15 @@ export function MobileMenu({ labels, sections, projects, locales, email, githubH
                   </li>
                 ))}
               </ol>
+              <ul className={styles.projects} style={{ '--i': sections.length } as CSSProperties}>
+                {pages.map((p) => (
+                  <li key={p.href}>
+                    <a href={`/${locale}${p.href}`} onClick={(e) => goToPage(e, p.href)}>
+                      {p.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </nav>
 
             <div className={styles.block} style={{ '--i': sections.length } as CSSProperties}>

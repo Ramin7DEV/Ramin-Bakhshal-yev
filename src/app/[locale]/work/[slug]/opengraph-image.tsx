@@ -1,32 +1,26 @@
 import { ImageResponse } from 'next/og';
 import { notFound } from 'next/navigation';
+import { getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
-import { getProject, getAllSlugs } from '@/content/projects';
-import type { Locale } from '@/content/types';
+import { getProject, getAllSlugs, projects } from '@/content/projects';
+import { profile } from '@/content/profile';
+import type { Locale, ProjectCategory } from '@/content/types';
+import { STATUS_KEY } from '@/lib/status';
+import { OG_COLORS as C, OG_FONTS, OG_SIZE, glyphs, loadOgFonts } from '@/lib/og';
 
 export const alt = 'Case Study — Ramin Bakhshalıyev';
-export const size = { width: 1200, height: 630 };
+export const size = OG_SIZE;
 export const contentType = 'image/png';
 
 export function generateStaticParams() {
   const slugs = getAllSlugs();
-  return routing.locales.flatMap((locale) =>
-    slugs.map((slug) => ({ locale, slug }))
-  );
+  return routing.locales.flatMap((locale) => slugs.map((slug) => ({ locale, slug })));
 }
 
-let fontPromise: Promise<ArrayBuffer> | null = null;
-async function getFont(): Promise<ArrayBuffer> {
-  if (!fontPromise) {
-    fontPromise = fetch(
-      'https://fonts.gstatic.com/s/sourceserifpro/v18/neIXzD-0qpwxpaWvjeD0X88SAOeasasahSs.ttf'
-    ).then((res) => {
-      if (!res.ok) throw new Error('Failed to fetch font for OG generation');
-      return res.arrayBuffer();
-    });
-  }
-  return fontPromise;
-}
+const CATEGORY_KEY = { ai: 'filterAi', mobile: 'filterMobile', 'product-design': 'filterDesign' } as const satisfies Record<
+  ProjectCategory,
+  string
+>;
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -34,19 +28,37 @@ type Props = {
 
 export default async function Image({ params }: Props) {
   const { locale, slug } = await params;
+  const loc = locale as Locale;
   const project = getProject(slug);
+  if (!project) notFound();
 
-  if (!project) {
-    notFound();
-  }
+  const t = await getTranslations({ locale });
+  const summary = project.summary[loc];
+  const hasSummary = Boolean(summary) && !summary.includes('TODO');
+  const categories = project.categories.map((c) => t(`work.${CATEGORY_KEY[c]}`)).join(' · ');
+  const status = project.status ? t(STATUS_KEY[project.status]) : '';
+  const position = `${project.index} / ${String(projects.length).padStart(2, '0')}`;
+  const name = loc === 'ru' ? 'Рамин Бахшалиев' : profile.name;
+  const role = profile.role[loc];
+  const domain = 'raminbakhshaliyev.com';
 
-  const fontData = await getFont();
-  const summary = project.summary[locale as Locale];
-  const hasValidSummary = summary && !summary.includes('TODO');
+  // Long titles drop a size step so they stay on two lines at most
+  const titleSize = project.title.length <= 12 ? 132 : project.title.length <= 20 ? 108 : 88;
 
-  const categories = project.categories.join(' · ').toUpperCase();
-  const title = project.title;
-  const index = project.index;
+  const serif = glyphs(project.title, summary);
+  const mono = glyphs('R.B.', position, categories.toUpperCase(), status.toUpperCase(), domain.toUpperCase(), `${name} ${role}`.toUpperCase());
+  const fonts = await loadOgFonts([
+    { name: OG_FONTS.serif, family: 'Source Serif 4', axes: 'wght@300', weight: 300, style: 'normal', text: serif },
+    { name: OG_FONTS.mono, family: 'JetBrains Mono', axes: 'wght@500', weight: 500, style: 'normal', text: mono },
+  ]);
+
+  const label = {
+    fontFamily: OG_FONTS.mono,
+    fontWeight: 500,
+    fontSize: 17,
+    letterSpacing: '0.12em',
+    textTransform: 'uppercase',
+  } as const;
 
   return new ImageResponse(
     (
@@ -57,122 +69,59 @@ export default async function Image({ params }: Props) {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          backgroundColor: '#08090A',
-          padding: '80px',
-          fontFamily: 'Source Serif Pro',
+          padding: '68px 72px',
+          backgroundColor: C.bone,
+          color: C.ink,
         }}
       >
-        {/* Top bar */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <span
-              style={{
-                color: '#D3AA69',
-                fontSize: 32,
-                fontWeight: 600,
-                letterSpacing: '-0.02em',
-              }}
-            >
-              RB
-            </span>
-            <span
-              style={{
-                color: '#A8A399',
-                fontSize: 16,
-                letterSpacing: '0.16em',
-                textTransform: 'uppercase',
-              }}
-            >
-              Case Study
-            </span>
-          </div>
-          <span
-            style={{
-              color: '#D3AA69',
-              fontSize: 20,
-              fontWeight: 600,
-              letterSpacing: '0.16em',
-            }}
-          >
-            {index}
-          </span>
+          <span style={{ ...label, fontSize: 22, letterSpacing: '0.04em' }}>R.B.</span>
+          <span style={{ ...label, color: C.muted }}>{position}</span>
         </div>
 
-        {/* Center content */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <span style={{ ...label, color: C.hotText }}>{categories}</span>
           <span
             style={{
-              color: '#88DDD7',
-              fontSize: 18,
-              letterSpacing: '0.16em',
-              textTransform: 'uppercase',
-            }}
-          >
-            {categories}
-          </span>
-          <h1
-            style={{
-              margin: 0,
-              fontSize: 72,
-              fontWeight: 600,
-              color: '#EDE9DF',
-              lineHeight: 1.1,
+              marginTop: 20,
+              fontFamily: OG_FONTS.serif,
+              fontWeight: 300,
+              fontSize: titleSize,
+              lineHeight: 1,
               letterSpacing: '-0.03em',
             }}
           >
-            {title}
-          </h1>
-          {hasValidSummary ? (
-            <p
+            {project.title}
+          </span>
+          {hasSummary ? (
+            <span
               style={{
-                margin: 0,
-                fontSize: 24,
-                color: '#A8A399',
+                marginTop: 28,
+                maxWidth: 940,
+                fontFamily: OG_FONTS.serif,
+                fontWeight: 300,
+                fontSize: 28,
                 lineHeight: 1.4,
-                maxWidth: '900px',
+                color: C.inkSoft,
               }}
             >
               {summary}
-            </p>
+            </span>
           ) : null}
         </div>
 
-        {/* Bottom bar with gold hairline */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '100%' }}>
-          <div
-            style={{
-              width: '100%',
-              height: '1px',
-              backgroundColor: 'rgba(211, 170, 105, 0.4)',
-            }}
-          />
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              fontSize: 15,
-              color: '#837E76',
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-            }}
-          >
-            <span>raminbakhshaliyev.com</span>
-            <span>Ramin Bakhshalıyev · Mobile & AI Product Builder</span>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
+          <div style={{ height: 1, backgroundColor: C.ink }} />
+          <div style={{ display: 'flex', justifyContent: 'space-between', color: C.muted }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              {status ? <div style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: C.hot }} /> : null}
+              <span style={label}>{status || domain}</span>
+            </div>
+            <span style={label}>{`${name} · ${role}`}</span>
           </div>
         </div>
       </div>
     ),
-    {
-      ...size,
-      fonts: [
-        {
-          name: 'Source Serif Pro',
-          data: fontData,
-          weight: 600,
-          style: 'normal',
-        },
-      ],
-    }
+    { ...OG_SIZE, fonts },
   );
 }

@@ -2,26 +2,15 @@ import { ImageResponse } from 'next/og';
 import { getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { profile } from '@/content/profile';
+import type { Locale } from '@/content/types';
+import { OG_COLORS as C, OG_FONTS, OG_SIZE, glyphs, loadOgFonts } from '@/lib/og';
 
 export const alt = 'Ramin Bakhshalıyev — Mobile & AI Product Builder';
-export const size = { width: 1200, height: 630 };
+export const size = OG_SIZE;
 export const contentType = 'image/png';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
-}
-
-let fontPromise: Promise<ArrayBuffer> | null = null;
-async function getFont(): Promise<ArrayBuffer> {
-  if (!fontPromise) {
-    fontPromise = fetch(
-      'https://fonts.gstatic.com/s/sourceserifpro/v18/neIXzD-0qpwxpaWvjeD0X88SAOeasasahSs.ttf'
-    ).then((res) => {
-      if (!res.ok) throw new Error('Failed to fetch font for OG generation');
-      return res.arrayBuffer();
-    });
-  }
-  return fontPromise;
 }
 
 type Props = {
@@ -30,11 +19,32 @@ type Props = {
 
 export default async function Image({ params }: Props) {
   const { locale } = await params;
+  const loc = locale as Locale;
   const t = await getTranslations({ locale, namespace: 'meta' });
-  const fontData = await getFont();
 
-  const name = locale === 'ru' ? 'Рамин Бахшалиев' : profile.name;
-  const subtitle = t('defaultDescription');
+  const [first = '', ...rest] = (loc === 'ru' ? 'Рамин Бахшалиев' : profile.name).split(' ');
+  const last = rest.join(' ');
+  const role = profile.role[loc];
+  const status = profile.availability[loc];
+  const description = t('defaultDescription');
+  const place = profile.location[loc].replace(/\s*\(UTC[^)]*\)/, '');
+  const domain = 'raminbakhshaliyev.com';
+
+  const serif = glyphs(first, last, description);
+  const mono = glyphs('R.B.', role.toUpperCase(), status.toUpperCase(), place.toUpperCase(), domain.toUpperCase());
+  const fonts = await loadOgFonts([
+    { name: OG_FONTS.serif, family: 'Source Serif 4', axes: 'wght@300', weight: 300, style: 'normal', text: serif },
+    { name: OG_FONTS.serif, family: 'Source Serif 4', axes: 'ital,wght@1,300', weight: 300, style: 'italic', text: serif },
+    { name: OG_FONTS.mono, family: 'JetBrains Mono', axes: 'wght@500', weight: 500, style: 'normal', text: mono },
+  ]);
+
+  const label = {
+    fontFamily: OG_FONTS.mono,
+    fontWeight: 500,
+    fontSize: 17,
+    letterSpacing: '0.12em',
+    textTransform: 'uppercase',
+  } as const;
 
   return new ImageResponse(
     (
@@ -45,109 +55,60 @@ export default async function Image({ params }: Props) {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          backgroundColor: '#08090A',
-          padding: '80px',
-          fontFamily: 'Source Serif Pro',
+          padding: '68px 72px',
+          backgroundColor: C.bone,
+          color: C.ink,
         }}
       >
-        {/* Top bar */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <span
-              style={{
-                color: '#D3AA69',
-                fontSize: 32,
-                fontWeight: 600,
-                letterSpacing: '-0.02em',
-              }}
-            >
-              RB
-            </span>
-            <span
-              style={{
-                color: '#A8A399',
-                fontSize: 16,
-                letterSpacing: '0.16em',
-                textTransform: 'uppercase',
-              }}
-            >
-              {name}
-            </span>
+          <span style={{ ...label, fontSize: 22, letterSpacing: '0.04em' }}>R.B.</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, color: C.muted }}>
+            <div style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: C.hot }} />
+            <span style={label}>{status}</span>
           </div>
-          <span
-            style={{
-              color: '#88DDD7',
-              fontSize: 14,
-              letterSpacing: '0.16em',
-              textTransform: 'uppercase',
-            }}
-          >
-            Mobile & AI Product Builder
-          </span>
         </div>
 
-        {/* Center content */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <h1
-            style={{
-              margin: 0,
-              fontSize: 64,
-              fontWeight: 600,
-              color: '#EDE9DF',
-              lineHeight: 1.1,
-              letterSpacing: '-0.03em',
-            }}
-          >
-            {name}
-          </h1>
-          <p
-            style={{
-              margin: 0,
-              fontSize: 28,
-              color: '#A8A399',
-              lineHeight: 1.4,
-            }}
-          >
-            {subtitle}
-          </p>
-        </div>
-
-        {/* Bottom bar with gold hairline */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '100%' }}>
-          <div
-            style={{
-              width: '100%',
-              height: '1px',
-              backgroundColor: 'rgba(211, 170, 105, 0.4)',
-            }}
-          />
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <span style={{ ...label, color: C.hotText }}>{role}</span>
           <div
             style={{
               display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              fontSize: 15,
-              color: '#837E76',
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
+              flexWrap: 'wrap',
+              marginTop: 22,
+              fontFamily: OG_FONTS.serif,
+              fontWeight: 300,
+              fontSize: 112,
+              lineHeight: 1,
+              letterSpacing: '-0.03em',
             }}
           >
-            <span>raminbakhshaliyev.com</span>
-            <span>Baku · Open to Job Offers / 2026</span>
+            <span style={{ marginRight: 28 }}>{first}</span>
+            <span style={{ fontStyle: 'italic', color: C.hotText }}>{last}</span>
+          </div>
+          <span
+            style={{
+              marginTop: 30,
+              maxWidth: 900,
+              fontFamily: OG_FONTS.serif,
+              fontWeight: 300,
+              fontSize: 30,
+              lineHeight: 1.4,
+              color: C.inkSoft,
+            }}
+          >
+            {description}
+          </span>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
+          <div style={{ height: 1, backgroundColor: C.ink }} />
+          <div style={{ display: 'flex', justifyContent: 'space-between', color: C.muted }}>
+            <span style={label}>{domain}</span>
+            <span style={label}>{place}</span>
           </div>
         </div>
       </div>
     ),
-    {
-      ...size,
-      fonts: [
-        {
-          name: 'Source Serif Pro',
-          data: fontData,
-          weight: 600,
-          style: 'normal',
-        },
-      ],
-    }
+    { ...OG_SIZE, fonts },
   );
 }

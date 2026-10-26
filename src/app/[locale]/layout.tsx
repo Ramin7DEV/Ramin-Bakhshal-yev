@@ -72,6 +72,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   // Pass only namespaces required by client components to keep client bundle minimal
   const clientMessages = {
     locale: messages.locale,
+    errorPage: messages.errorPage,
   };
 
   return (

@@ -1,4 +1,10 @@
 {
+  "errorPage": {
+    "title": "Səhifə yüklənmədi",
+    "description": "Bu səhifəni açmaq mümkün olmadı. Yenidən cəhd edin.",
+    "retry": "Yenidən cəhd et",
+    "home": "Ana səhifəyə qayıt"
+  },
   "notFound": {
     "title": "Səhifə tapılmadı",
     "description": "Axtardığınız ünvan mövcud deyil və ya köçürülüb.",

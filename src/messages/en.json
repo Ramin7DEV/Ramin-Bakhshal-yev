@@ -1,4 +1,10 @@
 {
+  "errorPage": {
+    "title": "The page didn't load",
+    "description": "This page could not be opened. Please try again.",
+    "retry": "Try again",
+    "home": "Back to the home page"
+  },
   "notFound": {
     "title": "Page not found",
     "description": "This address does not exist or has moved.",

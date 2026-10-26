@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server';
 import { profile } from '@/content/profile';
 import { BuildIntro } from '@/components/live/BuildIntro';
 import { KineticText } from '@/components/live/KineticText';
+import { Brand } from '@/components/primitives/Brand';
 import { BakuClock } from '@/components/live/BakuClock';
 import { GlyphField } from './GlyphField';
 import styles from './Hero.module.css';
@@ -70,11 +71,15 @@ export async function Hero({ locale }: HeroProps) {
       <dl className="live-meta-grid">
         <div data-reveal="">
           <dt>{t('live.meta.practice')}</dt>
-          <dd>{t('live.meta.practiceValue')}</dd>
+          <dd>
+            <Brand>{t('live.meta.practiceValue')}</Brand>
+          </dd>
         </div>
         <div data-reveal="2">
           <dt>{t('live.meta.builds')}</dt>
-          <dd>{t('live.meta.buildsValue')}</dd>
+          <dd>
+            <Brand>{t('live.meta.buildsValue')}</Brand>
+          </dd>
         </div>
         <div data-reveal="3">
           <dt>{t('live.meta.based')}</dt>

@@ -5,6 +5,7 @@ import type { Locale } from '@/content/types';
 import { STATUS_KEY } from '@/lib/status';
 import { TransitionLink } from '@/components/live/TransitionLink';
 import styles from './About.module.css';
+import { Brand } from '@/components/primitives/Brand';
 
 type Principle = { tag: string; title: string; body: string };
 
@@ -91,8 +92,12 @@ export async function AboutCapabilities({ locale }: { locale: Locale }) {
         <tbody data-climb="">
           {profile.capabilities.map((c) => (
             <tr key={c.area.en}>
-              <th scope="row">{c.area[locale]}</th>
-              <td className={styles.tech}>{c.tech[locale]}</td>
+              <th scope="row">
+                <Brand>{c.area[locale]}</Brand>
+              </th>
+              <td className={styles.tech}>
+                <Brand>{c.tech[locale]}</Brand>
+              </td>
               <td className={styles.used}>
                 {c.projects.map((slug) => {
                   const p = bySlug.get(slug);
@@ -136,7 +141,7 @@ export async function AboutTimeline({ locale }: { locale: Locale }) {
           {t('about.sections.timeline')}
         </span>
         <span className="live-label" data-reveal="2">
-          {t('about.timelineNote')}
+          <Brand>{t('about.timelineNote')}</Brand>
         </span>
       </div>
       <ol className={styles.timeline} data-reveal="2" data-climb="">
@@ -152,7 +157,7 @@ export async function AboutTimeline({ locale }: { locale: Locale }) {
                 {project.title}
               </span>
               <span className={styles.facts}>
-                {project.status ? t(STATUS_KEY[project.status]) : ''} · {t('about.timelineCommits', { count: commits })}
+                {project.status ? t(STATUS_KEY[project.status]) : ''} · <Brand>{t('about.timelineCommits', { count: commits })}</Brand>
               </span>
               <span className={styles.go} aria-hidden="true">
                 →

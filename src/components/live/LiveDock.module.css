@@ -128,6 +128,11 @@
 }
 
 @media (max-width: 760px) {
+  /* Phones have the menu: the console only took the bottom of the screen and part of the content */
+  .dock {
+    display: none;
+  }
+
   /* 16px or more, or iOS Safari zooms the page when the field takes focus */
   .input {
     font-size: 1rem;

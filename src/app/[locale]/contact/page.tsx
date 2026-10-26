@@ -7,6 +7,7 @@ import type { Locale } from '@/content/types';
 import { BuildIntro } from '@/components/live/BuildIntro';
 import { BakuClock } from '@/components/live/BakuClock';
 import { KineticText } from '@/components/live/KineticText';
+import { Brand } from '@/components/primitives/Brand';
 import { PageMotion } from '@/components/live/PageMotion';
 import { GlyphField } from '@/components/home/GlyphField';
 import { BriefBuilder, type BriefLabels } from '@/components/contact/BriefBuilder';
@@ -82,7 +83,7 @@ export default async function ContactPage({ params }: Props) {
             <dd className={styles.links}>
               {profile.social.map((s) => (
                 <a key={s.href} href={s.href} target="_blank" rel="noreferrer">
-                  {s.label[loc]} ↗
+                  <Brand>{s.label[loc]}</Brand> ↗
                 </a>
               ))}
             </dd>

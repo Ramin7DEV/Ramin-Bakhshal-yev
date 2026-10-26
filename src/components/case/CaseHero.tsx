@@ -7,6 +7,7 @@ import { KineticText } from '@/components/live/KineticText';
 import { GlyphField } from '@/components/home/GlyphField';
 import { IconTilt } from './IconTilt';
 import styles from './CaseHero.module.css';
+import { Brand } from '@/components/primitives/Brand';
 
 type Props = {
   project: Project;
@@ -130,7 +131,9 @@ export async function CaseHero({ project, locale, total, field, role, statusLabe
                 {rows.map((row, i) => (
                   <div key={row.key} style={vars({ '--i': i })}>
                     <dt>{row.label}</dt>
-                    <dd>{row.value}</dd>
+                    <dd>
+                      <Brand>{row.value}</Brand>
+                    </dd>
                   </div>
                 ))}
               </dl>
@@ -147,7 +150,9 @@ export async function CaseHero({ project, locale, total, field, role, statusLabe
           {activity && (
             <figure className={styles.activity}>
               <div className={styles.activityHead}>
-                <span>{t('caseStudy.hero.activity')}</span>
+                <span>
+                  <Brand>{t('caseStudy.hero.activity')}</Brand>
+                </span>
                 <span>{t('caseStudy.hero.source', { source: activity.source })}</span>
               </div>
               <ol className={styles.bars} style={vars({ '--n': activity.weekly.length })} aria-hidden="true">
@@ -189,7 +194,9 @@ export async function CaseHero({ project, locale, total, field, role, statusLabe
         </div>
         <div data-reveal="2">
           <dt>{t('caseStudy.factRole')}</dt>
-          <dd className={isPending(role) ? styles.todo : undefined}>{isPending(role) ? 'TODO(content)' : role}</dd>
+          <dd className={isPending(role) ? styles.todo : undefined}>
+            {isPending(role) ? 'TODO(content)' : <Brand>{role ?? ''}</Brand>}
+          </dd>
         </div>
         <div data-reveal="3">
           <dt>{t('caseStudy.factYear')}</dt>
@@ -206,7 +213,7 @@ export async function CaseHero({ project, locale, total, field, role, statusLabe
           <span>{t('caseStudy.linksTitle')}</span>
           {project.links.map((link) => (
             <a key={link.href} href={link.href} target="_blank" rel="noreferrer" aria-label={`${link.label[locale]} (${t('a11y.externalLink')})`}>
-              {link.label[locale]} ↗
+              <Brand>{link.label[locale]}</Brand> ↗
             </a>
           ))}
         </nav>

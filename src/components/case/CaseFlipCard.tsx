@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import type { MediaAsset, Locale } from '@/content/types';
 import styles from './CaseFlipCard.module.css';
+import { Brand } from '@/components/primitives/Brand';
 
 type Props = {
   icon: MediaAsset;
@@ -25,7 +26,9 @@ export function CaseFlipCard({ icon, title, field, locale, facts }: Props) {
           {facts.map((f) => (
             <div key={f.label}>
               <dt>{f.label}</dt>
-              <dd>{f.value}</dd>
+              <dd>
+                <Brand>{f.value}</Brand>
+              </dd>
             </div>
           ))}
         </dl>

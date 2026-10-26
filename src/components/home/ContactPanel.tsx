@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { BakuClock } from '@/components/live/BakuClock';
+import { Brand } from '@/components/primitives/Brand';
 import styles from './ContactPanel.module.css';
 
 type Props = {
@@ -62,7 +63,9 @@ export function ContactPanel({ command, labels, status, base, email, links, clas
         </div>
         {links.map((link) => (
           <div key={link.href}>
-            <dt>{link.label}</dt>
+            <dt>
+              <Brand>{link.label}</Brand>
+            </dt>
             <dd>
               <a href={link.href} target="_blank" rel="noreferrer">
                 {link.href.split('/').filter(Boolean).pop()} ↗

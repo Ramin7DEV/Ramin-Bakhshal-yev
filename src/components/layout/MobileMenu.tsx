@@ -9,6 +9,7 @@ import { live } from '@/lib/live';
 import { prefersReducedMotion } from '@/lib/motion';
 import { getSmoother, scrollToTarget } from '@/lib/scroll';
 import { BakuClock } from '@/components/live/BakuClock';
+import { Brand } from '@/components/primitives/Brand';
 import styles from './MobileMenu.module.css';
 
 type Props = {
@@ -217,7 +218,7 @@ export function MobileMenu({ labels, sections, pages, projects, locales, email, 
               </div>
               {githubHref && (
                 <a className={styles.github} href={githubHref} target="_blank" rel="noreferrer">
-                  {labels.github} ↗
+                  <Brand>{labels.github}</Brand> ↗
                 </a>
               )}
             </div>

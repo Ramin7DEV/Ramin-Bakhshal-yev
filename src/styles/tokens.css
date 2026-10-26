@@ -150,6 +150,8 @@
   /* Layout */
   --live-gutter: clamp(1rem, 3vw, 2.5rem);
   --live-header-pad: 5.25rem;
+  --live-header-height: 4.5rem; /* the fixed header bar itself, for the backdrop that appears behind it on scroll */
+  --live-header-blur: 14px;
   --live-section-pad: 16vh;
   --live-row-number: 5rem;
   --live-row-open: 7.5rem;

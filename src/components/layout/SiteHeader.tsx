@@ -6,6 +6,7 @@ import { BakuClock } from '@/components/live/BakuClock';
 import { LocaleSwitcher } from './LocaleSwitcher';
 import { MobileMenu } from './MobileMenu';
 import { ThemeToggle } from './ThemeToggle';
+import { HeaderBackdrop } from './HeaderBackdrop';
 import styles from './SiteHeader.module.css';
 
 type SiteHeaderProps = {
@@ -24,56 +25,59 @@ export async function SiteHeader({ locale }: SiteHeaderProps) {
   const t = await getTranslations({ locale });
 
   return (
-    <header className={styles.header}>
-      <Link href="/" className={styles.mark} aria-label={profile.name}>
-        {initials}
-      </Link>
-      <span className={styles.clock}>
-        <BakuClock seconds prefix={`${t('live.clockCity')} `} />
-      </span>
-      <div className={styles.right}>
-        <nav aria-label={t('nav.primaryLabel')} className={styles.nav}>
-          <Link href="/#work">{t('nav.work')}</Link>
-          <Link href="/about">{t('nav.about')}</Link>
-          <Link href="/contact">{t('nav.contact')}</Link>
-        </nav>
-        <div className={styles.locales}>
-          <LocaleSwitcher />
+    <>
+    <HeaderBackdrop />
+      <header className={styles.header}>
+        <Link href="/" className={styles.mark} aria-label={profile.name}>
+          {initials}
+        </Link>
+        <span className={styles.clock}>
+          <BakuClock seconds prefix={`${t('live.clockCity')} `} />
+        </span>
+        <div className={styles.right}>
+          <nav aria-label={t('nav.primaryLabel')} className={styles.nav}>
+            <Link href="/#work">{t('nav.work')}</Link>
+            <Link href="/about">{t('nav.about')}</Link>
+            <Link href="/contact">{t('nav.contact')}</Link>
+          </nav>
+          <div className={styles.locales}>
+            <LocaleSwitcher />
+          </div>
+          <ThemeToggle
+            label={t('nav.themeDark')}
+            logDark={t('nav.themeLogDark')}
+            logLight={t('nav.themeLogLight')}
+          />
+          <MobileMenu
+            monogram={initials}
+            labels={{
+              menu: t('nav.menu'),
+              close: t('nav.close'),
+              dialog: t('nav.mobileLabel'),
+              projects: t('work.title'),
+              clockCity: t('live.clockCity'),
+              github: t('finalCta.githubLabel'),
+            }}
+            sections={SECTIONS.map((id) => ({
+              id,
+              label: t(`live.sections.${id}`),
+              href: id === 'contact' ? '/contact' : undefined,
+            }))}
+            pages={[
+              { href: '/about', label: t('nav.about') },
+            ]}
+            projects={projects.map((p) => ({
+              slug: p.slug,
+              index: p.index,
+              title: p.title,
+              transitionLabel: `› ${t('live.casePrompt', { slug: p.slug })}`,
+            }))}
+            locales={{ az: t('locale.az'), en: t('locale.en'), ru: t('locale.ru') }}
+            email={profile.email}
+            githubHref={profile.social.find((s) => s.kind === 'github')?.href}
+          />
         </div>
-        <ThemeToggle
-          label={t('nav.themeDark')}
-          logDark={t('nav.themeLogDark')}
-          logLight={t('nav.themeLogLight')}
-        />
-        <MobileMenu
-          monogram={initials}
-          labels={{
-            menu: t('nav.menu'),
-            close: t('nav.close'),
-            dialog: t('nav.mobileLabel'),
-            projects: t('work.title'),
-            clockCity: t('live.clockCity'),
-            github: t('finalCta.githubLabel'),
-          }}
-          sections={SECTIONS.map((id) => ({
-            id,
-            label: t(`live.sections.${id}`),
-            href: id === 'contact' ? '/contact' : undefined,
-          }))}
-          pages={[
-            { href: '/about', label: t('nav.about') },
-          ]}
-          projects={projects.map((p) => ({
-            slug: p.slug,
-            index: p.index,
-            title: p.title,
-            transitionLabel: `› ${t('live.casePrompt', { slug: p.slug })}`,
-          }))}
-          locales={{ az: t('locale.az'), en: t('locale.en'), ru: t('locale.ru') }}
-          email={profile.email}
-          githubHref={profile.social.find((s) => s.kind === 'github')?.href}
-        />
-      </div>
-    </header>
+      </header>
+    </>
   );
 }

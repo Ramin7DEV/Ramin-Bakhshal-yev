@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
-import { buildMetadata, personJsonLd } from '@/lib/seo';
+import { buildMetadata, personJsonLd, websiteJsonLd } from '@/lib/seo';
 import { Hero } from '@/components/home/Hero';
 import { Marquee } from '@/components/home/Marquee';
 import { Statement } from '@/components/home/Statement';
@@ -34,7 +34,7 @@ export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale });
-  const jsonLd = personJsonLd(locale as Locale);
+  const jsonLd = [personJsonLd(locale as Locale), websiteJsonLd(locale as Locale)];
 
   return (
     <>

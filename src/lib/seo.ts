@@ -93,6 +93,20 @@ export function personJsonLd(locale: Locale) {
   };
 }
 
+// Tells Google the site's name, so results show "Ramin Bakhshalıyev" above the title instead of the bare domain
+export function websiteJsonLd(locale: Locale) {
+  const siteUrl = getSiteUrl();
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: profile.name,
+    alternateName: ['Ramin Bakhshaliyev', 'raminbakhshaliyev.com'],
+    url: `${siteUrl}/`,
+    inLanguage: locale,
+  };
+}
+
 export function creativeWorkJsonLd(project: Project, locale: Locale) {
   const siteUrl = getSiteUrl();
   const summary = project.summary[locale];

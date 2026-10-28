@@ -5,7 +5,8 @@ import { getSiteUrl } from '@/lib/seo';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = getSiteUrl();
-  const lastModified = new Date('2026-09-08T12:00:00.000Z');
+  // The build date: the site is rebuilt on every push, so this moves whenever the content may have
+  const lastModified = new Date();
 
   // Static routes (styleguide is strictly excluded per spec)
   const staticPaths = ['', '/work', '/about', '/contact'];

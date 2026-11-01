@@ -43,3 +43,13 @@ next-env.d.ts
 
 # Local graft index (regenerated on demand)
 /graft/
+
+# Local agent workflow and internal planning (kept on disk, not published)
+/AGENTS.md
+/CLAUDE.md
+/docs/
+/claudedocs/
+/AI_FIRST_PORTFOLIO_MASTER_PLAN.md
+/.claude/
+/.ignore
+/design-concepts/

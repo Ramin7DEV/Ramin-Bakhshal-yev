@@ -203,6 +203,15 @@ export const beautyApp = {
         ru: 'Видео и пост в LinkedIn',
       },
     },
+    {
+      kind: 'github',
+      href: 'https://github.com/Ramin7DEV/beauty-app',
+      label: {
+        az: 'Mənbə kodu (iki tətbiq və API)',
+        en: 'Source code (two apps and the API)',
+        ru: 'Исходный код (два приложения и API)',
+      },
+    },
   ],
   accent: 'ivory',
 } satisfies Project;

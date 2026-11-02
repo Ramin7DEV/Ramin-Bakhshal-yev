@@ -197,6 +197,16 @@ export const azerbaijanTourGuide = {
     fallbackFrom: 2,
   },
   marquee: ['React Native', 'Expo', 'Supabase', 'Gemma 4', 'OpenRouter', 'Zustand'],
-  links: [],
+  links: [
+    {
+      kind: 'github',
+      href: 'https://github.com/Ramin7DEV/tour-guide-ai',
+      label: {
+        az: 'Mənbə kodu (tətbiq və backend)',
+        en: 'Source code (app and backend)',
+        ru: 'Исходный код (приложение и бэкенд)',
+      },
+    },
+  ],
   accent: 'signal',
 } satisfies Project;

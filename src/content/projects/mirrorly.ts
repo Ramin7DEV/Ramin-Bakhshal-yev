@@ -213,6 +213,15 @@ export const mirrorly = {
         ru: 'App Store',
       },
     },
+    {
+      kind: 'github',
+      href: 'https://github.com/Ramin7DEV/mirrorly-ios',
+      label: {
+        az: 'iOS tətbiqinin mənbə kodu',
+        en: 'iOS app source code',
+        ru: 'Исходный код iOS-приложения',
+      },
+    },
   ],
   accent: 'gold',
 } satisfies Project;
